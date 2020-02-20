@@ -30,6 +30,13 @@
 						<a href="/travel/paidAdditionalService" style="padding-right:80px;">유료 부가서비스</a>
 					</div>		
 				</div>
+				<div class="dropdown">
+                	<a class="dropbtn firstmenu" href="javascript:void(0);">수현아나클럽</a>
+		    		<div class="dropdown-content">
+						<a href="/travel/atTheAirport" style="padding-right:80px;">공지사항</a>
+						<a href="/travel/inTheAirplane" style="padding-right:80px;">고객센터</a>
+					</div>		
+				</div>
 					
 				</div>
 				
