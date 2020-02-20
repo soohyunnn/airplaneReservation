@@ -33,8 +33,8 @@
 				<div class="dropdown">
                 	<a class="dropbtn firstmenu" href="javascript:void(0);">수현아나클럽</a>
 		    		<div class="dropdown-content">
-						<a href="/soohyunana/notice" style="padding-right:80px;">공지사항</a>
-						<a href="/soohyunana/serviceCenter" style="padding-right:80px;">고객센터</a>
+						<a href="/soohyunana/notice" style="padding-right:30px;">공지사항</a>
+						<a href="/soohyunana/serviceCenter" style="padding-right:30px;">고객센터</a>
 					</div>		
 				</div>
 					
