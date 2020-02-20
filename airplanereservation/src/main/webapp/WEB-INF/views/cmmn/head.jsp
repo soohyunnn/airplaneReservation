@@ -120,4 +120,7 @@
 	    width: 100%;
 	    height: 200px;
 	}
+	.inputst input{
+		padding: 15px 3px;
+	}
     </style>

@@ -34,8 +34,8 @@
 				</div>
 				
 				<div style="display: inline-block; padding:16px; position: relative; float: right;">
-					<a href="#" onclick="" style="color:white; ">로그인</a>
-					<a href="#" onclick="" style="color:white; padding:16px;">회원가입</a>
+					<a href="/member/login" onclick="" style="color:white; ">로그인</a>
+					<a href="/member/register" onclick="" style="color:white; padding:16px;">회원가입</a>
 					<a href="/admin/index" style="color:white; padding:16px;">admin</a>
 				</div>
 			

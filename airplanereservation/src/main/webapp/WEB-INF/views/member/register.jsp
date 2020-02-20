@@ -17,31 +17,31 @@
     <!------ Include the above in your HEAD tag ---------->
 </head>
 <body>
-<div class="container">
+<div class="container" style="height: 937px;">
 
     <div class="row">
-        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" style="top: 100px;">
             <form role="form">
-                <h2>회원가입 <small>It's free and always will be.</small></h2>
+                <h2>회원가입 </h2>
+                <h3><small>회원으로 가입하시면 예약,발권,탑승,마일리지 조회 등 다양한 서비스와 함께 정기 이벤트 뉴스와 할인항공권 소식을 이메일로 받아보실 수도 있습니다.</small></h3>
                 <hr class="colorgraph">
-                <div class="form-group">
+                <div class="form-group inputst">
                     <input type="text" name="res_Name" id="res_Name" class="form-control input-lg" placeholder="이름" tabindex="1">
                 </div>
-                <div class="form-group">
+                <div class="form-group inputst">
                     <input type="text" name="res_Id" id="res_ID" class="form-control input-lg" placeholder="아이디" tabindex="2">
                 </div>
-                <div class="form-group">
+                <div class="form-group inputst">
                     <input type="text" name="res_Pw" id="res_Pw" class="form-control input-lg" placeholder="비밀번호" tabindex="3">
                 </div>
-                <div class="form-group">
+                <div class="form-group inputst">
                     <input type="text" name="res_Email" id="res_Email" class="form-control input-lg" placeholder="이메일" tabindex="4">
                 </div>
 
 
                 <hr class="colorgraph">
                 <div class="row">
-                    <div class="col-xs-12 col-md-6"><input type="submit" value="회원가입" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
-                    <div class="col-xs-12 col-md-6"><a href="/member/login" class="btn btn-success btn-block btn-lg">로그인</a></div>
+                    <div class="col-xs-12 col-md-12"><input type="submit" value="회원가입" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
                 </div>
             </form>
         </div>
