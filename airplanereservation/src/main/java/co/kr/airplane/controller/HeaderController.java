@@ -65,4 +65,16 @@ public class HeaderController {
 	public String paidAdditionalService() {
 		return "travel/paidAdditionalService.tiles";
 	}
+	
+	//수현아나클럽-공지사항
+	@RequestMapping(value="/soohyunana/notice")
+	public String notice() {
+		return "soohyunana/notice.tiles";
+	}
+	
+	//수현아나클럽-고객센터
+		@RequestMapping(value="/soohyunana/serviceCenter")
+		public String serviceCenter() {
+			return "soohyunana/serviceCenter.tiles";
+		}
 }
