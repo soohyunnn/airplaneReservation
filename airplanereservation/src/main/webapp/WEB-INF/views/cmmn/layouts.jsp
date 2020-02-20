@@ -6,7 +6,7 @@
 
 		<tiles:insertAttribute name="head" ignore="true" />
 
-	<body>
+	<body style="height: 937px;">
 	
 		<tiles:insertAttribute name="header" ignore="true" />
 		

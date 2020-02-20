@@ -1,12 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div style="height: 937px;">
-<div style="margin: 80px;">
-	<div>
-		<h1 class="page-header">공지사항</h1>
-		<p>Total: <span id="count"></span></p>
-	</div>	
-</div>
+<div style="height: 738px; overflow-x: auto;">
+		<div style="margin: 80px; margin-bottom: 20px;">
+			<div>
+				<h1 class="page-header">공지사항</h1>
+				<p>Total: <span id="count"></span></p>
+			</div>	
+		</div>
+		
+		<div class="chatdiv row">
+			<div style="float: left;">
+				<img src="/resources/images/ico/rion.png" style="width: 350px;">
+			</div>
+			<div style="color:black;">
+				<h2>&nbsp;&nbsp;챗봇 서비스</h2>
+				<h4>&nbsp;&nbsp;인공지능 챗봇 "쑤론"에게 24시간 언제든지 편하게 물어보세요!!</h4><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+				<button class="btn btn-warning" style="float:right; margin-right: 15px;"><img src="/resources/images/ico/rion2.png" style="width: 50px; margin-right: 5px;">챗봇 서비스</button>
+			</div>
+		</div>
 
 		<div style="width: 91%; margin: 0 auto;">
 				<form  id="tableForm" name="tableForm" method="post">
@@ -40,7 +51,7 @@
 		
 			
 			
-		<table class="table" id="usertable" style="margin: 0 auto; width: 91%; background: white; color:blue;">
+		<table class="table" id="usertable" style="margin: 0 auto; margin-bottom: 100px; width: 91%; background: #929090; color:#000000;">
 			<thead>
 				<tr>
 					<th scope="col">NO</th>

@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div style="height: 937px;">
-<div style="margin: 80px;">
-	<div>
-		<h1 class="page-header">고객센터</h1>
-		<p>Total: <span id="count"></span></p>
-	</div>	
-</div>
+<div style="height: 738px; overflow-x: auto;">
+		<div style="margin: 80px;">
+			<div>
+				<h1 class="page-header">고객센터</h1>
+				<p>Total: <span id="count"></span></p>
+			</div>	
+		</div>
 
 		<div style="width: 91%; margin: 0 auto;">
 				<form  id="tableForm" name="tableForm" method="post">
@@ -40,7 +40,7 @@
 		
 			
 			
-		<table class="table" id="usertable" style="margin: 0 auto; width: 91%; background: white; color:blue;">
+		<table class="table" id="usertable" style="margin: 0 auto; margin-bottom: 100px; width: 91%; background: #929090; color:#000000;">
 			<thead>
 				<tr>
 					<th scope="col">NO</th>

@@ -129,4 +129,11 @@
 		height:35px;
 		width: 97%;
 	}
+	.chatdiv{
+		background: white;
+	    /* height: 188px; */
+	    width: 87%;
+	    margin: 0 auto;
+	    margin-bottom: 50px;
+	}
     </style>
