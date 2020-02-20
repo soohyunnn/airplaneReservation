@@ -54,7 +54,7 @@
 				</tr>
 			</thead>
 			<tbody id="userList">
-			 	<c:forEach var="item" items="${list}">
+			 	<%-- <c:forEach var="item" items="${list}"> --%>
 					<tr>
 						<td>1</td>
 						<td>soo</td>
@@ -111,7 +111,7 @@
 						<td>2020.02.20</td>
 						<td>100</td>
 					</tr>
-				</c:forEach>
+				<%-- </c:forEach> --%>
 			</tbody>
 		</table>
 </div>
