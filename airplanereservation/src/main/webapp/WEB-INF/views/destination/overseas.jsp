@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 	여행지-해외
+<div style="height: 738px; overflow-x: auto;">
 <div id="event" class="section secondary-section"
 	style="background: #181A1C;">
 	<div class="container">
@@ -149,4 +150,5 @@
 
 		</div>
 	</div>
+</div>
 </div>

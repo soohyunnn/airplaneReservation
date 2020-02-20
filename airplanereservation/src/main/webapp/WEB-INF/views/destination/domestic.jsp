@@ -3,9 +3,8 @@
 
 
 	여행지-국내
-
-<div id="event" class="section secondary-section"
-	style="background: #181A1C;">
+<div style="height: 738px; overflow-x: auto;">
+<div id="event" class="section secondary-section" style="background: #181A1C;">
 	<div class="container">
 		<div class="title">
 			<h1 style="color: white;">여행지-국내</h1>
@@ -151,4 +150,5 @@
 
 		</div>
 	</div>
+</div>
 </div>
