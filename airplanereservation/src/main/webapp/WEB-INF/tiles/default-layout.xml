@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+		"-//Apache Software Foundation//DTD Tiles configuration 2.1//EN"
+		"http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+		
+<tiles-definitions>
+	
+	<!-- main 타일즈 -->
+	<definition name="mainlayouts-tiles" template="/WEB-INF/views/cmmn/mainlayouts.jsp">
+		<put-attribute name="head" value="/WEB-INF/views/cmmn/head.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/cmmn/header.jsp" />
+		<put-attribute name="content" value="" />
+	</definition>
+	
+	<!-- 타일즈 -->
+	<definition name="layouts-tiles" template="/WEB-INF/views/cmmn/layouts.jsp">
+		<put-attribute name="head" value="/WEB-INF/views/cmmn/head.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/cmmn/header.jsp" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/cmmn/footer.jsp" />
+	</definition>
+	
+	<!-- main 타일즈 view -->
+	<definition name="*.main" extends="mainlayouts-tiles">
+		<put-attribute name="content" value="/WEB-INF/views/{1}.jsp"/>
+	</definition>
+	
+	<!-- 타일즈 view -->
+	<definition name="*.tiles" extends="layouts-tiles">
+		<put-attribute name="content" value="/WEB-INF/views/{1}.jsp"/>
+	</definition>
+	
+	<definition name="*/*.tiles" extends="layouts-tiles">
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
+	</definition>
+
+	
+</tiles-definitions>
