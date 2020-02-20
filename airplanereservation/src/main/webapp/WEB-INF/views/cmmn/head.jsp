@@ -31,8 +31,11 @@
 
     </head>
     <style>
-    html{
+    html body{
     	background: #181A1C;
+    }
+    body{
+    	overflow-x:auto;
     }
     header{ 
     	height: 50px; 
