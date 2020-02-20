@@ -66,8 +66,8 @@
 		display: inline-block; 
 		width: 370px; 
 		padding:16px; 
-		position: absolute; 
-		left:38%;
+		/* position: absolute; 
+		left:38%; */
 	}
 	.dropbtn {
 	    color: white;

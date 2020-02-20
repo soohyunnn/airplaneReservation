@@ -13,15 +13,11 @@
         <div class="navbar" style="position:fixed; bottom:0px; background-color:black; z-index:1; width: 100%;">
             <div class="navbar-inner">
                 <div class="container1" style="margin-right:0">
-                    
-                    <!-- Navigation button, visible on small resolution -->
-                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <i class="icon-menu"></i>
-                    </button>
+
                     <!-- Main navigation -->
-                    <div class="nav-collapse collapse" style="width: 720px; margin: 0 auto;">
+                    <div class="" style="width: 720px; margin: 0 auto;">
                         <ul class="nav" id="top-navigation">
-                            <li class="active navul"><a href="#airReservation">항공권 예약</a></li>
+                            <li class="active navul"><a href="#home">항공권 예약</a></li>
                             <li class="navul"><a href="#searchReservation">예약 조회</a></li>
                             <li class="navul"><a href="#checkin">체크인</a></li>
                             <li class="navul"><a href="#searchArrival">출도착 조회</a></li>
