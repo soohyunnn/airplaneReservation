@@ -36,6 +36,17 @@
                             <input type="submit" class="btn btn-lg btn-success btn-block" value="로그인">
                         </div>
                     </div>
+                    <div class="row" style="padding-top:15px;">
+                        <div class="col-xs-4 col-sm-4 col-md-4">
+                            <a href="#"><img src="/resources/images/ico/kakao.png"></a>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4">
+                            <a href="#"><img src="/resources/images/ico/facebook.png"></a>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4">
+                            <a href="#"><img src="/resources/images/ico/naver.png"></a>
+                        </div>
+                    </div>
                 </fieldset>
             </form>
         </div>
