@@ -1,5 +1,6 @@
 package co.kr.airplane.vo;
 
+/*사용자*/
 public class UserVO {
 	private String userName;	//회원가입 사용자 이름
 	private String userId;		//회원가입 사용자 아이디
