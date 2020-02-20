@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 		<header>
     			<div style="float:left; display: inline-block;">
-	    			<a href="#home" class="brand">
+	    			<a href="/" class="brand">
 	                        <img src="/resources/images/logo.png" width="120" height="40" alt="Logo" style="padding: 5px; margin-left: 15px;"/>
 	                        <!-- This is website logo -->
 	                </a>

@@ -64,7 +64,7 @@
 	}
 	.menubar{
 		display: inline-block; 
-		width: 500px; 
+		width: 370px; 
 		padding:16px; 
 		position: absolute; 
 		left:38%;
