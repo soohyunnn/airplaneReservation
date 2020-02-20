@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class AirplaneController {
+public class HeaderController {
 
 	//main페이지(첫화면)
 	@RequestMapping(value="/")
