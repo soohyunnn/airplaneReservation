@@ -14,6 +14,7 @@
         <link rel="stylesheet" type="text/css" href="/resources/css/style1.css" />
         <link rel="stylesheet" type="text/css" href="/resources/css/pluton.css" />
         <link rel="stylesheet" type="text/css" href="/resources/css/main.css" />
+        <link rel="stylesheet" type="text/css" href="/resources/css/login_resgister.css">
         <!--[if IE 7]>
             <link rel="stylesheet" type="text/css" href="/resources/css/pluton-ie7.css" />
         <![endif]-->
@@ -121,6 +122,6 @@
 	    height: 200px;
 	}
 	.inputst input{
-		padding: 15px 3px;
+		height:35px;
 	}
     </style>

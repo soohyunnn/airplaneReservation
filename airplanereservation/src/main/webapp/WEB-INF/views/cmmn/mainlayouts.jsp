@@ -29,6 +29,7 @@
         <script type="text/javascript" src="/resources/js/jquery.cslider.js"></script>
         <script type="text/javascript" src="/resources/js/jquery.placeholder.js"></script>
         <script type="text/javascript" src="/resources/js/jquery.inview.js"></script>
+        <script type="text/javascript" src="/resources/js/login.js"></script>
         <!-- Load google maps api and call initializeMap function defined in app.js -->
         <script async="" defer="" type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&callback=initializeMap"></script>
         <!-- css3-mediaqueries.js for IE8 or older -->
