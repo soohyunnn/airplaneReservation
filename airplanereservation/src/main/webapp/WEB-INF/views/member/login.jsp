@@ -7,23 +7,24 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
-
+<style>
+</style>
 <div class="container" style="height: 937px;">
-    <div class="row" style="margin-top:20px">
-        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" style="top: 100px;">
-            <form role="form">
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" style="width: 500px; margin: 100px auto 0 auto;">
+            <form role="form" style="width: 500px;">
                 <fieldset>
-                    <h2>로그인</h2>
+                    <h2 style="color:black;">로그인</h2>
                     <hr class="colorgraph">
                     <div class="form-group inputst">
                         <input type="text" name="userId" id="userId" class="form-control input-lg" placeholder="아이디">
                     </div>
                     <div class="form-group inputst">
-                        <input type="password" name="password" id="password" class="form-control input-lg" placeholder="비밀번호">
+                        <input type="password" name="userPw" id="userPw" class="form-control input-lg" placeholder="비밀번호">
                     </div>
                     <span class="button-checkbox">
 					<button type="button" class="btn" data-color="info">ID 기억하기</button>
@@ -33,17 +34,17 @@
                     <hr class="colorgraph">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <input type="submit" class="btn btn-lg btn-success btn-block" value="로그인">
+                            <input type="submit" class="btn btn-lg btn-success btn-block" style="margin-left: 29px; width: 500px;" value="로그인">
                         </div>
                     </div>
-                    <div class="row" style="padding-top:15px;">
-                        <div class="col-xs-4 col-sm-4 col-md-4">
+                    <div class="row" style="padding-top:15px; padding-left: 28px;">
+                        <div class="col-xs-4 col-sm-4 col-md-4" style="display: inline-block;">
                             <a href="#"><img src="/resources/images/ico/kakao.png"></a>
                         </div>
-                        <div class="col-xs-4 col-sm-4 col-md-4">
+                        <div class="col-xs-4 col-sm-4 col-md-4" style="display: inline-block;">
                             <a href="#"><img src="/resources/images/ico/facebook.png"></a>
                         </div>
-                        <div class="col-xs-4 col-sm-4 col-md-4">
+                        <div class="col-xs-4 col-sm-4 col-md-4" style="display: inline-block;">
                             <a href="#"><img src="/resources/images/ico/naver.png"></a>
                         </div>
                     </div>
