@@ -10,6 +10,8 @@ public class ReservationVO {
 	private String resDepTime;		//예약자 출발시간
 	private String resArrTime;		//예약자 도착시간
 	private String resDepDay;		//예약자 출발일
+	private String resArrDay;		//예약자 도착일
+	private String resPay;			//예약 금액
 	
 	
 	public String getResNum() {
@@ -59,6 +61,18 @@ public class ReservationVO {
 	}
 	public void setResDepDay(String resDepDay) {
 		this.resDepDay = resDepDay;
+	}
+	public String getResArrDay() {
+		return resArrDay;
+	}
+	public void setResArrDay(String resArrDay) {
+		this.resArrDay = resArrDay;
+	}
+	public String getResPay() {
+		return resPay;
+	}
+	public void setResPay(String resPay) {
+		this.resPay = resPay;
 	}
 	
 	

@@ -24,23 +24,34 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
+	  <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/index">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>HOME</span>
+        </a>    
+      </li>
+	  
+	  <!-- Divider -->
+      <hr class="sidebar-divider">
+      
       <!-- Heading -->
       <div class="sidebar-heading">
         User
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
+      
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
           <span>사용자관리</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">User Information:</h6>
-            <a class="collapse-item" href="#">회원정보</a>
-            <a class="collapse-item" href="#">예약내역</a>
-            <a class="collapse-item" href="#">항공권구매내역</a>
+            <h6 class="collapse-header">User Management:</h6>
+            <a class="collapse-item" href="/admin/usermani/adminUserInfo">회원정보</a>
+            <a class="collapse-item" href="/admin/usermani/adminReser">예약내역</a>
+            <a class="collapse-item" href="/admin/usermani/adminAirTicket">항공권 구매 내역</a>
           </div>
         </div>
       </li>
@@ -54,9 +65,9 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">System Management:</h6>
-            <a class="collapse-item" href="#">항공권 조회(출도착 조회)</a>
-            <a class="collapse-item" href="#">배너이미지</a>
-            <a class="collapse-item" href="#">이벤트</a>
+            <a class="collapse-item" href="/admin/systemmani/adminAirSelect">항공권 조회(출도착 조회)</a>
+            <a class="collapse-item" href="/admin/systemmani/adminBanner">배너이미지</a>
+            <a class="collapse-item" href="/admin/systemmani/adminEvent">이벤트</a>
           </div>
         </div>
       </li>
@@ -77,13 +88,9 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="#">맛집 목록</a>
-            <a class="collapse-item" href="#">관광지 목록</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a>
+            <h6 class="collapse-header">Destination:</h6>
+            <a class="collapse-item" href="/admin/admindestination/adminDomestic">국내 목록</a>
+            <a class="collapse-item" href="/admin/admindestination/adminOverseas">해외 목록</a>
           </div>
         </div>
       </li>
@@ -96,14 +103,10 @@
         </a>
         <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="#">공항에서</a>
-            <a class="collapse-item" href="#">기내에서</a>
-            <a class="collapse-item" href="#">유료 부가서비스</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a>
+            <h6 class="collapse-header">travel:</h6>
+            <a class="collapse-item" href="/admin/travel/adminAtTheAirport">공항에서</a>
+            <a class="collapse-item" href="/admin/travel/adminInTheAirplane">기내에서</a>
+            <a class="collapse-item" href="/admin/travel/adminPaidAddService">유료 부가서비스</a>
           </div>
         </div>
       </li>
