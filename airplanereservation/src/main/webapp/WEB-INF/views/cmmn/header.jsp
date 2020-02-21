@@ -11,6 +11,7 @@
 	                <div class="dropdown">
 	                	<a class="dropbtn firstmenu" href="javascript:void(0);">예약</a>
 			    		<div class="dropdown-content">
+			    			<a href="/reservation/airReser" style="padding-right:80px;">항공권 예약</a>
 							<a href="/reservation/reserHistory" style="padding-right:80px;">예약 내역</a>
 							<a href="/reservation/airPurchaseHistory" style="padding-right:80px;">항공권 구매 내역</a>
 						</div>		
