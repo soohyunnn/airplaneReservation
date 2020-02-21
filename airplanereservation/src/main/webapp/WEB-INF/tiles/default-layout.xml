@@ -20,6 +20,15 @@
 		<put-attribute name="footer" value="/WEB-INF/views/cmmn/footer.jsp" />
 	</definition>
 	
+	<!-- admin 타일즈 -->
+	<definition name="adminlayouts-tiles" template="/WEB-INF/views/cmmn/adminlayouts.jsp">
+		<put-attribute name="head" value="/WEB-INF/views/cmmn/adminhead.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/cmmn/adminheader.jsp" />
+		<put-attribute name="topbar" value="/WEB-INF/views/cmmn/admintopbar.jsp" />
+		<put-attribute name="content" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/cmmn/adminfooter.jsp" />
+	</definition>
+	
 	<!-- main 타일즈 view -->
 	<definition name="*.main" extends="mainlayouts-tiles">
 		<put-attribute name="content" value="/WEB-INF/views/{1}.jsp"/>
@@ -31,6 +40,15 @@
 	</definition>
 	
 	<definition name="*/*.tiles" extends="layouts-tiles">
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
+	</definition>
+	
+	<!-- admin 타일즈 view -->
+	<definition name="*.admin" extends="adminlayouts-tiles">
+		<put-attribute name="content" value="/WEB-INF/views/{1}.jsp"/>
+	</definition>
+	
+	<definition name="*/*.admin" extends="adminlayouts-tiles">
 		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
 	</definition>
 
