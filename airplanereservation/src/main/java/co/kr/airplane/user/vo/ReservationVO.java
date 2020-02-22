@@ -1,17 +1,17 @@
 package co.kr.airplane.user.vo;
 
-/*¿¹¾à³»¿ª*/
+/*ì˜ˆì•½ë‚´ì—­*/
 public class ReservationVO {
-	private String resNum;			//¿¹¾à¹øÈ£
-	private String resName;			//¿¹¾àÀÚ ÀÌ¸§
-	private String resAge;			//¿¹¾àÀÚ ³ªÀÌ
-	private String resPhone;		//¿¹¾àÀÚ Æù¹øÈ£
-	private String resAirTicket;	//¿¹¾àÀÚ Ç×°øÆí¸í
-	private String resDepTime;		//¿¹¾àÀÚ Ãâ¹ß½Ã°£
-	private String resArrTime;		//¿¹¾àÀÚ µµÂø½Ã°£
-	private String resDepDay;		//¿¹¾àÀÚ Ãâ¹ßÀÏ
-	private String resArrDay;		//¿¹¾àÀÚ µµÂøÀÏ
-	private String resPay;			//¿¹¾à ±İ¾×
+	private String resNum;			//ì˜ˆì•½ë²ˆí˜¸
+	private String resName;			//ì˜ˆì•½ì ì´ë¦„
+	private String resAge;			//ì˜ˆì•½ì ë‚˜ì´
+	private String resPhone;		//ì˜ˆì•½ì í°ë²ˆí˜¸
+	private String resAirTicket;	//ì˜ˆì•½ì í•­ê³µí¸ëª…
+	private String resDepTime;		//ì˜ˆì•½ì ì¶œë°œì‹œê°„
+	private String resArrTime;		//ì˜ˆì•½ì ë„ì°©ì‹œê°„
+	private String resDepDay;		//ì˜ˆì•½ì ì¶œë°œì¼
+	private String resArrDay;		//ì˜ˆì•½ì ë„ì°©ì¼
+	private String resPay;			//ê²°ì œê¸ˆì•¡
 	
 	
 	public String getResNum() {

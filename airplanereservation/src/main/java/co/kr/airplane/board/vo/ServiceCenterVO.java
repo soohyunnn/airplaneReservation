@@ -1,13 +1,13 @@
 package co.kr.airplane.board.vo;
 
-/*°í°´¼¾ÅÍ*/
+/*ê³ ê°ì„¼í„°*/
 public class ServiceCenterVO {
-	private String serNum;		//°Ô½Ã±Û ¹øÈ£
-	private String serName;		//ÀÛ¼ºÀÚ
-	private String serTitle;	//Á¦¸ñ
-	private String serContent;	//³»¿ë
-	private String serDay;		//ÀÛ¼º³¯Â¥
-	private String serViews;	//Á¶È¸¼ö
+	private String serNum;		//ê²Œì‹œê¸€ ë²ˆí˜¸
+	private String serName;		//ì‘ì„±ì
+	private String serTitle;	//ì œëª©
+	private String serContent;	//ë‚´ìš©
+	private String serDay;		//ì‘ì„±ë‚ ì§œ
+	private String serViews;	//ì¡°íšŒìˆ˜
 	public String getSerNum() {
 		return serNum;
 	}

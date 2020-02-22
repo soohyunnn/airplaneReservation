@@ -1,15 +1,15 @@
 package co.kr.airplane.user.vo;
 
-/*�����*/
+/*사용자*/
 public class UserVO {
 	
 	private int No;
-	private String userName;	//ȸ������ ����� �̸�
-	private String userId;		//ȸ������ ����� ���̵�
-	private String userPw;		//ȸ������ ����� ��й�ȣ
-	private String userPhone;	//ȸ������ ����� �ڵ�����ȣ
-	private String userEmail;	//ȸ������ ����� �̸���
-	private boolean useCookie;	//���̵� ����ϱ�
+	private String userName;	//회원가입 사용자 이름
+	private String userId;		//회원가입 사용자 아이디
+	private String userPw;		//회원가입 사용자 비밀번호
+	private String userPhone;	//회원가입 사용자 핸드폰번호
+	private String userEmail;	//회원가입 사용자 이메일
+	private boolean useCookie;	//쿠키사용여부
 	
 	
 	

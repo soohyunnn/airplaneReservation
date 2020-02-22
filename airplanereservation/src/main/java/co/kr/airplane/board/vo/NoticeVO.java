@@ -1,13 +1,13 @@
 package co.kr.airplane.board.vo;
 
-/*°øÁö»çÇ×*/
+/*ê³µì§€ì‚¬í•­*/
 public class NoticeVO {
-	private String notiNum;			//°Ô½Ã±Û ¹øÈ£
-	private String notiName;		//ÀÛ¼ºÀÚ
-	private String notiTitle;		//Á¦¸ñ
-	private String notiContent;		//³»¿ë
-	private String notiDay;			//ÀÛ¼º³¯Â¥
-	private String notiViews;		//Á¶È¸¼ö
+	private String notiNum;			//ê²Œì‹œê¸€ ë²ˆí˜¸
+	private String notiName;		//ì‘ì„±ì
+	private String notiTitle;		//ì œëª©
+	private String notiContent;		//ë‚´ìš©
+	private String notiDay;			//ì‘ì„±ë‚ ì§œ
+	private String notiViews;		//ì¡°íšŒìˆ˜
 	public String getNotiNum() {
 		return notiNum;
 	}
