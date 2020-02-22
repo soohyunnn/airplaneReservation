@@ -6,9 +6,9 @@ import co.kr.airplane.user.vo.UserVO;
 
 public interface AirPlaneService {
 	
-	//È¸¿ø°¡ÀÔ
+	//íšŒì›ê°€ì…
 	public void userRegis(UserVO uservo) throws Exception;
 	
-	//·Î±×ÀÎ
+	//ë¡œê·¸ì¸
 	public ModelAndView userLogin(UserVO uservo) throws Exception;
 }

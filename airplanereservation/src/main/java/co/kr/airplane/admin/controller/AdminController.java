@@ -11,67 +11,67 @@ public class AdminController {
 		return "admin/adminindex.admin";
 	}
 	
-	//»ç¿ëÀÚ°ü¸® -> È¸¿øÁ¤º¸
+	//ì‚¬ìš©ìžê´€ë¦¬ -> íšŒì›ì •ë³´
 	@RequestMapping(value="/admin/usermani/adminUserInfo")
 	public String adminUserInfo() {
 		return "admin/usermani/adminUserInfo.admin";
 	}
 	
-	//»ç¿ëÀÚ°ü¸® -> ¿¹¾à³»¿ª
+	//ì‚¬ìš©ìžê´€ë¦¬ -> ì˜ˆì•½ë‚´ì—­
 	@RequestMapping(value="/admin/usermani/adminReser")
 	public String adminReser() {
 		return "admin/usermani/adminReser.admin";
 	}
 	
-	//»ç¿ëÀÚ°ü¸® -> Ç×°ø±Ç ±¸¸Å ³»¿ª
+	//ì‚¬ìš©ìžê´€ë¦¬ -> í•­ê³µê¶Œ êµ¬ë§¤ ë‚´ì—­
 		@RequestMapping(value="/admin/usermani/adminAirTicket")
 		public String adminAirTicket() {
 			return "admin/usermani/adminAirTicket.admin";
 	}
 	
-	//½Ã½ºÅÛ°ü¸® -> Ç×°ø±Ç Á¶È¸
+	//ì‹œìŠ¤í…œê´€ë¦¬ -> í•­ê³µê¶Œ ì¡°íšŒ
 		@RequestMapping(value="/admin/systemmani/adminAirSelect")
 		public String adminAirSelect() {
 			return "admin/systemmani/adminAirSelect.admin";
 	}
 		
-	//½Ã½ºÅÛ°ü¸® -> ¹è³ÊÀÌ¹ÌÁö
+	//ì‹œìŠ¤í…œê´€ë¦¬ -> ë°°ë„ˆì´ë¯¸ì§€
 		@RequestMapping(value="/admin/systemmani/adminBanner")
 		public String adminBanner() {
 			return "admin/systemmani/adminBanner.admin";
 	}
 		
-	//½Ã½ºÅÛ°ü¸® -> ¹è³ÊÀÌ¹ÌÁö
+	//ì‹œìŠ¤í…œê´€ë¦¬ -> ë°°ë„ˆì´ë¯¸ì§€
 		@RequestMapping(value="/admin/systemmani/adminEvent")
 		public String adminEvent() {
 		return "admin/systemmani/adminEvent.admin";
 	}
 		
-	//¿©ÇàÁö -> ±¹³»
+	//ì—¬í–‰ì§€ -> êµ­ë‚´
 		@RequestMapping(value="/admin/admindestination/adminDomestic")
 		public String adminDomestic() {
 		return "admin/admindestination/adminDomestic.admin";
 	}
 		
-	//¿©ÇàÁö -> ÇØ¿Ü
+	//ì—¬í–‰ì§€ -> í•´ì™¸
 		@RequestMapping(value="/admin/admindestination/adminOverseas")
 		public String adminOverseas() {
 		return "admin/admindestination/adminOverseas.admin";
 	}
 		
-	//¿©Çà -> °øÇ×¿¡¼­
+	//ì—¬í–‰ -> ê³µí•­ì—ì„œ
 		@RequestMapping(value="/admin/travel/adminAtTheAirport")
 		public String adminAtTheAirport() {
 		return "admin/travel/adminAtTheAirport.admin";
 	}
 	
-	//¿©Çà -> ±â³»¿¡¼­
+	//ì—¬í–‰ -> ê¸°ë‚´ì—ì„œ
 		@RequestMapping(value="/admin/travel/adminInTheAirplane")
 		public String adminInTheAirplane() {
 		return "admin/travel/adminInTheAirplane.admin";
 	}
 		
-	//¿©Çà -> À¯·á ºÎ°¡¼­ºñ½º
+	//ì—¬í–‰ -> ìœ ë£Œ ë¶€ê°€ì„œë¹„ìŠ¤
 		@RequestMapping(value="/admin/travel/adminPaidAddService")
 		public String adminPaidAddService() {
 		return "admin/travel/adminPaidAddService.admin";

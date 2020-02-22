@@ -15,14 +15,14 @@ public class AirPlaneServiceImpl implements AirPlaneService{
 	@Autowired
 	private AirplaneDao airplanedao;
 	
-	//È¸¿ø°¡ÀÔ
+	//íšŒì›ê°€ì…
 	@Override
 	public void userRegis(UserVO uservo) throws Exception{
 		airplanedao.userRegis(uservo);
 		
 	}
 
-	//·Î±×ÀÎ
+	//ë¡œê·¸ì¸
 	@Override
 	public ModelAndView userLogin(UserVO uservo) throws Exception{
 		System.out.println("userLogin()");
@@ -34,18 +34,18 @@ public class AirPlaneServiceImpl implements AirPlaneService{
 		
 		if(uservo.getUserId().equals(loginUservo.getUserId())) {
 			if(uservo.getUserPw().equals(loginUservo.getUserPw())) {
-				System.out.println("·Î±×ÀÎ¼º°ø");
+				System.out.println("ë¡œê·¸ì¸ì„±ê³µ");
 				mv.setViewName("index.main");
 			}else {
-				System.out.println("ºñ¹Ğ¹øÈ£°¡ Æ²¸²");
+				System.out.println("ë¹„ë°€ë²ˆí˜¸ í‹€ë¦¼");
 				mv.setViewName("member/login.tiles");
-				mv.addObject("msg", "ºñ¹Ğ¹øÈ£°¡ Æ²¸³´Ï´Ù.");
+				mv.addObject("msg", "ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë¦½ë‹ˆë‹¤.");
 				mv.addObject("result", 1);
 			}			
 		}else {
-			System.out.println("¾ÆÀÌµğ Æ²¸², ·Î±×ÀÎ½ÇÆĞ");
+			System.out.println("ì•„ì´ë””ê°€ í‹€ë¦¼");
 			mv.setViewName("member/login.tiles");
-			mv.addObject("msg", "¾ÆÀÌµğ°¡ Æ²¸³´Ï´Ù.");
+			mv.addObject("msg", "ì•„ì´ë””ê°€ í‹€ë¦½ë‹ˆë‹¤.");
 			mv.addObject("result", 2);
 		}
 		

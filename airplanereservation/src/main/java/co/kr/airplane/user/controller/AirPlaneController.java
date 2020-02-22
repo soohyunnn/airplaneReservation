@@ -16,7 +16,7 @@ public class AirPlaneController {
 	@Autowired
 	private AirPlaneService airplaneservice;
 	
-	//È¸¿ø°¡ÀÔ
+	//íšŒì›ê°€ì…
 	@RequestMapping(value="/registerProcess" , method=RequestMethod.POST)
 	public ModelAndView registerProcess(@ModelAttribute UserVO uservo) throws Exception{
 		System.out.println("registerProcess()");
@@ -28,7 +28,7 @@ public class AirPlaneController {
 		return mv;
 	}
 	
-	//·Î±×ÀÎ
+	//ë¡œê·¸ì¸
 	@RequestMapping(value="/loginProcess")
 	public ModelAndView loginProcess(@ModelAttribute UserVO uservo) throws Exception{
 		System.out.println("loginProcess()");

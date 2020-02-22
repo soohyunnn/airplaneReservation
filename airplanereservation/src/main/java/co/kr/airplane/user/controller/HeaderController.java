@@ -6,79 +6,79 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HeaderController {
 
-	//mainÆäÀÌÁö(Ã¹È­¸é)
+	//mainí˜ì´ì§€(ì²«í™”ë©´)
 	@RequestMapping(value="/")
 	public String main() {
 		return "index.main";
 	}
 	
-	//·Î±×ÀÎ
+	//ë¡œê·¸ì¸
 	@RequestMapping(value="/member/login")
 	public String loginform() {
 		return "member/login.tiles";
 	}
 	
-	//È¸¿ø°¡ÀÔ
+	//íšŒì›ê°€ì…
 	@RequestMapping(value="/member/register")
 	public String registerform() {
 		return "member/register.tiles";
 	}
 	
-	//¿¹¾à-Ç×°ø±Ç ¿¹¾à
+	//ì˜ˆì•½-í•­ê³µê¶Œ ì˜ˆì•½
 	@RequestMapping(value="/reservation/airReser")
 	public String airReser() {
 		return "reservation/airReser.tiles";
 	}
 	
-	//¿¹¾à-¿¹¾à³»¿ª
+	//ì˜ˆì•½-ì˜ˆì•½ë‚´ì—­
 	@RequestMapping(value="/reservation/reserHistory")
 	public String reserHistory() {
 		return "reservation/reserHistory.tiles";
 	}
 	
-	//¿¹¾à-Ç×°ø±Ç ±¸¸Å ³»¿ª
+	//ì˜ˆì•½-í•­ê³µê¶Œ êµ¬ë§¤ ë‚´ì—­
 	@RequestMapping(value="/reservation/airPurchaseHistory")
 	public String airPurchaseHistory() {
 		return "reservation/airPurchaseHistory.tiles";
 	}
 	
-	//¿©ÇàÁö-±¹³»
+	//ì—¬í–‰ì§€-êµ­ë‚´
 	@RequestMapping(value="/destination/domestic")
 	public String domestic() {
 		return "destination/domestic.tiles";
 	}
 	
-	//¿©ÇàÁö-ÇØ¿Ü
+	//ì—¬í–‰ì§€-í•´ì™¸
 	@RequestMapping(value="/destination/overseas")
 	public String overseas() {
 		return "destination/overseas.tiles";
 	}
 	
-	//¿©Çà-°øÇ×¿¡¼­
+	//ì—¬í–‰-ê³µí•­ì—ì„œ
 	@RequestMapping(value="/travel/atTheAirport")
 	public String atTheAirport() {
 		return "travel/atTheAirport.tiles";
 	}
 	
-	//¿©Çà-±â³»¿¡¼­
+	//ì—¬í–‰-ê¸°ë‚´ì—ì„œ
 	@RequestMapping(value="/travel/inTheAirplane")
 	public String inTheAirplane() {
 		return "travel/inTheAirplane.tiles";
 	}
 	
-	//¿©Çà-À¯·á ºÎ°¡¼­ºñ½º
+	//ì—¬í–‰-ìœ ë£Œ ë¶€ê°€ì„œë¹„ìŠ¤
 	@RequestMapping(value="/travel/paidAdditionalService")
 	public String paidAdditionalService() {
 		return "travel/paidAdditionalService.tiles";
 	}
 	
-	//¼öÇö¾Æ³ªÅ¬·´-°øÁö»çÇ×
+	//ìˆ˜í˜„ì•„ë‚˜í´ëŸ½-ê³µì§€ì‚¬í•­
 	@RequestMapping(value="/soohyunana/notice")
 	public String notice() {
 		return "soohyunana/notice.tiles";
 	}
 	
-	//¼öÇö¾Æ³ªÅ¬·´-°í°´¼¾ÅÍ
+	//ìˆ˜í˜„ì•„ë‚˜í´ëŸ½-ê³ ê°ì„¼í„°
 		@RequestMapping(value="/soohyunana/serviceCenter")
 		public String serviceCenter() {
 			return "soohyunana/serviceCenter.tiles";
