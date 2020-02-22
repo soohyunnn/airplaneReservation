@@ -49,6 +49,7 @@
 					<th scope="col">이름</th>
 					<th scope="col">ID</th>
 					<th scope="col">PW</th>
+					<th scope="col">Phone</th>
 					<th scope="col">Email</th>
 				</tr>
 			</thead>
@@ -59,6 +60,7 @@
 						<td>최수현</td>
 						<td>soo</td>
 						<td>qweasd12</td>
+						<td>010-4444-4444</td>
 						<td>soo@naver.com</td>
 					</tr>
 					<tr>
@@ -66,6 +68,7 @@
 						<td>최수현</td>
 						<td>soo</td>
 						<td>qweasd12</td>
+						<td>010-4444-4444</td>
 						<td>soo@naver.com</td>
 					</tr>
 					<tr>
@@ -73,6 +76,7 @@
 						<td>최수현</td>
 						<td>soo</td>
 						<td>qweasd12</td>
+						<td>010-4444-4444</td>
 						<td>soo@naver.com</td>
 					</tr>
 					<tr>
@@ -80,6 +84,7 @@
 						<td>최수현</td>
 						<td>soo</td>
 						<td>qweasd12</td>
+						<td>010-4444-4444</td>
 						<td>soo@naver.com</td>
 					</tr>
 					<tr>
@@ -87,6 +92,7 @@
 						<td>최수현</td>
 						<td>soo</td>
 						<td>qweasd12</td>
+						<td>010-4444-4444</td>
 						<td>soo@naver.com</td>
 					</tr>
 					<tr>
@@ -94,6 +100,7 @@
 						<td>최수현</td>
 						<td>soo</td>
 						<td>qweasd12</td>
+						<td>010-4444-4444</td>
 						<td>soo@naver.com</td>
 					</tr>
 					<tr>
@@ -101,6 +108,7 @@
 						<td>최수현</td>
 						<td>soo</td>
 						<td>qweasd12</td>
+						<td>010-4444-4444</td>
 						<td>soo@naver.com</td>
 					</tr>
 				<%-- </c:forEach> --%>
