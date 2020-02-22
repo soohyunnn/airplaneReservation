@@ -2,31 +2,29 @@
  <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="co.kr.airplane.user.dao.AirplaneDao">
+<mapper namespace="co.kr.airplane.admin.dao.UserManiDao">
 
 <!-- **************** -->
 <!-- SELECT SECTION -->
 <!-- **************** -->
 
-<select id="selectToday"  resultType="String">
-	select to_char(sysdate,'yyyymmdd') from dual
-</select>
 
-<select id="selectName"  parameterType="String"  resultType="String">
-	select name 
-	from users
-	where id = #{id}
-</select>
-
-<select id="userLogin" parameterType="co.kr.airplane.user.vo.UserVO" resultType="co.kr.airplane.user.vo.UserVO">
-/** [airplaneMapper.xml][co.kr.airplane.service.impl.airplaneMapper.userLogin][로그인] **/
-	<![CDATA[
-		select USERNAME as userName, USERID as userId, USERPW as userPw, USERPHONE as userPhone, USEREMAIL as userEmail
+<select id="selectUserInfo" resultType="co.kr.airplane.user.vo.UserVO">
+/** [adminMapper.xml][co.kr.airplane.service.impl.airplaneMapper.selectUserInfo][회원정보 조회] **/
+	<![CDATA[		
+		select NO_SEQ as No, USERNAME as userName, USERID as userId, USERPW as userPw, USERPHONE as userPhone, USEREMAIL as userEmail
 		from userinfo
-		where USERID = #{userId}
 	]]>
 </select>
 
+<!-- 전체 페이지의 수 -->
+ 	<select id="userCount" resultType="int">
+ 	/** [adminMapper.xml][co.kr.airplane.service.impl.airplaneMapper.userCount][회원정보 수] **/
+ 	<![CDATA[	
+		select count(*) as total
+		from userinfo
+	]]>
+	</select> 
 
 
 <!-- tid(30) making rule : hostname(3)+mid(10)+sysdate(yyyymmdd)(8)+seq(9) -->
@@ -97,13 +95,13 @@
 <!-- **************** -->
 
 
-<insert id="userRegis" parameterType="co.kr.airplane.user.vo.UserVO">
+<!-- <insert id="userRegis" parameterType="co.kr.airplane.user.vo.UserVO">
 	<![CDATA[
 	/** [airplaneMapper.xml][co.kr.airplane.service.impl.airplaneMapper.userRegis][회원가입] **/
 	insert into userinfo(NO_SEQ,USERNAME, USERID, USERPW, USERPHONE, USEREMAIL)
 	values(seq.NEXTVAL, #{userName}, #{userId}, #{userPw}, #{userPhone}, #{userEmail})
 	]]>
-</insert>
+</insert> -->
 
 	
 <!-- Insert TB_FC_CARDAUTHPCS_I -->

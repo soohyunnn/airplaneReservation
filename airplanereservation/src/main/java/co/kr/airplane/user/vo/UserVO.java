@@ -1,14 +1,24 @@
 package co.kr.airplane.user.vo;
 
-/*»ç¿ëÀÚ*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½*/
 public class UserVO {
-	private String userName;	//È¸¿ø°¡ÀÔ »ç¿ëÀÚ ÀÌ¸§
-	private String userId;		//È¸¿ø°¡ÀÔ »ç¿ëÀÚ ¾ÆÀÌµð
-	private String userPw;		//È¸¿ø°¡ÀÔ »ç¿ëÀÚ ºñ¹Ð¹øÈ£
-	private String userPhone;	//È¸¿ø°¡ÀÔ »ç¿ëÀÚ ÇÚµåÆù¹øÈ£
-	private String userEmail;	//È¸¿ø°¡ÀÔ »ç¿ëÀÚ ÀÌ¸ÞÀÏ
-	private boolean useCookie;	//¾ÆÀÌµð ±â¾ïÇÏ±â
 	
+	private int No;
+	private String userName;	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
+	private String userId;		//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½
+	private String userPw;		//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£
+	private String userPhone;	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½È£
+	private String userEmail;	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½
+	private boolean useCookie;	//ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
+	
+	
+	
+	public int getNo() {
+		return No;
+	}
+	public void setNo(int no) {
+		No = no;
+	}
 	public String getUserName() {
 		return userName;
 	}

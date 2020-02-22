@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -54,64 +54,16 @@
 				</tr>
 			</thead>
 			<tbody id="userList" style="background: #ffffff;">
-			 	<%-- <c:forEach var="item" items="${list}"> --%>
+			 	<c:forEach var="list" items="${userlist}">
 					<tr>
-						<td>1</td>
-						<td>최수현</td>
-						<td>soo</td>
-						<td>qweasd12</td>
-						<td>010-4444-4444</td>
-						<td>soo@naver.com</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>최수현</td>
-						<td>soo</td>
-						<td>qweasd12</td>
-						<td>010-4444-4444</td>
-						<td>soo@naver.com</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>최수현</td>
-						<td>soo</td>
-						<td>qweasd12</td>
-						<td>010-4444-4444</td>
-						<td>soo@naver.com</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>최수현</td>
-						<td>soo</td>
-						<td>qweasd12</td>
-						<td>010-4444-4444</td>
-						<td>soo@naver.com</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>최수현</td>
-						<td>soo</td>
-						<td>qweasd12</td>
-						<td>010-4444-4444</td>
-						<td>soo@naver.com</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>최수현</td>
-						<td>soo</td>
-						<td>qweasd12</td>
-						<td>010-4444-4444</td>
-						<td>soo@naver.com</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>최수현</td>
-						<td>soo</td>
-						<td>qweasd12</td>
-						<td>010-4444-4444</td>
-						<td>soo@naver.com</td>
-					</tr>
-				<%-- </c:forEach> --%>
+						<td>${list.no}</td>
+						<td>${list.userName}</td>
+						<td>${list.userId}</td>
+						<td>${list.userPw}</td>
+						<td>${list.userPhone}</td>
+						<td>${list.userEmail}</td>
+					</tr>				
+				</c:forEach>
 			</tbody>
 		</table>
 

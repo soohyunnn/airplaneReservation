@@ -20,7 +20,7 @@
 
 <select id="userLogin" parameterType="co.kr.airplane.user.vo.UserVO" resultType="co.kr.airplane.user.vo.UserVO">
 /** [airplaneMapper.xml][co.kr.airplane.service.impl.airplaneMapper.userLogin][로그인] **/
-	<![CDATA[		
+	<![CDATA[
 		select USERNAME as userName, USERID as userId, USERPW as userPw, USERPHONE as userPhone, USEREMAIL as userEmail
 		from userinfo
 		where USERID = #{userId}

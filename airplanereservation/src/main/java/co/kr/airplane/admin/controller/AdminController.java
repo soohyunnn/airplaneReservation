@@ -12,10 +12,10 @@ public class AdminController {
 	}
 	
 	//사용자관리 -> 회원정보
-	@RequestMapping(value="/admin/usermani/adminUserInfo")
+/*	@RequestMapping(value="/admin/usermani/adminUserInfo")
 	public String adminUserInfo() {
 		return "admin/usermani/adminUserInfo.admin";
-	}
+	}*/
 	
 	//사용자관리 -> 예약내역
 	@RequestMapping(value="/admin/usermani/adminReser")
