@@ -14,5 +14,8 @@ public interface UserManiDao {
 	
 	//회원정보 갯수 조회
 	public int userCount(UserVO uservo);
+	
+	//회원정보 목록 조회
+	public List<UserVO> selectUserInfo1(UserVO uservo);
 
 }

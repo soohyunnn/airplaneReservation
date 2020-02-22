@@ -17,6 +17,29 @@
 	]]>
 </select>
 
+
+<select id="selectUserInfo1" parameterType="co.kr.airplane.user.vo.UserVO"  resultType="co.kr.airplane.user.vo.UserVO">
+		SELECT NO_SEQ as No, USERNAME as userName, USERID as userId, USERPW as userPw, USERPHONE as userPhone, USEREMAIL as userEmail
+		FROM ( SELECT A.*, ROW_NUMBER() OVER(ORDER BY USERID ASC) AS NUM
+		FROM userinfo A
+		<if test="search != null and search != '' ">
+			<if test="search == 'Everything'">
+
+			</if>
+			<if test="search == 'NAME'">
+				where USERNAME = #{searchInput}
+			</if>
+			<if test="search == 'ID'">
+				where USERID = #{searchInput}
+			</if>
+			<if test="search == 'EMAIL'">
+				where USEREMAIL = #{searchInput}
+			</if>
+		</if>
+		)
+		WHERE NUM BETWEEN ((#{pageNo}-1)*#{searchCount})+1 AND  (#{pageNo})*#{searchCount}
+	</select>
+
 <!-- 전체 페이지의 수 -->
  	<select id="userCount" resultType="int">
  	/** [adminMapper.xml][co.kr.airplane.service.impl.airplaneMapper.userCount][회원정보 수] **/
