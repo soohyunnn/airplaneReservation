@@ -7,6 +7,8 @@ public class UserVO {
 	private String userPw;		//회원가입 사용자 비밀번호
 	private String userPhone;	//회원가입 사용자 핸드폰번호
 	private String userEmail;	//회원가입 사용자 이메일
+	private boolean useCookie;	//아이디 기억하기
+	
 	public String getUserName() {
 		return userName;
 	}
@@ -37,6 +39,13 @@ public class UserVO {
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
+	public boolean isUseCookie() {
+		return useCookie;
+	}
+	public void setUseCookie(boolean useCookie) {
+		this.useCookie = useCookie;
+	}
+	
 	
 	
 }

@@ -14,16 +14,26 @@ import co.kr.airplane.user.vo.UserVO;
 public class AirPlaneController {
 	
 	@Autowired
-	AirPlaneService airplaneservice;
+	private AirPlaneService airplaneservice;
 	
 	//회원가입
 	@RequestMapping(value="/registerProcess" , method=RequestMethod.POST)
-	public ModelAndView registerProcess(@ModelAttribute UserVO uservo) {
+	public ModelAndView registerProcess(@ModelAttribute UserVO uservo) throws Exception{
+		System.out.println("registerProcess()");
 		ModelAndView mv = new ModelAndView();
 		
 		airplaneservice.userRegis(uservo);
 		mv.setViewName("index.main");
 		
+		return mv;
+	}
+	
+	//로그인
+	@RequestMapping(value="/loginProcess")
+	public ModelAndView loginProcess(@ModelAttribute UserVO uservo) throws Exception{
+		System.out.println("loginProcess()");
+		ModelAndView mv = new ModelAndView();
+		mv = airplaneservice.userLogin(uservo);
 		return mv;
 	}
 }

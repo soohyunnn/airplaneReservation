@@ -16,10 +16,11 @@
 <div class="container" style="height: 937px;">
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" style="width: 500px; margin: 100px auto 0 auto;">
-            <form role="form" style="width: 500px;">
+            <form action="/loginProcess" method="POST" role="form" style="width: 500px;">
                 <fieldset style="background: white;padding:10px;">
                     <h2 style="color:black;">로그인</h2>
                     <hr class="colorgraph">
+                    <p style="color: red;">${msg}</p>
                     <div class="form-group inputst">
                         <input type="text" name="userId" id="userId" class="form-control input-lg" placeholder="아이디">
                     </div>
@@ -53,4 +54,9 @@
         </div>
     </div>
 </div>
-
+<script>
+	var result='${result}';
+	if(result == true){
+		alert('${msg}');
+	}
+</script>

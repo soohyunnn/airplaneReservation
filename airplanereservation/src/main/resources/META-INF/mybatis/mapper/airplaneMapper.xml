@@ -18,6 +18,17 @@
 	where id = #{id}
 </select>
 
+<select id="userLogin" parameterType="co.kr.airplane.user.vo.UserVO" resultType="co.kr.airplane.user.vo.UserVO">
+/** [airplaneMapper.xml][co.kr.airplane.service.impl.airplaneMapper.userLogin][로그인] **/
+	<![CDATA[		
+		select USERNAME as userName, USERID as userId, USERPW as userPw, USERPHONE as userPhone, USEREMAIL as userEmail
+		from userinfo
+		where USERID = #{userId}
+	]]>
+</select>
+
+
+
 <!-- tid(30) making rule : hostname(3)+mid(10)+sysdate(yyyymmdd)(8)+seq(9) -->
 <!-- <select id="getTid" parameterType="String" resultType="String" >
 	<![CDATA[
@@ -87,11 +98,11 @@
 
 
 <insert id="userRegis" parameterType="co.kr.airplane.user.vo.UserVO">
-<![CDATA[
-/** [airplaneMapper.xml][co.kr.airplane.service.impl.airplaneMapper.userRegis][사용자 정보 조회] **/
-insert into userinfo(NO_SEQ,USERNAME, USERID, USERPW, USERPHONE, USEREMAIL)
-values(seq.NEXTVAL, #{userName}, #{userId}, #{userPw}, #{userPhone}, #{userEmail})
-]]>
+	<![CDATA[
+	/** [airplaneMapper.xml][co.kr.airplane.service.impl.airplaneMapper.userRegis][회원가입] **/
+	insert into userinfo(NO_SEQ,USERNAME, USERID, USERPW, USERPHONE, USEREMAIL)
+	values(seq.NEXTVAL, #{userName}, #{userId}, #{userPw}, #{userPhone}, #{userEmail})
+	]]>
 </insert>
 
 	
