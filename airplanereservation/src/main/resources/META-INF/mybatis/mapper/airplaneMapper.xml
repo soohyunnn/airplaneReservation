@@ -2,7 +2,7 @@
  <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="co.kr.airplane.dao.AirplaneDao">
+<mapper namespace="co.kr.airplane.user.dao.AirplaneDao">
 
 <!-- **************** -->
 <!-- SELECT SECTION -->
@@ -84,6 +84,16 @@
 <!-- **************** -->
 <!-- INSERT SECTION -->
 <!-- **************** -->
+
+
+<insert id="userRegis" parameterType="co.kr.airplane.user.vo.UserVO">
+<![CDATA[
+/** [airplaneMapper.xml][co.kr.airplane.service.impl.airplaneMapper.userRegis][사용자 정보 조회] **/
+insert into userinfo(NO_SEQ,USERNAME, USERID, USERPW, USERPHONE, USEREMAIL)
+values(seq.NEXTVAL, #{userName}, #{userId}, #{userPw}, #{userPhone}, #{userEmail})
+]]>
+</insert>
+
 	
 <!-- Insert TB_FC_CARDAUTHPCS_I -->
 <!-- <insert id="insertCardAuthPcs" parameterType="com.inicis.bz.vo.db.InsCardAuthPcsVO">
