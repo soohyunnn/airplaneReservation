@@ -45,6 +45,7 @@ public class UserCenterController {
 		mv.addObject("startPage",userCenterList.get("startPage"));
 		mv.addObject("endPage",userCenterList.get("endPage"));
 		mv.addObject("pageNo",userCenterList.get("pageNo"));
+		//mv.addObject("searchCount",userCenterList.get("searchCount"));
 		mv.addObject("countSearch",userCenterList.get("countSearch"));
 		mv.addObject("userCenterList", userCenterList.get("userCenterList"));
 		

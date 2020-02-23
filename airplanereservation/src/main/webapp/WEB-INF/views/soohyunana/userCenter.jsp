@@ -7,7 +7,7 @@
 		<div style="margin: 80px;">
 			<div>
 				<h1 class="page-header">고객센터</h1>
-				<p>Total: <span id="count">${total}</span></p>
+				<p>Total: <span id="count">${total},${searchCount}</span></p>
 			</div>	
 		</div>
 
@@ -87,7 +87,7 @@
 					<<
 				</a>
 				
-					<c:if test="${startPage ne 1}">
+					<c:if test="${startPage != 1}">
 						<a href="javascript:void(0);" onclick="javascript:goToPage(${startPage}-1);" style="color:white;" title="이전">
 							<
 						</a>
@@ -95,10 +95,10 @@
 
 			</span>
 			<span class="com_table_board-no-sum">
-			<c:if test="${countSearch eq  searchCount}">
-				<c:forEach var="i" begin="${startPage}" end="${endPage}" step="1">
+			<c:if test="${countSearch ==  searchCount}">
+				<c:forEach var="i" begin="${startPage}" end="${endPage}+1" step="1">
 					<c:choose>
-						<c:when test="${i eq pageNo}">
+						<c:when test="${i == pageNo}">
 							<a href="javascript:void(0);" class="board-em" style="color:white;">${i}</a>
 						</c:when>
 						<c:otherwise>
@@ -110,7 +110,7 @@
 				<!-- href에 #을 쓰면 페이지 최상단으로 이동, void(0)을 하게 되면 undifined가 리턴되어 무효화 처리가 된다. -->
 			</span>
 			<span class="com_table_board-no-btn">
-			<c:if test="${endPage ne totalPage}">
+			<c:if test="${endPage != totalPage}">
 					<c:if test="${totalPage > countPage}">
 						<c:if test="${pageNo < totalPage}">
 							<a href="javascript:void(0);"  style="color:white;" onclick="javascript:goToPage(${endPage}+1);" title="다음">

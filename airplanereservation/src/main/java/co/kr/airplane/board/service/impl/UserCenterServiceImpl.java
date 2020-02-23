@@ -33,6 +33,7 @@ public class UserCenterServiceImpl implements UserCenterService{
 		
 		int pageNo = usercentervo.getPageNo();
 		int countSearch = usercentervo.getSearchCount();
+		int searchCount = usercentervo.getSearchCount();
 		
 		List<UserCenterVO> userCenterList = usercenterdao.selectUserCenter(usercentervo);
 		System.out.println("userCenterList :"+userCenterList);
@@ -65,6 +66,7 @@ public class UserCenterServiceImpl implements UserCenterService{
 		map.put("endPage",endPage);
 		map.put("pageNo", pageNo);
 		map.put("countSearch", countSearch);
+		map.put("searchCount", searchCount);
 		 
 		 
 		return map;

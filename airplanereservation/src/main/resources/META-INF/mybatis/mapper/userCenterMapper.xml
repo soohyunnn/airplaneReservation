@@ -17,15 +17,33 @@
 	]]>
 </select> -->
 
+<!-- 		SELECT BNO as serNum, BNONAME as serName, BNOTITLE as serTitle, BNOCONTENT as serContent, BNODAY as serDay, BNOVIEWS as serViews
+		FROM usercenter 
+		WHERE BNO BETWEEN ((#{pageNo}-1)*#{searchCount})+1 AND  (#{pageNo})*#{searchCount} -->
 
 <select id="selectUserCenter" resultType="co.kr.airplane.board.vo.UserCenterVO" parameterType="co.kr.airplane.board.vo.UserCenterVO">
 /** [userCenterMapper.xml][com.adminproject.banner.service.impl.BannerMapper.selectUserCenter][고객센터 조회] **/
 <![CDATA[
 
 		SELECT BNO as serNum, BNONAME as serName, BNOTITLE as serTitle, BNOCONTENT as serContent, BNODAY as serDay, BNOVIEWS as serViews
-		FROM usercenter 
-		WHERE BNO BETWEEN ((#{pageNo}-1)*#{searchCount})+1 AND  (#{pageNo})*#{searchCount}
+		FROM ( SELECT A.*, ROW_NUMBER() OVER(ORDER BY BNO ASC) AS NUM
+		FROM usercenter A
+		<if test="search != null and search != '' ">
+			<if test="search == 'Everything'">
 
+			</if>
+			<if test="search == 'ID'">
+				where BNONAME = #{searchInput}
+			</if>
+			<if test="search == 'TITLE'">
+				where BNOTITLE = #{searchInput}
+			</if>
+			<if test="search == 'CONTENT'">
+				where BNOCONTENT = #{searchInput}
+			</if>
+		</if>
+		)
+		WHERE BNO BETWEEN ((#{pageNo}-1)*#{searchCount})+1 AND  (#{pageNo})*#{searchCount}
 ]]>
 </select>
 	<!-- WHERE NUM >#{startRow} and NUM <=#{pageUnit}*#{pageSize} 
