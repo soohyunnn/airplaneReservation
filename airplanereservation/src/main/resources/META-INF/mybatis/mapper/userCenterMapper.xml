@@ -18,15 +18,14 @@
 </select> -->
 
 
-<select id="selectUserCenter" resultType="co.kr.airplane.board.vo.UserCenterVO" parameterType="hashMap">
+<select id="selectUserCenter" resultType="co.kr.airplane.board.vo.UserCenterVO" parameterType="co.kr.airplane.board.vo.UserCenterVO">
 /** [userCenterMapper.xml][com.adminproject.banner.service.impl.BannerMapper.selectUserCenter][고객센터 조회] **/
 <![CDATA[
 
 		SELECT BNO as serNum, BNONAME as serName, BNOTITLE as serTitle, BNOCONTENT as serContent, BNODAY as serDay, BNOVIEWS as serViews
 		FROM usercenter 
+		WHERE BNO BETWEEN ((#{pageNo}-1)*#{searchCount})+1 AND  (#{pageNo})*#{searchCount}
 
-		WHERE BNO >#{startRow} and BNO <=#{pageUnit}
-		ORDER BY BNO ASC
 ]]>
 </select>
 	<!-- WHERE NUM >#{startRow} and NUM <=#{pageUnit}*#{pageSize} 
@@ -39,6 +38,7 @@
  	<![CDATA[	
 		select count(*)
 		from usercenter
+		
 	]]>
 </select> 
 

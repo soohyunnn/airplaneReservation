@@ -8,6 +8,13 @@ public class UserCenterVO {
 	private String serContent;	//내용
 	private String serDay;		//작성날짜
 	private int serViews;	//조회수
+	
+	/*페이징관련*/
+	private int pageNo;
+	private int searchCount;
+	private String searchInput;
+	private String search;
+	
 	public String getSerNum() {
 		return serNum;
 	}
@@ -44,6 +51,35 @@ public class UserCenterVO {
 	public void setSerViews(int serViews) {
 		this.serViews = serViews;
 	}
+	
+	/*페이징 관련*/
+	public int getPageNo() {
+		return pageNo;
+	}
+	public void setPageNo(int pageNo) {
+		this.pageNo = pageNo;
+	}
+	public int getSearchCount() {
+		return searchCount;
+	}
+	public void setSearchCount(int searchCount) {
+		this.searchCount = searchCount;
+	}
+	public String getSearchInput() {
+		return searchInput;
+	}
+	public void setSearchInput(String searchInput) {
+		this.searchInput = searchInput;
+	}
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
+	
+	
+	
 	
 	
 }

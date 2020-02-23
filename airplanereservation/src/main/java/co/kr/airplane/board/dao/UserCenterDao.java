@@ -11,8 +11,8 @@ import co.kr.airplane.board.vo.UserCenterVO;
 public interface UserCenterDao {
 	
 	////고객센터 목록
-	public List<UserCenterVO> selectUserCenter(HashMap<String, Object> paramMap);
+	public List<UserCenterVO> selectUserCenter(UserCenterVO usercentervo);
 	
 	//고객센터 목록 수
-	int selectUserCenterListCount(HashMap<String, Object> paramMap);
+	int selectUserCenterListCount(UserCenterVO usercentervo);
 }
