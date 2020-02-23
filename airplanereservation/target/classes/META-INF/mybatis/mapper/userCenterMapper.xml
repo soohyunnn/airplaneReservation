@@ -33,13 +33,13 @@
 
 			</if>
 			<if test="search == 'ID'">
-				where BNONAME = #{searchInput,jdbcType=VARCHAR}
+				where BNONAME like '%'||#{searchInput,jdbcType=VARCHAR}||'%'
 			</if>
 			<if test="search == 'TITLE'">
-				where BNOTITLE = #{searchInput,jdbcType=VARCHAR}
+				where BNOTITLE like '%'||#{searchInput,jdbcType=VARCHAR}||'%'
 			</if>
 			<if test="search == 'CONTENT'">
-				where BNOCONTENT = #{searchInput,jdbcType=VARCHAR}
+				where BNOCONTENT like '%'||#{searchInput,jdbcType=VARCHAR}||'%'
 			</if>
 		</if>
 		)

@@ -14,7 +14,7 @@
 		<div style="width: 91%; margin: 0 auto;">
 				<form  id="searchForm" name="searchForm" method="post">
 				
-					<input type="hidden" id="pageNo" name="pageNo">					
+					<input type="hidden" id="pageNo" name="pageNo" value="1">					
 					
 					<div style="float:left">
 					
@@ -36,7 +36,7 @@
 						<input type="text" class="form-control form-control-sm" name="searchInput" id="searchInput" style="height: 21px">
 					</div>
 					<!--  button은 form태그 안에 넣으면 이벤트를 한번 더 타서 클릭을 두번한것처럼 실행된다. 그래서 보통은 a태그를 사용하며 button을 사용할 경우 type="button"을 주면 된다-->
-					<button class="btn btn-primary" type="button" style="background-color: black; color: white; margin-right: 0px;" id="" onclick="javascript:selectBannerListAction(1);">검색</button>		
+					<button class="btn btn-primary" type="button" style="background-color: black; color: white; margin-right: 0px;" id="" onclick="javascript:selectListAction('/soohyunana/userCenter');">검색</button>		
 				</form>
 			</div>
 			
@@ -132,12 +132,48 @@ function goToPage(pageNo) {
 }
 
 function selectBannerListAction(pageNo) {
-	var url		= "${pageContext.request.contextPath}/soohyunana/userCenter";
-
+	
+/* 	  var f = $("#searchForm");	  
+	  console.log("f : " + $("#searchForm").serialize());
+	  f.action = page;
+	  $("#searchForm").attr("action",page);
+	  console.log( $("#searchForm").attr("action"));
+	  //debugger;
+	  f.submit(); */
+	
+ 	var url		= "/soohyunana/userCenter";
+	
 	$(".loading").show();
-
+	
 	$('#pageNo').val(pageNo);
+	alert('a');
 	$('#searchForm').attr("action", url);
-	$('#searchForm').submit();
+
+	console.log( $("#searchForm").attr("action"));
+
+	$('#searchForm').submit(); 
+}
+
+function selectListAction(page) {
+	
+	  var f = $("#searchForm");	  
+	  console.log("f : " + $("#searchForm").serialize());
+	  f.action = page;
+	  $("#searchForm").attr("action",page);
+	  console.log( $("#searchForm").attr("action"));
+	  //debugger;
+	  f.submit();
+	
+/* 	var url		= "/soohyunana/userCenter";
+	
+	$(".loading").show();
+	
+	$('#pageNo').val(pageNo);
+	alert('a');
+	$('#searchForm').attr("action", url);
+	$('#searchForm').action = url;
+	console.log( $("#searchForm").attr("action"));
+	
+	$('#searchForm').submit(); */
 }
 </script>
