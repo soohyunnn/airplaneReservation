@@ -23,7 +23,7 @@
 
 <select id="selectUserCenter" resultType="co.kr.airplane.board.vo.UserCenterVO" parameterType="co.kr.airplane.board.vo.UserCenterVO">
 /** [userCenterMapper.xml][com.adminproject.banner.service.impl.BannerMapper.selectUserCenter][고객센터 조회] **/
-<![CDATA[
+
 
 		SELECT BNO as serNum, BNONAME as serName, BNOTITLE as serTitle, BNOCONTENT as serContent, BNODAY as serDay, BNOVIEWS as serViews
 		FROM ( SELECT A.*, ROW_NUMBER() OVER(ORDER BY BNO ASC) AS NUM
@@ -33,18 +33,18 @@
 
 			</if>
 			<if test="search == 'ID'">
-				where BNONAME = #{searchInput}
+				where BNONAME = #{searchInput,jdbcType=VARCHAR}
 			</if>
 			<if test="search == 'TITLE'">
-				where BNOTITLE = #{searchInput}
+				where BNOTITLE = #{searchInput,jdbcType=VARCHAR}
 			</if>
 			<if test="search == 'CONTENT'">
-				where BNOCONTENT = #{searchInput}
+				where BNOCONTENT = #{searchInput,jdbcType=VARCHAR}
 			</if>
 		</if>
 		)
-		WHERE BNO BETWEEN ((#{pageNo}-1)*#{searchCount})+1 AND  (#{pageNo})*#{searchCount}
-]]>
+		WHERE NUM BETWEEN ((#{pageNo}-1)*#{searchCount})+1 AND  (#{pageNo})*#{searchCount}
+
 </select>
 	<!-- WHERE NUM >#{startRow} and NUM <=#{pageUnit}*#{pageSize} 
 		WHERE BNO >#{startRow} and BNO <=#{pageUnit}

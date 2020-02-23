@@ -7,7 +7,7 @@
 		<div style="margin: 80px;">
 			<div>
 				<h1 class="page-header">고객센터</h1>
-				<p>Total: <span id="count">${total},${searchCount}</span></p>
+				<p>Total: <span id="count">${total}</span></p>
 			</div>	
 		</div>
 
@@ -36,7 +36,7 @@
 						<input type="text" class="form-control form-control-sm" name="searchInput" id="searchInput" style="height: 21px">
 					</div>
 					<!--  button은 form태그 안에 넣으면 이벤트를 한번 더 타서 클릭을 두번한것처럼 실행된다. 그래서 보통은 a태그를 사용하며 button을 사용할 경우 type="button"을 주면 된다-->
-					<button class="btn btn-primary" type="button" style="background-color: black; color: white; margin-right: 0px;" id="search" onclick="javascript:selectBannerListAction(1);">검색</button>		
+					<button class="btn btn-primary" type="button" style="background-color: black; color: white; margin-right: 0px;" id="" onclick="javascript:selectBannerListAction(1);">검색</button>		
 				</form>
 			</div>
 			
@@ -95,8 +95,8 @@
 
 			</span>
 			<span class="com_table_board-no-sum">
-			<c:if test="${countSearch ==  searchCount}">
-				<c:forEach var="i" begin="${startPage}" end="${endPage}+1" step="1">
+			<c:if test="${countSearch == searchCount}">
+				<c:forEach var="i" begin="${startPage}" end="${endPage}" step="1">
 					<c:choose>
 						<c:when test="${i == pageNo}">
 							<a href="javascript:void(0);" class="board-em" style="color:white;">${i}</a>

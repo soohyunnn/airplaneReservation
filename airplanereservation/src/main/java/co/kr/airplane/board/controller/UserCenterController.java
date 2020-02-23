@@ -1,9 +1,10 @@
 package co.kr.airplane.board.controller;
 
 
-import java.util.HashMap;
-import java.util.List;
+
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,18 +25,19 @@ public class UserCenterController {
 	
 	//수현아나클럽-고객센터
 	@RequestMapping(value="/soohyunana/userCenter")
-	public ModelAndView userCenter(@ModelAttribute UserCenterVO usercentervo) throws Exception{
+	public ModelAndView userCenter(HttpServletRequest request,@ModelAttribute UserCenterVO usercentervo) throws Exception{
 		System.out.println("userCenter()");
 		
 		System.out.println("pageno : "+usercentervo.getPageNo());
 		System.out.println("search : "+usercentervo.getSearch());
 		System.out.println("searchcount : "+usercentervo.getSearchCount());
-		System.out.println("searchinpur : "+usercentervo.getSearchInput());
+		System.out.println("searchinput : "+usercentervo.getSearchInput());
 		
 		ModelAndView mv = new ModelAndView();
-		Map<String, Object> userCenterList = usercenterservice.selectUserCenter(usercentervo);
+		Map<String, Object> userCenterList = usercenterservice.selectUserCenter(request,usercentervo);
 		System.out.println("map"+userCenterList);
 		//System.out.println("userCenterList"+userCenterList);
+		
 		
 		mv.setViewName("soohyunana/userCenter.tiles");
 		mv.addObject("total",userCenterList.get("total"));
@@ -45,7 +47,7 @@ public class UserCenterController {
 		mv.addObject("startPage",userCenterList.get("startPage"));
 		mv.addObject("endPage",userCenterList.get("endPage"));
 		mv.addObject("pageNo",userCenterList.get("pageNo"));
-		//mv.addObject("searchCount",userCenterList.get("searchCount"));
+		mv.addObject("searchCount",userCenterList.get("searchCount"));
 		mv.addObject("countSearch",userCenterList.get("countSearch"));
 		mv.addObject("userCenterList", userCenterList.get("userCenterList"));
 		

@@ -1,5 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<script>
+function moveToPage(page){
+	  
+	  var f = $("#pageForm");	  
+	  console.log("f : " + $("#pageForm").serialize());
+	  f.action = page;
+	  $("#pageForm").attr("action",page);
+	  console.log( $("#pageForm").attr("action"));
+	  //debugger;
+	  f.submit();
+	}
+
+</script>    
 		<header>
     			<div style="float:left; display: inline-block;">
 	    			<a href="/" class="brand">
@@ -35,7 +49,7 @@
 	                	<a class="dropbtn firstmenu" href="javascript:void(0);">수현아나클럽</a>
 			    		<div class="dropdown-content">
 							<a href="/soohyunana/notice" style="padding-right:30px;">공지사항</a>
-							<a href="/soohyunana/userCenter" style="padding-right:30px;">고객센터</a>
+							<a href="javascript:void(0);" style="padding-right:30px;" onclick="moveToPage('/soohyunana/userCenter');">고객센터</a>
 						</div>		
 					</div>
 					
@@ -48,3 +62,8 @@
 				</div>
 			
     	</header>
+    	
+    		<form id="pageForm" method="POST">>
+    			<input type="hidden" id="pageNo" name="pageNo" value="1">
+    			<input type="hidden" id="searchCount" name="searchCount" value="10">
+    		</form>

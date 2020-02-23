@@ -4,11 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.ModelAndView;
 
 import co.kr.airplane.board.dao.UserCenterDao;
 import co.kr.airplane.board.service.UserCenterService;
@@ -25,7 +26,7 @@ public class UserCenterServiceImpl implements UserCenterService{
 	
 	//고객센터 목록
 	@Override
-	public Map<String, Object> selectUserCenter(UserCenterVO usercentervo) throws Exception {
+	public Map<String, Object> selectUserCenter(HttpServletRequest request, UserCenterVO usercentervo) throws Exception {
 		
 		//ModelAndView mv = new ModelAndView();
 		
@@ -57,16 +58,16 @@ public class UserCenterServiceImpl implements UserCenterService{
 				endPage = totalPage;
 			}
 		
-		map.put("total", total);
-		map.put("userCenterList", userCenterList);
+		map.put("total",total);
+		map.put("userCenterList",userCenterList);
 		map.put("countPage",countPage);
 		map.put("countList",countList);
 		map.put("totalPage",totalPage);
 		map.put("startPage",startPage);
 		map.put("endPage",endPage);
-		map.put("pageNo", pageNo);
-		map.put("countSearch", countSearch);
-		map.put("searchCount", searchCount);
+		map.put("pageNo",pageNo);
+		map.put("countSearch",countSearch);
+		map.put("searchCount",searchCount);
 		 
 		 
 		return map;
