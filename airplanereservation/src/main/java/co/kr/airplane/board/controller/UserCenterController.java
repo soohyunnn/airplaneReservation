@@ -38,7 +38,11 @@ public class UserCenterController {
 		System.out.println("map"+userCenterList);
 		//System.out.println("userCenterList"+userCenterList);
 		
+		int pageno = usercentervo.getPageNo();
 		
+		if(pageno == 1) {
+			
+		}
 		mv.setViewName("soohyunana/userCenter.tiles");
 		mv.addObject("total",userCenterList.get("total"));
 		mv.addObject("countPage",userCenterList.get("countPage"));

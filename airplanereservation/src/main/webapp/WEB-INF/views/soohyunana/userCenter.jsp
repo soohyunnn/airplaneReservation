@@ -14,7 +14,7 @@
 		<div style="width: 91%; margin: 0 auto;">
 				<form  id="searchForm" name="searchForm" method="post">
 				
-					<input type="hidden" id="pageNo" name="pageNo" value="1">					
+					<input type="hidden" id="pageNo" name="pageNo" value="${pageNo }">					
 					
 					<div style="float:left">
 					
@@ -99,10 +99,10 @@
 				<c:forEach var="i" begin="${startPage}" end="${endPage}" step="1">
 					<c:choose>
 						<c:when test="${i == pageNo}">
-							<a href="javascript:void(0);" class="board-em" style="color:white;">${i}</a>
+							<a href="javascript:void(0);" class="board-em" style="color:white;" onclick="javascript:goToPage('${i}');">${i}</a>
 						</c:when>
 						<c:otherwise>
-							<a href="javascript:void(0);" style="color:white;" onclick="javascript:goToPage(${i});" >${i}</a>
+							<a href="javascript:void(0);" style="color:white;" onclick="javascript:goToPage('${i}');" >${i}</a>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
@@ -141,17 +141,21 @@ function selectBannerListAction(pageNo) {
 	  //debugger;
 	  f.submit(); */
 	
- 	var url		= "/soohyunana/userCenter";
-	
+ 	var page		= "/soohyunana/userCenter";
+	var searchForm = document.getElementById('searchForm');
+	searchForm.pageNo.value=pageNo
+	var f = $("#searchForm");
+	  
 	$(".loading").show();
 	
-	$('#pageNo').val(pageNo);
-	alert('a');
-	$('#searchForm').attr("action", url);
+	//$('#pageNo').val(pageNo);
+	//alert(f);
+	f.action = page;
+	$('#searchForm').attr("action", page);
 
-	console.log( $("#searchForm").attr("action"));
-
-	$('#searchForm').submit(); 
+	//console.log( $("#searchForm").attr("action"));
+	f.submit();
+	//$('#searchForm').submit(); 
 }
 
 function selectListAction(page) {
