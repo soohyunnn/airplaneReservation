@@ -79,8 +79,8 @@ public class HeaderController {
 	}
 	
 	//수현아나클럽-고객센터
-		@RequestMapping(value="/soohyunana/serviceCenter")
-		public String serviceCenter() {
-			return "soohyunana/serviceCenter.tiles";
-		}
+/*	@RequestMapping(value="/soohyunana/serviceCenter")
+	public String serviceCenter() {
+		return "soohyunana/serviceCenter.tiles";
+	}*/
 }

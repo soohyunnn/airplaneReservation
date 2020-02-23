@@ -1,13 +1,13 @@
 package co.kr.airplane.board.vo;
 
 /*고객센터*/
-public class ServiceCenterVO {
+public class UserCenterVO {
 	private String serNum;		//게시글 번호
 	private String serName;		//작성자
 	private String serTitle;	//제목
 	private String serContent;	//내용
 	private String serDay;		//작성날짜
-	private String serViews;	//조회수
+	private int serViews;	//조회수
 	public String getSerNum() {
 		return serNum;
 	}
@@ -38,10 +38,10 @@ public class ServiceCenterVO {
 	public void setSerDay(String serDay) {
 		this.serDay = serDay;
 	}
-	public String getSerViews() {
+	public int getSerViews() {
 		return serViews;
 	}
-	public void setSerViews(String serViews) {
+	public void setSerViews(int serViews) {
 		this.serViews = serViews;
 	}
 	
