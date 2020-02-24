@@ -16,7 +16,7 @@
 <div class="container" style="height: 937px;">
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" style="width: 500px; margin: 100px auto 0 auto;">
-            <form role="form" style="width: 500px;">
+            <form action="/registerProcess" Method="POST" role="form" style="width: 500px;">
                 <fieldset style="background: white;padding:10px;">
                     <h2 style="color:black;">회원가입</h2>
                     <h3><small>회원으로 가입하시면 예약,발권,탑승,마일리지 조회 등 다양한 서비스와 함께 정기 이벤트 뉴스와 할인항공권 소식을 이메일로 받아보실 수도 있습니다.</small></h3>
@@ -29,6 +29,9 @@
                     </div>
                     <div class="form-group inputst">
                         <input type="password" name="userPw" id="userPw" class="form-control input-lg" placeholder="비밀번호">
+                    </div>
+                    <div class="form-group inputst">
+                        <input type="password" name="userPhone" id="userPhone" class="form-control input-lg" placeholder="핸드폰 번호">
                     </div>
                     <div class="form-group inputst">
                         <input type="text" name="userEmail" id="userEmail" class="form-control input-lg" placeholder="이메일">

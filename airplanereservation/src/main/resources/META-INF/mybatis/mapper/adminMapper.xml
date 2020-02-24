@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.kr.airplane.admin.dao.UserManiDao">
+
+<!-- **************** -->
+<!-- SELECT SECTION -->
+<!-- **************** -->
+
+
+<select id="selectUserInfo" resultType="co.kr.airplane.user.vo.UserVO">
+/** [adminMapper.xml][co.kr.airplane.service.impl.airplaneMapper.selectUserInfo][회원정보 조회] **/
+	<![CDATA[		
+		select NO_SEQ as No, USERNAME as userName, USERID as userId, USERPW as userPw, USERPHONE as userPhone, USEREMAIL as userEmail
+		from userinfo
+	]]>
+</select>
+
+
+<select id="selectUserInfo1" parameterType="co.kr.airplane.user.vo.UserVO"  resultType="co.kr.airplane.user.vo.UserVO">
+		SELECT NO_SEQ as No, USERNAME as userName, USERID as userId, USERPW as userPw, USERPHONE as userPhone, USEREMAIL as userEmail
+		FROM ( SELECT A.*, ROW_NUMBER() OVER(ORDER BY USERID ASC) AS NUM
+		FROM userinfo A
+		<if test="search != null and search != '' ">
+			<if test="search == 'Everything'">
+
+			</if>
+			<if test="search == 'NAME'">
+				where USERNAME = #{searchInput}
+			</if>
+			<if test="search == 'ID'">
+				where USERID = #{searchInput}
+			</if>
+			<if test="search == 'EMAIL'">
+				where USEREMAIL = #{searchInput}
+			</if>
+		</if>
+		)
+		WHERE NUM BETWEEN ((#{pageNo}-1)*#{searchCount})+1 AND  (#{pageNo})*#{searchCount}
+	</select>
+
+<!-- 전체 페이지의 수 -->
+ 	<select id="userCount" resultType="int">
+ 	/** [adminMapper.xml][co.kr.airplane.service.impl.airplaneMapper.userCount][회원정보 수] **/
+ 	<![CDATA[	
+		select count(*) as total
+		from userinfo
+	]]>
+	</select> 
+
+
+<!-- tid(30) making rule : hostname(3)+mid(10)+sysdate(yyyymmdd)(8)+seq(9) -->
+<!-- <select id="getTid" parameterType="String" resultType="String" >
+	<![CDATA[
+		select upper(decode(lengthb(substr(SYS_CONTEXT('USERENV', 'HOST'), 1, 3)), 3, substr(SYS_CONTEXT('USERENV', 'HOST'), 1, 3), 'tni'))||
+			   nvl(lpad(substrb('testmid', 1, 10), 10, 0), 'TNI') || to_char(sysdate, 'yyyymmdd')||lpad('1', 9, 0) as trnsId
+		from dual
+	]]>
+</select> -->
+
+<!-- Select Card Auth Proc Info (TB_FC_CARDAUTHPCS_I) -->
+<!-- <select id="selectCardAuthPcs" parameterType="String" resultType="com.inicis.bz.vo.db.SelectCardAuthPcsVO" >
+	<![CDATA[
+		select TRNS_ID as trns_id, IDC_DVD_CD as idc_dvd_cd, JOB_DVD_CD as job_dvd_cd, REGI_DT as regi_dt, REGI_TM as regi_tm,
+				PCS_STATUS_CD as pcs_status_cd, JNOFFC_ID as jnoffc_id, SUB_MID as sub_mid, SITE_URL as site_url, MERCH_ORDR_NO as merch_trans_no,
+				SITE_ID as site_id, JNOFFC_INFO_CONTS as jnoffc_info_conts, CNCL_URL as cncl_url, RSPS_URL as rsps_url, INFW_CHNL_CD as infw_chnl_cd,
+				CUST_AUTH_DVD_CD as cust_auth_dvd_cd, CP_ID as cp_id, BANK_CARD_CD as bank_card_cd, GRM_SRLNO as grm_srlno, MERCH_SVC_DVD_CD as merch_svc_dvd_cd,
+				CUST_IPADDR_INFO as cust_ipaddr_info, GW_AUTH_RSLT_CD as gw_auth_rslt_cd, SYNC_REQ_KEY_VALUE as sync_req_key_value, TRANS_KEY_VALUE as trans_key_value, CHNG_DT as chng_dt,
+				CHNG_TM as chng_tm, LT_CNFM_DT as lt_cnfm_dt, LT_CNFM_TM as lt_cnfm_tm, RSPS_CD as rsps_cd, USER_NM as user_nm,
+				ECD_BTH_DT as ecd_bth_dt, SVR_NM as svr_nm
+		from TB_FC_CARDAUTHPCS_I a
+		where a.TRNS_ID = #{trns_Id}
+	]]>
+</select> -->
+
+<!-- <select id="selectCommonCd" parameterType="String" resultType="String" >
+	<![CDATA[
+		select b.CMNCD_NM as codenm
+		from SC.TB_CC_CMNCD_M a, SC.TB_CC_CMNCD_D b
+		where a.GROUP_CMNCD = #{group_cmncd}
+		and a.GROUP_CMNCD = b.GROUP_CMNCD
+		and b.CMNCD = #{cmncd}
+		and a.USE_YN = 'Y'
+		and b.USE_YN = 'Y'
+		and ROWNUM <= 1
+	]]>
+</select> -->
+
+<!-- <select id="getCardAuthPcsCnt" parameterType="String" resultType="Integer">
+	<![CDATA[
+		select count(*) as cnt
+		from TB_FC_CARDAUTHPCS_I
+		where TRNS_ID = #{trns_id}
+	]]>
+</select> -->
+
+<!-- <select id="getRetryMsg" parameterType="String" resultType="String" >
+	<![CDATA[
+		select nvl(		(select cmncd_nm
+						from SC.TB_CC_CMNCD_D
+						where group_cmncd = #{group_cmncd}
+						and cmncd = #{cmncd}
+						),
+						(select cmncd_nm
+						from SC.TB_CC_CMNCD_D
+						where group_cmncd = #{group_cmncd}
+						and cmncd = 'R000'
+						)
+					) as msg
+		from dual
+	]]>
+</select> -->
+	
+	
+<!-- **************** -->
+<!-- INSERT SECTION -->
+<!-- **************** -->
+
+
+<!-- <insert id="userRegis" parameterType="co.kr.airplane.user.vo.UserVO">
+	<![CDATA[
+	/** [airplaneMapper.xml][co.kr.airplane.service.impl.airplaneMapper.userRegis][회원가입] **/
+	insert into userinfo(NO_SEQ,USERNAME, USERID, USERPW, USERPHONE, USEREMAIL)
+	values(seq.NEXTVAL, #{userName}, #{userId}, #{userPw}, #{userPhone}, #{userEmail})
+	]]>
+</insert> -->
+
+	
+<!-- Insert TB_FC_CARDAUTHPCS_I -->
+<!-- <insert id="insertCardAuthPcs" parameterType="com.inicis.bz.vo.db.InsCardAuthPcsVO">
+	<![CDATA[
+		insert into TB_FC_CARDAUTHPCS_I (
+			TRNS_ID, IDC_DVD_CD, JOB_DVD_CD, PCS_STATUS_CD, JNOFFC_ID,
+			SUB_MID, SITE_URL, MERCH_ORDR_NO, SITE_ID, JNOFFC_INFO_CONTS,
+			CNCL_URL, RSPS_URL, INFW_CHNL_CD, CUST_AUTH_DVD_CD, CP_ID,
+			BANK_CARD_CD, GRM_SRLNO, MERCH_SVC_DVD_CD, SVR_NM, CUST_IPADDR_INFO,
+			GW_AUTH_RSLT_CD, SYNC_REQ_KEY_VALUE, TRANS_KEY_VALUE
+		)
+		values (
+			#{trns_id}, #{idc_dvd_cd}, #{job_dvd_cd}, #{pcs_status_cd}, #{jnoffc_id},
+			#{sub_mid}, #{site_url}, #{merch_trans_no}, #{site_id}, #{jnoffc_info_conts},
+			#{cncl_url}, #{rsps_url}, #{infw_chnl_cd}, #{cust_auth_dvd_cd}, #{cp_id},
+			#{bank_card_cd}, #{grm_srlno}, #{merch_svc_dvd_cd}, SYS_CONTEXT('USERENV', 'HOST'), #{cust_ipaddr_info},
+			#{gw_auth_rslt_cd}, #{sync_req_key_value}, #{trans_key_value}
+		)
+	]]>
+</insert> -->
+	
+	
+	
+<!-- **************** -->
+<!-- UPDATE SECTION -->
+<!-- **************** -->
+
+<!-- Update TB_FC_CARDAUTHPCS_I (Auth_Res, 22)-->
+<!-- <update id="updateCardAuthPcsReq" parameterType="com.inicis.bz.vo.db.UpdCardAuthPcsVO">
+	<![CDATA[
+		update TB_FC_CARDAUTHPCS_I
+		set CHNG_DT = to_char(sysdate, 'yyyymmdd'), CHNG_TM = to_char(sysdate, 'hh24miss'),
+			PCS_STATUS_CD = #{pcs_status_cd}
+		where TRNS_ID = #{trns_id}
+	]]>
+</update> -->
+
+<!-- Update TB_FC_CARDAUTHPCS_I (Auth_Res, 00)-->
+<!-- <update id="updateCardAuthPcsCnfm" parameterType="com.inicis.bz.vo.db.UpdCardAuthPcsVO">
+	<![CDATA[
+		update TB_FC_CARDAUTHPCS_I
+		set LT_CNFM_DT = to_char(sysdate, 'yyyymmdd'), LT_CNFM_TM = to_char(sysdate, 'hh24miss'),
+			JOB_DVD_CD = #{job_dvd_cd}, PCS_STATUS_CD = #{pcs_status_cd}, RSPS_CD = #{rsps_cd},
+			USER_NM = nvl(#{user_nm}, USER_NM), ECD_BTH_DT = nvl(#{ecd_bth_dt}, ECD_BTH_DT)
+		where TRNS_ID = #{trns_id}
+	]]>
+</update> -->
+	
+	
+	
+	
+<!-- **************** -->
+<!-- DELETE SECTION -->
+<!-- **************** -->
+
+<!-- WPAY_USER_JNOFFC_INFO Delete -->
+<!-- <delete id="deleteUserJnoffcInfo" parameterType="String">
+	<![CDATA[
+		delete from WPAY_USER_JNOFFC_INFO
+		where WPAY_USERID = #{wpay_userid}
+		and JNOFFC_TYPE_CD = #{jnoffc_type_cd}
+	]]>
+	<choose>
+		<when test="jnoffc_type_cd == 'P'.toString()"> 
+			and JNOFFC_ID = #{jnoffc_site_id}
+		</when>
+		<when test="jnoffc_type_cd == 'S'.toString()"> 
+			and SITE_ID = #{jnoffc_site_id}
+		</when>
+	</choose>
+</delete> -->
+	
+</mapper>

@@ -2,7 +2,7 @@
  <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="co.kr.airplane.dao.AirplaneDao">
+<mapper namespace="co.kr.airplane.user.dao.AirplaneDao">
 
 <!-- **************** -->
 <!-- SELECT SECTION -->
@@ -17,6 +17,17 @@
 	from users
 	where id = #{id}
 </select>
+
+<select id="userLogin" parameterType="co.kr.airplane.user.vo.UserVO" resultType="co.kr.airplane.user.vo.UserVO">
+/** [airplaneMapper.xml][co.kr.airplane.service.impl.airplaneMapper.userLogin][로그인] **/
+	<![CDATA[
+		select USERNAME as userName, USERID as userId, USERPW as userPw, USERPHONE as userPhone, USEREMAIL as userEmail
+		from userinfo
+		where USERID = #{userId}
+	]]>
+</select>
+
+
 
 <!-- tid(30) making rule : hostname(3)+mid(10)+sysdate(yyyymmdd)(8)+seq(9) -->
 <!-- <select id="getTid" parameterType="String" resultType="String" >
@@ -84,6 +95,16 @@
 <!-- **************** -->
 <!-- INSERT SECTION -->
 <!-- **************** -->
+
+
+<insert id="userRegis" parameterType="co.kr.airplane.user.vo.UserVO">
+	<![CDATA[
+	/** [airplaneMapper.xml][co.kr.airplane.service.impl.airplaneMapper.userRegis][회원가입] **/
+	insert into userinfo(NO_SEQ,USERNAME, USERID, USERPW, USERPHONE, USEREMAIL)
+	values(seq.NEXTVAL, #{userName}, #{userId}, #{userPw}, #{userPhone}, #{userEmail})
+	]]>
+</insert>
+
 	
 <!-- Insert TB_FC_CARDAUTHPCS_I -->
 <!-- <insert id="insertCardAuthPcs" parameterType="com.inicis.bz.vo.db.InsCardAuthPcsVO">

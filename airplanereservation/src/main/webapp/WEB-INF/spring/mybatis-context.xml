@@ -32,6 +32,6 @@
 			value="classpath:META-INF/mybatis/mapper/*.xml" />
 	</beans:bean>
 	
-	<mybatis-spring:scan base-package="co.kr.airplane.user.controller.dao" />
+	<mybatis-spring:scan base-package="co.kr.airplane.*.dao" />
 	
 </beans:beans>

@@ -1,8 +1,9 @@
 package co.kr.airplane;
 
-import co.kr.airplane.dao.AirplaneDao;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import co.kr.airplane.user.dao.AirplaneDao;
 
 
 
