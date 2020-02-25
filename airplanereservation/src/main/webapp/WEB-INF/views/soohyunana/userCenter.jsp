@@ -60,8 +60,8 @@
 					 	<c:forEach var="list" items="${userCenterList}">
 							<tr>
 								<td>${list.serNum}</td>
-								<td>${list.serName}</td>
-								<td>${list.serTitle}</td>
+								<td>${list.serId}</td>
+								<td style = "cursor:pointer;" onClick = " location.href='http://localhost:8080//soohyunana/detail?seq=${list.serNum }' ">${list.serTitle}</td>
 								<td>${list.serContent}</td>
 								<td>${list.serDay}</td>
 								<td>${list.serViews}</td>
@@ -78,6 +78,8 @@
 				</c:choose>
 			</tbody>
 		</table>
+		
+		<a href="/soohyunana/wirteNotice" style="float:right; margin-right:57px;" onclick="" class="btn btn-sm btn-primary" >글쓰기</a>
 </div>
 
 <!-- 페이징_start -->

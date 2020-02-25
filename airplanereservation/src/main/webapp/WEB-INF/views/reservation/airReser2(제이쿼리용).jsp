@@ -35,7 +35,7 @@ input[type="text"]{
 }
 </style>
 	
-<div style="">
+<div style="height: 695px; overflow-x: auto;">
 		<div style="margin: 80px; margin-bottom: 20px;">
 			<div>
 				<h1 class="page-header">고객센터</h1>				
@@ -80,7 +80,7 @@ input[type="text"]{
 			<!-- Reply Form {s} -->
 			<div class="my-3 p-3 bg-white rounded shadow-sm" style="padding-top: 10px">
 				<form name="form" id="form" role="form" method="post" action="/soohyunana/UserCenter/insertReply">
-					<input type="hidden" name="serNum" id="" value="serNum" value="${list.serNum }">
+					<input type="hidden" name="" id="" value="" >
 				<div>
 					<div style="padding-top: 41px;">
 						<input type="text" class="form-control" name="replyId" id="replyId" placeholder="댓글 작성자">
@@ -101,23 +101,27 @@ input[type="text"]{
 				<c:choose>
 				<c:when test="${fn:length(replyList) > 0}">
 					<c:forEach var="list" items="${replyList}">
-						<div id="replyList">
+						<div id="replyList" name="replyList">
 					
-							<div name="reply${list.replyNo}" id="reply${list.replyNo}">																
-								<label>작성자 : ${list.replyId}								
-									<button type="button" class="btn btn-sm btn-primary" style="padding: 2px 8px; margin-left: 10px;" id="updatereply" onclick="modifyreply('${list.replyNo}');">수정</button>
-									<button type="button" class="btn btn-sm btn-danger" style="padding: 2px 8px; margin-left: 3px;" id="deletereply" onclick="DeleteReply('/soohyunana/UserCenter/deleteReply','${list.replyNo}')">삭제</button>
+							<div name="reply" id="reply">	
+					
+											
+								<label>작성자 : ${list.replyId}
+								
+									<button type="button" class="btn btn-sm btn-primary" style="padding: 2px 8px; margin-left: 10px;" name="modifyreply" id="modifyreply">수정</button>
+									<button type="button" class="btn btn-sm btn-danger" style="padding: 2px 8px; margin-left: 3px;" id="btnList">삭제</button>
 								</label>
 								<label style="padding: 5px;">${list.replyContent}</label>
 								<label style="padding: 0 5px;"><h5>${list.replyDay}</h5></label>
-						</div>
-						
+							</div>
 					<!-- 댓글 수정 폼 Start -->		
 					
-							<form action="" method="POST" name="modifyReplyform${list.replyNo}" id="modifyReplyform${list.replyNo}" style="display:none;">
+							<form action="" method="POST" name="modifyReplyform" id="modifyReplyform" style="display:none;">
+					
+								<hr>
 								<div class="mb-3">
 									<label for="reg_id">작성자</label>
-									<input type="text" class="form-control" name="replyId" id="replyId" placeholder="${list.replyId}" readonly>
+									<input type="text" class="form-control" name="replyId" id="replyId" placeholder="${list.replyId}">
 								</div>
 								<div class="mb-3">
 									<input type="text" class="form-control" name="replyContent" id="replyContent" placeholder="${list.replyContent}">
@@ -132,58 +136,56 @@ input[type="text"]{
 					<!-- 댓글 수정 폼 END -->
 					<hr>					
 						</div>
-					</c:forEach>
+				</c:forEach>
 				
 				</c:when>
 				</c:choose>
 			</div> 
 			<!-- Reply List {e}-->
 
-			<br><br><br><br><br><br><br><br>
-</div>
+			
 </div>
 
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
-	//댓글 등록결과
-	var replyResult = '${replyResult}';
-	if(replyResult == 1){
-		alert('${msg}');
-	}
 
-	//댓글 삭제 결과
-	var deleteResult = '${deleteResult}';
-	if(deleteResult == 1){
-		alert('${msg}');
-	}
-
-	//댓글 수정 폼 보이게
-	function modifyreply(target){
-		//alert(target);
-		var t = target;
-		var total = ${total};
+$("#modifyreply").click(function(){
 	
-		for(var i = 1 ; i <= total ; i++){
-			if(i==target){
-				$('#reply'+i).hide();
-				$('#modifyReplyform'+i).show();
-			}else{
-				$('#reply'+i).show();
-				$('#modifyReplyform'+i).hide();
-			}	
-		}
-	
-		/*  $('#reply'+target).hide();
-		 $('#modifyReplyform'+target).show();  */
-	}
+	var index = $("#reply").index();
+	alert(index);
+	$('#reply').hide();
+	$('#modifyReplyform').show(); 
+});
 
-	//댓글 삭제 함수
-	function DeleteReply(page , target){
-		  var f = $("#modifyReplyform"+target);
-		  console.log("f : " + $("#modifyReplyform"+target).serialize());
-		  f.action = page;
-		  $("#modifyReplyform"+target).attr("action",page);
-		  console.log( $("#modifyReplyform"+target).attr("action"));
-		  //debugger;
-		  f.submit();
+var replyResult = '${replyResult}';
+if(replyResult == 1){
+	alert('${msg}');
+}
+
+function modifyreply(target){
+	alert(target);
+	var t = target;
+	var total = ${total};
+	//alert(a);
+	//var id = $(target).closest("div");
+	//alert(id);
+	//alert('reply'+t);
+	//$(target).closest("div").hide();
+	
+/* 	for(var i=1 ; i<=total ; i++){
+		if(i == target){
+			console.log('#reply'+i);
+			$('#reply'+target).hide();		//버튼 타겟의 부모의 부모를 숨김
+			$('#modifyReply'+target).show(); 	
 		}
+	}  */
+	
+	//$('#modifyReply'+t).show();
+	 //$('#modifyReply'+target).show();
+	 $('#reply'+target).hide();
+	 $('#modifyReplyform'+target).show(); 
+}
+
+	
+
 </script>
