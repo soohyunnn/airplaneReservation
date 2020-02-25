@@ -75,7 +75,7 @@ input[type="text"]{
 
 			<div style="float:right; margin-bottom: 51px;">
 				<button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
-				<button type="button" class="btn btn-sm btn-success" id="btnSave">저장</button>
+				<button type="button" class="btn btn-sm btn-danger" id="btnSave">삭제</button>
 			</div>
 
 		
