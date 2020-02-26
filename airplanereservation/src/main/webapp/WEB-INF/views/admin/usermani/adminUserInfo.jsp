@@ -9,7 +9,52 @@
 		<h1 class="h3 mb-0 text-gray-800">사용자 관리 > 회원정보</h1>		
 	</div>
 		<p style="color:black;">Total: <span id="count"></span></p>
-
+	
+	<div style="width: 91%; margin: 0 auto;">
+		<div class="panel panel-default" style="margin: 0 auto; background: #e0e0e0; border-radius: 19px; border: 1px solid;">
+			<div class="panel-heading" style="padding: 10px; background: #e0e0e0; border-top-left-radius: 17px; border-top-right-radius: 17px; border: 1px solid;">회원 정보 입력</div>
+			<div class="panel-body" style="padding: 20px; background: white; border-bottom-left-radius: 17px; border-bottom-right-radius: 17px; border: 1px solid;">
+			    
+			    <!-- action="확장자 방식의 서블릿요청주소 -->
+			    <!-- 회원등록 form Start -->
+				<form action="/registerProcess" method="post">
+					<div class="form-group">
+						<!-- name="" 속성은 JSP 프로그램 진행시 필수 속성 -->
+						<!-- 식별자는 자료형 클래스의 멤버명으로 작성할 것 -->
+						<!-- 동일 자료 동일 식별자 원칙 -->	
+						<label for="name">이름:</label> <input type="text"
+							class="form-control" id="userName" name="userName" required>
+					</div>
+					<div class="form-group">
+						<label for="phone">ID:</label> <input type="text"
+							class="form-control" id="userId" name="userId" required>
+					</div>
+					<div class="form-group">
+						<label for="phone">PW:</label> <input type="text"
+							class="form-control" id="userPw" name="userPw" required>
+					</div>
+					<div class="form-group">
+						<label for="phone">전화번호:</label> <input type="text"
+							class="form-control" id="userPhone" name="userPhone" required>
+					</div>
+					<div class="form-group">
+						<label for="email">이메일:</label> <input type="text"
+							class="form-control" id="userEmail" name="userEmail" required>
+					</div>
+					
+					<!-- submit 버튼은 JSP 프로그램 진행시 필수 요소 -->
+					<!-- 폼 태그 범위 안에 위치해야 한다. -->
+					<button type="submit" class="btn btn-default" style="background: black;">등록</button>					
+				</form>
+				<!-- 회원등록 form End -->
+				
+				<!-- 회원수정 form Start -->
+				
+				<!-- 회원수정 form End -->				
+			</div>
+		</div>
+	</div>
+		<br><br><br>
 	<!-- Content Row -->
 	<div style="width: 91%; margin: 0 auto;">
 				<form  id="tableForm" name="tableForm" method="post" style="margin: 10px;">
@@ -69,7 +114,7 @@
 		</table>
 		
 		<!-- PaginBox Start -->
-		<div style="text-align: center" id="PagingBox">
+		<div style="text-align: center; margin-bottom: 200px;" id="PagingBox">
 			<%-- <a href="#" class="Pbox" onclick="show(1)"> << </a>
 			
 			<c:if test="${startPage ne 1}">
@@ -96,6 +141,7 @@
 			<a href="#" class="Pbox" onclick="show(${totalPage})"> >> </a> --%>
 		</div>
 </div>
+<br><br><br>
 <!-- /.container-fluid -->
 
 <script>
