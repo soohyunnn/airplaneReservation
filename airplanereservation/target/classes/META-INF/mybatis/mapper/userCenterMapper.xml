@@ -24,12 +24,12 @@
 <select id="selectUserCenter" resultType="co.kr.airplane.board.vo.UserCenterVO" parameterType="co.kr.airplane.board.utils.Search">
 /** [userCenterMapper.xml][com.adminproject.banner.service.impl.userCenterMapper.selectUserCenter][고객센터 조회] **/
 
-
+<![CDATA[
 		SELECT BNO as serNum, BNONAME as serId, BNOTITLE as serTitle, BNOCONTENT as serContent, BNODAY as serDay, BNOVIEWS as serViews
 		FROM ( select a.*, ROWNUM as rnum from (
 			select * 
 			FROM usercenter 
-			
+]]>			
 			<choose>
 				<when test="searchType == 'Everything' ">
 					where BNONAME like '%'||#{keyword}||'%'
