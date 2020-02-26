@@ -58,8 +58,9 @@
 <select id="selectReply" resultType="co.kr.airplane.board.vo.ReplyVO" parameterType="co.kr.airplane.board.vo.ReplyVO">
  /** [userCenterMapper.xml][co.kr.airplane.service.impl.userCenterMapper.selectReply][댓글 조회] **/
  <![CDATA[	
-	select REPLYNO as replyNo ,  REPLYID as replyId ,  REPLYCONTENT as replyContent, REPLYDAY as replyDay
+	select SERNO as serNum, REPLYNO as replyNo ,  REPLYID as replyId ,  REPLYCONTENT as replyContent, REPLYDAY as replyDay
 	from  REPLY
+	where  SERNO = #{serNum}
 	order by REPLYNO ASC
 ]]>
 </select>
@@ -97,8 +98,8 @@
 <insert id="insertReply" parameterType="co.kr.airplane.board.vo.ReplyVO">
  /** [userCenterMapper.xml][co.kr.airplane.service.impl.userCenterMapper.insertReply][댓글 등록] **/
 <![CDATA[
-	insert into REPLY (REPLYNO, REPLYID, REPLYCONTENT, REPLYDAY)
-	values(reply_seq.NEXTVAL, #{replyId}, #{replyContent}, to_char(sysdate,'YYYY.MM.DD PM HH:MI:SS'))
+	insert into REPLY (SERNO, REPLYNO, REPLYID, REPLYCONTENT, REPLYDAY)
+	values(#{serNum},reply_seq.NEXTVAL, #{replyId}, #{replyContent}, to_char(sysdate,'YYYY.MM.DD PM HH:MI:SS'))
 ]]>
 </insert>
 

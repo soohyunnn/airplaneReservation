@@ -81,6 +81,9 @@ public class UserCenterController {
 	public ModelAndView viewDetail(@ModelAttribute ReplyVO replyvo, @RequestParam("seq")int seq) throws Exception {
 		
 		ModelAndView mv = new ModelAndView();
+		replyvo.setSerNum(seq);
+		
+		System.out.println(replyvo.getSerNum());
 		
 		mv.setViewName("soohyunana/contentNotice.tiles");
 		mv.addObject("list", usercenterservice.viewDetail(seq));

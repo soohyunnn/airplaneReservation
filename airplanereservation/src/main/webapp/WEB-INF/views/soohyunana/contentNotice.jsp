@@ -84,7 +84,7 @@ input[type="text"]{
 			<!-- Reply Form {s} -->
 			<div class="my-3 p-3 bg-white rounded shadow-sm" style="padding-top: 10px">
 				<form name="form" id="form" role="form" method="post" action="/soohyunana/UserCenter/insertReply">
-					<input type="hidden" name="" id="" value="" >
+					<input type="hidden" name="serNum" id="serNum" value="${list.serNum }" >
 				<div>
 					<div style="padding-top: 41px;">
 						<input type="text" class="form-control" name="replyId" id="replyId" placeholder="댓글 작성자">
