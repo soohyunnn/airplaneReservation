@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <script>
-function moveToPage(page){
+/* function moveToPage(page){
 	  
 	  var f = $("#pageForm");	  
 	  console.log("f : " + $("#pageForm").serialize());
@@ -11,7 +11,7 @@ function moveToPage(page){
 	  console.log( $("#pageForm").attr("action"));
 	  //debugger;
 	  f.submit();
-	}
+	} */
 
 </script>    
 		<header>
@@ -49,7 +49,7 @@ function moveToPage(page){
 	                	<a class="dropbtn firstmenu" href="javascript:void(0);">수현아나클럽</a>
 			    		<div class="dropdown-content">
 							<a href="/soohyunana/notice" style="padding-right:30px;">공지사항</a>
-							<a href="javascript:void(0);" style="padding-right:30px;" onclick="moveToPage('/soohyunana/userCenter');">고객센터</a>
+							<a href="/soohyunana/userCenter" style="padding-right:30px;" >고객센터</a>
 						</div>		
 					</div>
 					
@@ -62,8 +62,8 @@ function moveToPage(page){
 				</div>
 			
     	</header>
-    	
+ <!--    	
     		<form id="pageForm" method="POST">>
     			<input type="hidden" id="pageNo" name="pageNo" value="1">
     			<input type="hidden" id="searchCount" name="searchCount" value="0">
-    		</form>
+    		</form> -->

@@ -73,7 +73,13 @@ input[type="text"]{
 			</div>
 
 			</form>
-	
+<!-- <form id="listvlaue" name="listvlaue" method="post">
+	<input type="hidden" id="page" name="page" value="1">
+	<input type="hidden" id="range" name="range" value="1">
+	<input type="hidden" id="searchType" name="searchType" value="Everything">
+	<input type="hidden" id="keyword" name="keyword" value="">
+</form>	 -->	
+
 			<br><br><br><br><br><br><br><br><br>
 			
 		</div>
@@ -91,7 +97,8 @@ input[type="text"]{
 					console.log('게시글 등록 성공');
 					alert('등록을 완료하였습니다.');
 					
-					 var f = $("#insertform");					  
+					 var f = $("#insertform");
+					  
 					  f.action = '/soohyunana/userCenter';
 					  $("#insertform").attr("action","/soohyunana/userCenter");
 					  					 
