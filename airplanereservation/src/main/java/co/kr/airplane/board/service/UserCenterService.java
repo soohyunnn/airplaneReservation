@@ -22,7 +22,7 @@ public interface UserCenterService {
 	public int selectUserCenterListCount(Search search) throws Exception;
 	
 	//고객센터 등록
-	public ModelAndView insertUserCenter(UserCenterVO usercentervo) throws Exception;
+	public void insertUserCenter(UserCenterVO usercentervo) throws Exception;
 	
 	//고객센터 게시글 상세 조회
 	public UserCenterVO viewDetail(int seq) throws Exception;

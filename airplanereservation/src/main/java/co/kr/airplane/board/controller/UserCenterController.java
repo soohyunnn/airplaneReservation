@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import co.kr.airplane.board.service.UserCenterService;
@@ -33,7 +34,7 @@ public class UserCenterController {
 			, @RequestParam(required = false, defaultValue = "1") int range
 			, @RequestParam(required = false, defaultValue = "Everything") String searchType
 			, @RequestParam(required = false, defaultValue = "") String keyword
-			,HttpSession session, HttpServletResponse response, @ModelAttribute UserCenterVO usercentervo) throws Exception{
+			) throws Exception{
 		
 		System.out.println("userCenter()");
 		
@@ -56,37 +57,25 @@ public class UserCenterController {
 		
 		System.out.println(usercenterservice.selectUserCenter(search));
 		
-/*		mv.setViewName("soohyunana/userCenter.tiles");
-		mv.addObject("total",userCenterList.get("total"));
-		mv.addObject("countPage",userCenterList.get("countPage"));
-		mv.addObject("countList",userCenterList.get("countList"));
-		mv.addObject("totalPage",userCenterList.get("totalPage"));
-		mv.addObject("startPage",userCenterList.get("startPage"));
-		mv.addObject("endPage",userCenterList.get("endPage"));
-		mv.addObject("pageNo",userCenterList.get("pageNo"));
-		mv.addObject("searchCount",userCenterList.get("searchCount"));
-		mv.addObject("countSearch",userCenterList.get("countSearch"));
-		mv.addObject("userCenterList", userCenterList.get("userCenterList"));*/
+
 		
 		return mv;
 	}
 	
 	//수현아나클럽-고객센터(글쓰기 페이지 이동)
 	@RequestMapping(value="/soohyunana/wirteNotice")
-	public String wirteUserCenter() throws Exception{
+	public String wirteUserCenter(@ModelAttribute Search search) throws Exception{
 		System.out.println("wirteUserCenter()");
 		return "soohyunana/wirteNotice.tiles";
 	}
 	
 	//수현아나클럽-고객센터(글등록)
+	@ResponseBody
 	@RequestMapping(value="/soohyunana/insertUserCenter")
-	public ModelAndView insertUserCenter(@ModelAttribute UserCenterVO usercentervo) throws Exception {
+	public void insertUserCenter(@ModelAttribute UserCenterVO usercentervo) throws Exception {
 		System.out.println("insertUserCenter()");
-		ModelAndView mv = new ModelAndView();
 		
-		mv = usercenterservice.insertUserCenter(usercentervo);
-		
-		return mv;
+		usercenterservice.insertUserCenter(usercentervo);
 	}
 	
 	//수현아나클럽 - 글 자세히보기

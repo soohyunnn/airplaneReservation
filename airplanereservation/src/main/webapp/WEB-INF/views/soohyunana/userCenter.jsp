@@ -182,7 +182,7 @@
 			</tbody>
 		</table>
 		
-		<a href="/soohyunana/wirteNotice" style="float:right; margin-right:94px;" onclick="" class="btn btn-sm btn-primary" >글쓰기</a>
+		<a href="/soohyunana/wirteNotice" style="float:right; margin-right:94px;" class="btn btn-sm btn-primary"  >글쓰기</a>
 </div>
 
 
@@ -214,53 +214,7 @@
 			</div>
 <!--pagination{e}  -->
 
-
-<%-- <!-- 페이징_start -->
-		<div class="com_table_board-no" style="text-align: center;">
-			<span class="com_table_board-no-btn">
-				<a href="javascript:void(0);" style="color:white;" onclick="javascript:goToPage(1);" title="처음">
-					<<
-				</a>
-				
-					<c:if test="${startPage != 1}">
-						<a href="javascript:void(0);" onclick="javascript:goToPage(${startPage}-1);" style="color:white;" title="이전">
-							<
-						</a>
-					</c:if>
-
-			</span>
-			<span class="com_table_board-no-sum">
-			<c:if test="${countSearch == searchCount}">
-				<c:forEach var="i" begin="${startPage}" end="${endPage}" step="1">
-					<c:choose>
-						<c:when test="${i == pageNo}">
-							<a href="javascript:void(0);" class="board-em" style="color:white;" onclick="javascript:goToPage('${i}');">${i}</a>
-						</c:when>
-						<c:otherwise>
-							<a href="javascript:void(0);" style="color:white;" onclick="javascript:goToPage('${i}');" >${i}</a>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-			</c:if>
-				<!-- href에 #을 쓰면 페이지 최상단으로 이동, void(0)을 하게 되면 undifined가 리턴되어 무효화 처리가 된다. -->
-			</span>
-			<span class="com_table_board-no-btn">
-			<c:if test="${endPage != totalPage}">
-					<c:if test="${totalPage > countPage}">
-						<c:if test="${pageNo < totalPage}">
-							<a href="javascript:void(0);"  style="color:white;" onclick="javascript:goToPage(${endPage}+1);" title="다음">
-								>
-							</a>
-						</c:if>
-					</c:if>					
-			</c:if>
-				<a href="javascript:void(0);" style="color:white;" onclick="javascript:goToPage(${totalPage});" title="마지막">
-					>>
-				</a>
-			</span>
-		</div>
-		<!-- 페이징_end --> --%>
-
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
 //이전 버튼 이벤트
 
@@ -300,64 +254,24 @@ $(document).on('click', '#btnSearch', function(e){
 	e.preventDefault();
 
 	var url = "${pageContext.request.contextPath}/soohyunana/userCenter";
-
 	url = url + "?searchType=" + $('#searchType').val();
-
 	url = url + "&keyword=" + $('#keyword').val();
-
 	location.href = url;
-
 	console.log(url);
 
 });
 
-
-function goToPage(pageNo) {
-	selectBannerListAction(pageNo);
-}
-
-function selectBannerListAction(pageNo) {
-	
- 	
-	var page		= "/soohyunana/userCenter";
-	
-	var searchForm = document.getElementById('searchForm');
-	searchForm.pageNo.value=pageNo
-	
-	var f = $("#searchForm");
-	  
-	$(".loading").show();
-	
-	//$('#pageNo').val(pageNo);
-	//alert(f);
-	f.action = page;
-	$('#searchForm').attr("action", page);
-
-	//console.log( $("#searchForm").attr("action"));
-	f.submit();
-	//$('#searchForm').submit(); 
-}
-
-function selectListAction(page) {
-	
-	  var f = $("#searchForm");	  
-	  console.log("f : " + $("#searchForm").serialize());
+//페이지 이동(아직 사용안함)
+function moveToPage(page){
+	  //alert('1');
+	  var f = $("#listvlaue");
+	  console.log("f : " + $("#listvlaue").serialize());
 	  f.action = page;
-	  $("#searchForm").attr("action",page);
-	  console.log( $("#searchForm").attr("action"));
+	  $("#listvlaue").attr("action",page);
+	  console.log( $("#listvlaue").attr("action"));
 	  //debugger;
 	  f.submit();
-	
-/* 	var url		= "/soohyunana/userCenter";
-	
-	$(".loading").show();
-	
-	$('#pageNo').val(pageNo);
-	alert('a');
-	$('#searchForm').attr("action", url);
-	$('#searchForm').action = url;
-	console.log( $("#searchForm").attr("action"));
-	
-	$('#searchForm').submit(); */
-}
+	}
+
+
 </script>

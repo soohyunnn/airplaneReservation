@@ -43,27 +43,9 @@ public class UserCenterServiceImpl implements UserCenterService{
 	
 	//고객센터 등록
 	@Override
-	public ModelAndView insertUserCenter(UserCenterVO usercentervo) throws Exception {
+	public void insertUserCenter(UserCenterVO usercentervo) throws Exception {
 		
-		ModelAndView mv = new ModelAndView();
-		int result = usercenterdao.insertUserCenter(usercentervo);
-		
-		System.out.println(result);
-		
-		
-		
-		
-		if(result==1) {
-			//mv.addObject("result", 1);
-			//mv.addObject("msg", "등록되었습니다.");
-			mv.setViewName("soohyunana/wirteNotice.tiles");	//이 부분은 해당 게시글 자세히 보기 창으로 이동해야 함(수정필요)
-		}else {
-			mv.addObject("result", 2);
-			mv.addObject("msg", "등록이 실패하였습니다.");
-			mv.setViewName("redirect:soohyunana/wirteNotice.tiles");	//이 부분은 해당 게시글 자세히 보기 창으로 이동해야 함(수정필요)
-		}
-		
-		return mv;
+		usercenterdao.insertUserCenter(usercentervo);	
 	}
 
 	

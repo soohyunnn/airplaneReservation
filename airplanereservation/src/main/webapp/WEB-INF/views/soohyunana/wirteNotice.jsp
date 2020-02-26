@@ -44,7 +44,7 @@ input[type="text"]{
 
 			<h2>수현아나 문의하기</h2>
 
-			<form name="form" id="form" role="form" method="post" action="/soohyunana/insertUserCenter">
+			<form name="insertform" id="insertform" role="form" method="post" action="">
 				<div class="mb-3">
 					<label for="title">제목</label>
 					<input type="text" class="form-control" name="serTitle" id="serTitle" placeholder="제목을 입력해 주세요">
@@ -69,30 +69,43 @@ input[type="text"]{
 
 			<div style="float:right; margin-bottom: 51px;">
 				<a href="/soohyunana/userCenter" onclick="" class="btn btn-sm btn-primary" >목록</a>
-				<button type="submit" class="btn btn-sm btn-success" id="btnSave">저장</button>				
+				<button type="button" class="btn btn-sm btn-success" id="btnSave">저장</button>				
 			</div>
 
 			</form>
-		
-
+	
 			<br><br><br><br><br><br><br><br><br>
 			
 		</div>
 </div>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
-/* 	var result = '${result}';
-	alert(result);
-	if(result == 1){
-		alert('${msg}');
-	} */
-	function moveToPage(page){
-		  
-		  var f = $("#userCenterform");
-		  //console.log("f : " + $("#userCenterform").serialize());
-		  f.action = page;
-		  $("#userCenterform").attr("action",page);
-		  console.log( $("#userIdForm").attr("action"));
-		  //debugger;
-		  f.submit();
-		}
+
+	$("#btnSave").click(function(){
+		alert('1');
+		$.ajax({
+			url : '/soohyunana/insertUserCenter',
+			type : 'POST',
+			data : $('#insertform').serialize() ,
+				success : function(data){
+					console.log('게시글 등록 성공');
+					alert('등록을 완료하였습니다.');
+					
+					 var f = $("#insertform");					  
+					  f.action = '/soohyunana/userCenter';
+					  $("#insertform").attr("action","/soohyunana/userCenter");
+					  					 
+					  f.submit();
+									
+				},
+				error : function() {
+					alert("등록을 실패하였습니다.");
+				}
+					
+						
+			});
+		
+	});
+
+
 </script>
