@@ -146,7 +146,7 @@
 		
 			
 			
-		<table class="table" id="usertable" style="margin: 0 auto; margin-bottom: 100px; width: 91%; background: #929090; color:#000000;">
+		<table class="table" id="usertable" style="margin: 0 auto; margin-bottom: 30px; width: 91%; background: #929090; color:#000000;">
 			<thead>
 				<tr>
 					<th scope="col">NO</th>
@@ -182,7 +182,7 @@
 			</tbody>
 		</table>
 		
-		<a href="/soohyunana/wirteNotice" style="float:right; margin-right:57px;" onclick="" class="btn btn-sm btn-primary" >글쓰기</a>
+		<a href="/soohyunana/wirteNotice" style="float:right; margin-right:94px;" onclick="" class="btn btn-sm btn-primary" >글쓰기</a>
 </div>
 
 
