@@ -164,7 +164,7 @@
 							<tr>
 								<td>${list.serNum}</td>
 								<td>${list.serId}</td>
-								<td style = "cursor:pointer;" onClick = " location.href='http://localhost:8080//soohyunana/detail?seq=${list.serNum }' ">${list.serTitle}</td>
+								<td style = "cursor:pointer;" onClick = " location.href='http://localhost:8080/soohyunana/detail?seq=${list.serNum }' ">${list.serTitle}</td>
 								<td>${list.serContent}</td>
 								<td>${list.serDay}</td>
 								<td>${list.serViews}</td>

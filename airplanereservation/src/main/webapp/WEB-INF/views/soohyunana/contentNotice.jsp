@@ -74,7 +74,8 @@ input[type="text"]{
 			</form>
 
 			<div style="float:right; margin-bottom: 51px;">
-				<button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
+				<a href="/soohyunana/userCenter" onclick="" class="btn btn-sm btn-primary" >목록</a>
+				<a href="#" class="btn btn-sm btn-warning" id="btnupdate" style = "cursor:pointer;" onClick = " location.href='http://localhost:8080/soohyunana/centerUpdateBtn?seq=${list.serNum }' ">수정</a>
 				<button type="button" class="btn btn-sm btn-danger" id="btnSave">삭제</button>
 			</div>
 

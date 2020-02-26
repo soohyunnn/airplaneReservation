@@ -25,6 +25,9 @@ public interface UserCenterDao {
 	//고객센터 등록
 	int insertUserCenter(UserCenterVO usercentervo);
 	
+	//고객센터 게시글 수정
+	public void updateUserCenter(UserCenterVO usercentvo);
+	
 	//고객센터 댓글 등록
 	int insertReply(ReplyVO replyvo);
 	

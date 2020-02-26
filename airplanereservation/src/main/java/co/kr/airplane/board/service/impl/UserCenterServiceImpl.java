@@ -113,6 +113,14 @@ public class UserCenterServiceImpl implements UserCenterService{
 		return usercenterdao.viewDetail(seq);
 	}
 
+	
+	//고객센터 게시글 수정
+	@Override
+	public void updateUserCenter(UserCenterVO usercentvo) throws Exception {
+		
+		usercenterdao.updateUserCenter(usercentvo);
+	}
+
 
 	
 

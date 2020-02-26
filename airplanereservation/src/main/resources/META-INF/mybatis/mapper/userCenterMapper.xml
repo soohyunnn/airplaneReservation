@@ -162,26 +162,17 @@
 <!-- UPDATE SECTION -->
 <!-- **************** -->
 
-<!-- Update TB_FC_CARDAUTHPCS_I (Auth_Res, 22)-->
-<!-- <update id="updateCardAuthPcsReq" parameterType="com.inicis.bz.vo.db.UpdCardAuthPcsVO">
-	<![CDATA[
-		update TB_FC_CARDAUTHPCS_I
-		set CHNG_DT = to_char(sysdate, 'yyyymmdd'), CHNG_TM = to_char(sysdate, 'hh24miss'),
-			PCS_STATUS_CD = #{pcs_status_cd}
-		where TRNS_ID = #{trns_id}
-	]]>
-</update> -->
 
-<!-- Update TB_FC_CARDAUTHPCS_I (Auth_Res, 00)-->
-<!-- <update id="updateCardAuthPcsCnfm" parameterType="com.inicis.bz.vo.db.UpdCardAuthPcsVO">
-	<![CDATA[
-		update TB_FC_CARDAUTHPCS_I
-		set LT_CNFM_DT = to_char(sysdate, 'yyyymmdd'), LT_CNFM_TM = to_char(sysdate, 'hh24miss'),
-			JOB_DVD_CD = #{job_dvd_cd}, PCS_STATUS_CD = #{pcs_status_cd}, RSPS_CD = #{rsps_cd},
-			USER_NM = nvl(#{user_nm}, USER_NM), ECD_BTH_DT = nvl(#{ecd_bth_dt}, ECD_BTH_DT)
-		where TRNS_ID = #{trns_id}
-	]]>
-</update> -->
+<update id="updateUserCenter" parameterType="co.kr.airplane.board.vo.UserCenterVO">
+/** [userCenterMapper.xml][co.kr.airplane.service.impl.userCenterMapper.updateUserCenter][고객센터 수정] **/
+
+	update usercenter
+	set BNOTITLE = #{serTitle}, BNOCONTENT =#{serContent}, BNOPHONE = #{serPhone}, BNOEMAIL = #{serEmail}
+	where BNO = #{serNum}
+
+</update>
+
+
 	
 	
 	

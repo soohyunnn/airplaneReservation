@@ -99,8 +99,51 @@ public class UserCenterController {
 		return mv;
 	}
 	
+	//글 수정 버튼
+	@RequestMapping(value="/soohyunana/centerUpdateBtn")
+	public ModelAndView centerUpdateBtn(@ModelAttribute UserCenterVO usercentvo, @RequestParam("seq")int seq) throws Exception{
+		System.out.println("centerUpdateBtn()");
+		
+		ModelAndView mv = new ModelAndView();
+		
+		usercentvo.setSerNum(seq);
+		
+		mv.setViewName("soohyunana/modifyNotice.tiles");
+		mv.addObject("list", usercenterservice.viewDetail(seq));
+		
+		return mv;
+	}
 	
 	//수현아나클럽 - 글 수정
+	@RequestMapping(value="/soohyunana/centerUpdate")
+	public ModelAndView centerUpdate(@ModelAttribute ReplyVO replyvo, @ModelAttribute UserCenterVO usercentvo, @RequestParam("seq")int seq) throws Exception{
+		System.out.println("centerUpdate()");
+		
+		ModelAndView mv = new ModelAndView();
+		replyvo.setSerNum(seq);
+		usercentvo.setSerNum(seq);
+		
+		System.out.println("replyvo NO : "+replyvo.getSerNum());
+		System.out.println("usercentvo NO : "+usercentvo.getSerNum());
+		System.out.println("serTitle : "+usercentvo.getSerTitle());
+		System.out.println("serContent : "+usercentvo.getSerContent());
+		System.out.println("serPhone : "+usercentvo.getSerPhone());
+		System.out.println("serEmail : "+usercentvo.getSerEmail());
+		//글 수정 로직 불러오기
+		usercenterservice.updateUserCenter(usercentvo);
+		
+		System.out.println("여기까지 됬납");
+		mv.setViewName("soohyunana/contentNotice.tiles");
+		mv.addObject("list", usercenterservice.viewDetail(seq));
+		
+		Map<String, Object> replyList = usercenterservice.selectReply(replyvo);
+		System.out.println("map"+replyList);
+					
+		mv.addObject("replyList",replyList.get("replyList"));
+		mv.addObject("total",replyList.get("total"));
+		
+		return mv;
+	}
 	
 	//수현아나클럽 - 글 삭제
 	
