@@ -11,14 +11,17 @@
 			</div>	
 		</div>
 
+		
+		<!-- search{s} -->
 		<div style="width: 91%; margin: 0 auto;">
 				<form  id="searchForm" name="searchForm" method="post">
 				
-					<input type="hidden" id="pageNo" name="pageNo" value="${pageNo }">					
+<%-- 					<input type="hidden" id="pageNo" name="pageNo" value="${pageNo }">	
+					<input type="hidden" id="searchCount" name="searchCount" value="10"> --%>				
 					
 					<div style="float:left">
 					
-						<select class="form-control form-control-sm" name="search" id="search">
+						<select class="form-control form-control-sm" name="searchType" id="searchType">
 							<option value="Everything">전체</option>
 							<option value="ID">작성자</option>
 							<option value="TITLE">제목</option>
@@ -26,20 +29,20 @@
 						</select>
 					</div>
 					<div style="float:left; padding-left:5px;"  >
-					<select class="form-control form-control-sm" name="searchCount" id="searchCount">
+					<!-- <select class="form-control form-control-sm" name="searchCount" id="searchCount">
 							<option value="5">5 개씩</option>
 							<option value="10">10 개씩</option>
 							<option value="15">15 개씩</option>
-						</select>
+						</select> -->
 					</div>
 					<div style="padding-right: 10px; padding-left: 5px; float: left;">
-						<input type="text" class="form-control form-control-sm" name="searchInput" id="searchInput" style="height: 21px">
+						<input type="text" class="form-control form-control-sm" name="keyword" id="keyword" style="height: 21px">
 					</div>
 					<!--  button은 form태그 안에 넣으면 이벤트를 한번 더 타서 클릭을 두번한것처럼 실행된다. 그래서 보통은 a태그를 사용하며 button을 사용할 경우 type="button"을 주면 된다-->
-					<button class="btn btn-primary" type="button" style="background-color: black; color: white; margin-right: 0px;" id="" onclick="javascript:selectListAction('/soohyunana/userCenter');">검색</button>		
+					<button class="btn btn-primary" style="background-color: black; color: white; margin-right: 0px;" name="btnSearch" id="btnSearch" >검색</button>		
 				</form>
 			</div>
-			
+			<!-- search{e} -->
 		
 			
 			
@@ -82,7 +85,37 @@
 		<a href="/soohyunana/wirteNotice" style="float:right; margin-right:57px;" onclick="" class="btn btn-sm btn-primary" >글쓰기</a>
 </div>
 
-<!-- 페이징_start -->
+
+<!-- pagination{s} -->
+			<div id="paginationBox" style="padding-left: 140px">
+				<ul class="pagination">
+					<c:if test="${pagination.prev}">
+						<li class="page-item"><a class="page-link"
+							style="background: #ff007b99" href="#"
+							onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a>
+						</li>
+					</c:if>
+					<c:forEach begin="${pagination.startPage}"
+						end="${pagination.endPage}" var="idx">
+						<li
+							class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> ">
+							<a class="page-link" style="background: #ff007b99" href="#"
+							onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
+								${idx} </a>
+						</li>
+					</c:forEach>
+					<c:if test="${pagination.next}">
+						<li class="page-item"><a class="page-link" href="#"
+							style="background: #ff007b99"
+							onClick="fn_next('${pagination.range}', 
+						'${pagination.range}', '${pagination.rangeSize}')">Next</a></li>
+					</c:if>
+				</ul>
+			</div>
+<!--pagination{e}  -->
+
+
+<%-- <!-- 페이징_start -->
 		<div class="com_table_board-no" style="text-align: center;">
 			<span class="com_table_board-no-btn">
 				<a href="javascript:void(0);" style="color:white;" onclick="javascript:goToPage(1);" title="처음">
@@ -126,26 +159,71 @@
 				</a>
 			</span>
 		</div>
-		<!-- 페이징_end -->
+		<!-- 페이징_end --> --%>
 
 <script>
+//이전 버튼 이벤트
+
+function fn_prev(page, range, rangeSize) {	//현재 목록의 페이지 번호,각 페이지의 시작 번호,페이지당 게시글 갯수 =10으로 초기화
+	var page = ((range - 2) * rangeSize) + 1;
+	var range = range - 1;
+	var url = "${pageContext.request.contextPath}/soohyunana/userCenter";
+
+	url = url + "?page=" + page;
+	url = url + "&range=" + range;
+
+	location.href = url;
+}
+//페이지 번호 클릭
+
+function fn_pagination(page, range, rangeSize, searchType, keyword) { 	//현재 목록의 페이지 번호,각 페이지의 시작 번호,페이지당 게시글 갯수 =10으로 초기화,게시글 검색 시 검색 타입 목록,검색 단어
+	var url = "${pageContext.request.contextPath}/soohyunana/userCenter";
+	url = url + "?page=" + page;
+	url = url + "&range=" + range;
+	location.href = url;	
+}
+
+//다음 버튼 이벤트
+function fn_next(page, range, rangeSize) {	//현재 목록의 페이지 번호,각 페이지의 시작 번호,페이지당 게시글 갯수 =10으로 초기화
+	var page = parseInt((range * rangeSize)) + 1;
+	var range = parseInt(range) + 1;
+	var url = "${pageContext.request.contextPath}/soohyunana/userCenter";
+
+	url = url + "?page=" + page;
+	url = url + "&range=" + range;
+	
+	location.href = url;
+}
+
+$(document).on('click', '#btnSearch', function(e){
+
+	e.preventDefault();
+
+	var url = "${pageContext.request.contextPath}/soohyunana/userCenter";
+
+	url = url + "?searchType=" + $('#searchType').val();
+
+	url = url + "&keyword=" + $('#keyword').val();
+
+	location.href = url;
+
+	console.log(url);
+
+});
+
+
 function goToPage(pageNo) {
 	selectBannerListAction(pageNo);
 }
 
 function selectBannerListAction(pageNo) {
 	
-/* 	  var f = $("#searchForm");	  
-	  console.log("f : " + $("#searchForm").serialize());
-	  f.action = page;
-	  $("#searchForm").attr("action",page);
-	  console.log( $("#searchForm").attr("action"));
-	  //debugger;
-	  f.submit(); */
+ 	
+	var page		= "/soohyunana/userCenter";
 	
- 	var page		= "/soohyunana/userCenter";
 	var searchForm = document.getElementById('searchForm');
 	searchForm.pageNo.value=pageNo
+	
 	var f = $("#searchForm");
 	  
 	$(".loading").show();

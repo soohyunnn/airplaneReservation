@@ -8,13 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.servlet.ModelAndView;
 
+import co.kr.airplane.board.utils.Pagination;
+import co.kr.airplane.board.utils.Search;
 import co.kr.airplane.board.vo.ReplyVO;
 import co.kr.airplane.board.vo.UserCenterVO;
 
 public interface UserCenterService {
 
 	//고객센터 목록
-	public Map<String, Object> selectUserCenter(HttpServletRequest request, UserCenterVO usercentervo) throws Exception;
+	public List<UserCenterVO> selectUserCenter(Search search) throws Exception;
+	
+	//고객센터 목록 수
+	public int selectUserCenterListCount(Search search) throws Exception;
 	
 	//고객센터 등록
 	public ModelAndView insertUserCenter(UserCenterVO usercentervo) throws Exception;

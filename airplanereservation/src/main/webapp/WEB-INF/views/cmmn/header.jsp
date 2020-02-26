@@ -65,5 +65,5 @@ function moveToPage(page){
     	
     		<form id="pageForm" method="POST">>
     			<input type="hidden" id="pageNo" name="pageNo" value="1">
-    			<input type="hidden" id="searchCount" name="searchCount" value="10">
+    			<input type="hidden" id="searchCount" name="searchCount" value="0">
     		</form>

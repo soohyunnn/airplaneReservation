@@ -5,6 +5,8 @@ package co.kr.airplane.board.controller;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import co.kr.airplane.board.service.UserCenterService;
+import co.kr.airplane.board.utils.Pagination;
+import co.kr.airplane.board.utils.Search;
 import co.kr.airplane.board.vo.ReplyVO;
 import co.kr.airplane.board.vo.UserCenterVO;
 
@@ -25,25 +29,34 @@ public class UserCenterController {
 	
 	//수현아나클럽-고객센터(목록 불러오기+페이징)
 	@RequestMapping(value="/soohyunana/userCenter")
-	public ModelAndView userCenter(HttpServletRequest request,@ModelAttribute UserCenterVO usercentervo) throws Exception{
+	public ModelAndView userCenter(@RequestParam(required = false, defaultValue = "1") int page 
+			, @RequestParam(required = false, defaultValue = "1") int range
+			, @RequestParam(required = false, defaultValue = "Everything") String searchType
+			, @RequestParam(required = false, defaultValue = "") String keyword
+			,HttpSession session, HttpServletResponse response, @ModelAttribute UserCenterVO usercentervo) throws Exception{
+		
 		System.out.println("userCenter()");
 		
-		System.out.println("pageno : "+usercentervo.getPageNo());
-		System.out.println("search : "+usercentervo.getSearch());
-		System.out.println("searchcount : "+usercentervo.getSearchCount());
-		System.out.println("searchinput : "+usercentervo.getSearchInput());
-		
 		ModelAndView mv = new ModelAndView();
-		Map<String, Object> userCenterList = usercenterservice.selectUserCenter(request,usercentervo);
-		System.out.println("map"+userCenterList);
-		//System.out.println("userCenterList"+userCenterList);
+		//Search 객체 생성
+		Search search = new Search();
+		search.setSearchType(searchType);
+		search.setKeyword(keyword);
 		
-		int pageno = usercentervo.getPageNo();
+		int total = usercenterservice.selectUserCenterListCount(search);
 		
-		if(pageno == 1) {
-			
-		}
+		//Pagination 객체생성
+		Pagination pagination = new Pagination();
+		search.pageInfo(page, range, total);
+		
 		mv.setViewName("soohyunana/userCenter.tiles");
+		mv.addObject("pagination", search);
+		mv.addObject("userCenterList", usercenterservice.selectUserCenter(search));
+		mv.addObject("total",total);
+		
+		System.out.println(usercenterservice.selectUserCenter(search));
+		
+/*		mv.setViewName("soohyunana/userCenter.tiles");
 		mv.addObject("total",userCenterList.get("total"));
 		mv.addObject("countPage",userCenterList.get("countPage"));
 		mv.addObject("countList",userCenterList.get("countList"));
@@ -53,7 +66,7 @@ public class UserCenterController {
 		mv.addObject("pageNo",userCenterList.get("pageNo"));
 		mv.addObject("searchCount",userCenterList.get("searchCount"));
 		mv.addObject("countSearch",userCenterList.get("countSearch"));
-		mv.addObject("userCenterList", userCenterList.get("userCenterList"));
+		mv.addObject("userCenterList", userCenterList.get("userCenterList"));*/
 		
 		return mv;
 	}

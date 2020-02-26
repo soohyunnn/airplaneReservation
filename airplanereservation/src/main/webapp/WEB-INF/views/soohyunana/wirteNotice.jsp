@@ -68,8 +68,7 @@ input[type="text"]{
 			
 
 			<div style="float:right; margin-bottom: 51px;">
-				<a href="/soohyunana/userCenter" onclick="" class="btn btn-sm btn-primary" >목록</a> <!-- /soohyunana/userCenter 로 href 변경하기 -->
-				<!-- <button type="button" class="btn btn-sm btn-primary" onclick="moveToPage('/')">목록</button> -->
+				<a href="/soohyunana/userCenter" onclick="" class="btn btn-sm btn-primary" >목록</a>
 				<button type="submit" class="btn btn-sm btn-success" id="btnSave">저장</button>				
 			</div>
 
@@ -81,10 +80,11 @@ input[type="text"]{
 		</div>
 </div>
 <script>
-	var result = '${result}';
+/* 	var result = '${result}';
+	alert(result);
 	if(result == 1){
 		alert('${msg}');
-	}
+	} */
 	function moveToPage(page){
 		  
 		  var f = $("#userCenterform");

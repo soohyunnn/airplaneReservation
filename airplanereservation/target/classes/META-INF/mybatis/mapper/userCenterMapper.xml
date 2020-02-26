@@ -21,38 +21,89 @@
 		FROM usercenter 
 		WHERE BNO BETWEEN ((#{pageNo}-1)*#{searchCount})+1 AND  (#{pageNo})*#{searchCount} -->
 
-<select id="selectUserCenter" resultType="co.kr.airplane.board.vo.UserCenterVO" parameterType="co.kr.airplane.board.vo.UserCenterVO">
+<select id="selectUserCenter" resultType="co.kr.airplane.board.vo.UserCenterVO" parameterType="co.kr.airplane.board.utils.Search">
 /** [userCenterMapper.xml][com.adminproject.banner.service.impl.userCenterMapper.selectUserCenter][고객센터 조회] **/
 
 
 		SELECT BNO as serNum, BNONAME as serId, BNOTITLE as serTitle, BNOCONTENT as serContent, BNODAY as serDay, BNOVIEWS as serViews
-		FROM ( SELECT A.*, ROW_NUMBER() OVER(ORDER BY BNO ASC) AS NUM
-		FROM usercenter A
-		<if test="search != null and search != '' ">
-			<if test="search == 'Everything'">
+		FROM ( select a.*, ROWNUM as rnum from (
+			select * 
+			FROM usercenter 
+			
+			<choose>
+				<when test="searchType == 'Everything' ">
+					where BNONAME like '%'||#{keyword}||'%'
+					or BNOTITLE like '%'||#{keyword}||'%'
+					or BNOCONTENT like '%'||#{keyword}||'%'
+				</when >
+				<when test="searchType == 'ID' ">
+					where BNONAME like '%'||#{keyword}||'%'
+				</when>
+				<when test="searchType == 'TITLE' ">
+					where BNOTITLE like '%'||#{keyword}||'%'
+				</when>
+				<when test="searchType == 'CONTENT' ">
+					where BNOCONTENT like '%'||#{keyword}||'%'
+				</when>
+			</choose>
 
-			</if>
-			<if test="search == 'ID'">
-				where BNONAME like '%'||#{searchInput,jdbcType=VARCHAR}||'%'
-			</if>
-			<if test="search == 'TITLE'">
-				where BNOTITLE like '%'||#{searchInput,jdbcType=VARCHAR}||'%'
-			</if>
-			<if test="search == 'CONTENT'">
-				where BNOCONTENT like '%'||#{searchInput,jdbcType=VARCHAR}||'%'
-			</if>
-		</if>
-		)
-		WHERE NUM BETWEEN ((#{pageNo}-1)*#{searchCount})+1 AND  (#{pageNo})*#{searchCount}
+<![CDATA[
+				order by BNO ASC
+			)
+		a) where rnum >#{startList} and rnum <=#{listSize}*#{page}
+]]>
+
 
 </select>
 
-<select id="selectUserCenterListCount" resultType="int">
+<!-- 
+		SELECT BNO as serNum, BNONAME as serId, BNOTITLE as serTitle, BNOCONTENT as serContent, BNODAY as serDay, BNOVIEWS as serViews
+		FROM ( select a.*, ROWNUM as rnum from (
+			select * 
+			FROM usercenter 
+		<choose>
+				<when test="searchOption == 'all' ">
+					where name like '%'||#{keyword}||'%'
+					or city like '%'||#{keyword}||'%'
+					or user_id like '%'||#{keyword}||'%'
+				</when >
+				<when test="searchOption == 'name' ">
+					where name like '%'||#{keyword}||'%'
+				</when>
+				<when test="searchOption == 'city' ">
+					where city like '%'||#{keyword}||'%'
+				</when>
+				<when test="searchOption == 'user_id' ">
+					where user_id like '%'||#{keyword}||'%'
+				</when>
+			</choose>
+				order by BNO ASC
+			)
+		a) where rnum >#{startList} and rnum <=#{listSize}*#{page} -->
+
+<select id="selectUserCenterListCount" resultType="int" parameterType="co.kr.airplane.board.utils.Search">
  	/** [userCenterMapper.xml][co.kr.airplane.service.impl.userCenterMapper.selectUserCenterListCount][회원정보 수] **/
  	<![CDATA[	
 		select count(*)
-		from usercenter		
+		from usercenter	
+
 	]]>
+				<choose>
+				<when test="searchType == 'Everything' ">
+					where BNONAME like '%'||#{keyword}||'%'
+					or BNOTITLE like '%'||#{keyword}||'%'
+					or BNOCONTENT like '%'||#{keyword}||'%'
+				</when >
+				<when test="searchType == 'ID' ">
+					where BNONAME like '%'||#{keyword}||'%'
+				</when>
+				<when test="searchType == 'TITLE' ">
+					where BNOTITLE like '%'||#{keyword}||'%'
+				</when>
+				<when test="searchType == 'CONTENT' ">
+					where BNOCONTENT like '%'||#{keyword}||'%'
+				</when>
+		</choose>
 </select>
 
 <select id="selectReply" resultType="co.kr.airplane.board.vo.ReplyVO" parameterType="co.kr.airplane.board.vo.ReplyVO">
@@ -87,7 +138,7 @@
 <!-- INSERT SECTION -->
 <!-- **************** -->
 
-<insert id="insertUserCenter" parameterType="co.kr.airplane.board.vo.UserCenterVO">
+<insert id="insertUserCenter" parameterType="co.kr.airplane.board.vo.UserCenterVO" >
 /** [userCenterMapper.xml][com.adminproject.banner.service.impl.userCenterMapper.insertUserCenter][고객센터 등록] **/
 <![CDATA[
 	insert into usercenter (BNO, BNONAME, BNOTITLE, BNOCONTENT, BNOPHONE, BNOEMAIL, BNODAY)

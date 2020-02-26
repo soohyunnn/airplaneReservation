@@ -2,7 +2,7 @@ package co.kr.airplane.board.vo;
 
 /*고객센터*/
 public class UserCenterVO {
-	private String serNum;		//게시글 번호
+	private int serNum;		//게시글 번호
 	private String serId;		//작성자
 	private String serTitle;	//제목
 	private String serContent;	//내용
@@ -17,10 +17,10 @@ public class UserCenterVO {
 	private String searchInput;
 	private String search;
 	
-	public String getSerNum() {
+	public int getSerNum() {
 		return serNum;
 	}
-	public void setSerNum(String serNum) {
+	public void setSerNum(int serNum) {
 		this.serNum = serNum;
 	}
 	public String getSerId() {
