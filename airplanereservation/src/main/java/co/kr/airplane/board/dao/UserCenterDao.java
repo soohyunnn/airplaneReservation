@@ -17,26 +17,32 @@ public interface UserCenterDao {
 	public List<UserCenterVO> selectUserCenter(Search search);
 	
 	//고객센터 목록 수
-	int selectUserCenterListCount(Search search);
+	public int selectUserCenterListCount(Search search);
 	
 	//고객센터 게시글 상세조회
 	public UserCenterVO viewDetail(int seq);
 	
 	//고객센터 등록
-	int insertUserCenter(UserCenterVO usercentervo);
+	public int insertUserCenter(UserCenterVO usercentervo);
 	
 	//고객센터 게시글 수정
-	public void updateUserCenter(UserCenterVO usercentvo);
+	public int updateUserCenter(UserCenterVO usercentvo);
+	
+	//고객센터 게시글 삭제
+	public int deleteUserCenter(UserCenterVO usercentvo);
+	
+	//고객센터 게시글 삭제 시 댓글 삭제
+	public int deleteUserCenterReply(UserCenterVO usercentvo);
 	
 	//고객센터 댓글 등록
-	int insertReply(ReplyVO replyvo);
+	public int insertReply(ReplyVO replyvo);
 	
 	//고객센터 댓글 목록 조회
 	public List<ReplyVO> selectReply(ReplyVO replyvo);
 	
 	//고객센터 댓글 수
-	int selectReplyCount(ReplyVO replyvo);
+	public int selectReplyCount(ReplyVO replyvo);
 	
 	//고객센터 댓글 삭제
-	int deleteReply(ReplyVO replyvo);
+	public int deleteReply(ReplyVO replyvo);
 }

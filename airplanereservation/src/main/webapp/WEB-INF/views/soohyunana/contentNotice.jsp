@@ -76,10 +76,12 @@ input[type="text"]{
 			<div style="float:right; margin-bottom: 51px;">
 				<a href="/soohyunana/userCenter" onclick="" class="btn btn-sm btn-primary" >목록</a>
 				<a href="#" class="btn btn-sm btn-warning" id="btnupdate" style = "cursor:pointer;" onClick = " location.href='http://localhost:8080/soohyunana/centerUpdateBtn?seq=${list.serNum }' ">수정</a>
-				<button type="button" class="btn btn-sm btn-danger" id="btnSave">삭제</button>
+				<button type="button" class="btn btn-sm btn-danger" id="btnDeleteUserCenter">삭제</button>
 			</div>
 
-		
+			<form name="deleteDateForm" id="deleteDateForm" method="POST">
+				<input type="hidden" name="serNum" id="serNum" value="${list.serNum }" >
+			</form>
 		
 
 			<!-- Reply Form {s} -->
@@ -147,7 +149,7 @@ input[type="text"]{
 			<br><br><br><br><br><br><br><br>
 </div>
 </div>
-
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
 	//댓글 등록결과
 	var replyResult = '${replyResult}';
@@ -191,4 +193,26 @@ input[type="text"]{
 		  //debugger;
 		  f.submit();
 		}
+	
+	//수현아나클럽 -  고객센터 - 게시글삭제
+	$("#btnDeleteUserCenter").click(function(){
+		//alert('1');
+		var deleteCon = confirm("게시글을 삭제하시겠습니까?");
+
+		if (deleteCon == true) {
+			$.ajax({
+				url : '/soohyunana/deleteCenter',
+				type : 'POST',
+				data : $('#deleteDateForm').serialize(),
+					success : function(data) {
+						console.log('successs');
+						alert('삭제를 완료하였습니다.');
+						location.href = 'http://localhost:8080/soohyunana/contentNotice';
+					},
+					error : function() {
+						alert("삭제를 실패하였습니다.");
+					}
+				});
+			}
+		});
 </script>

@@ -188,5 +188,32 @@
 	where REPLYNO = #{replyNo}
 ]]>
 </delete>
-	
+
+
+<delete id="deleteUserCenter" parameterType="co.kr.airplane.board.vo.UserCenterVO">
+/** [userCenterMapper.xml][co.kr.airplane.service.impl.userCenterMapper.deleteUserCenter][게시글 삭제] **/
+<![CDATA[
+	delete from usercenter
+	where BNO = #{serNum}
+]]>
+</delete>
+
+
+<delete id="deleteUserCenterReply" parameterType="co.kr.airplane.board.vo.UserCenterVO">
+/** [userCenterMapper.xml][co.kr.airplane.service.impl.userCenterMapper.deleteUserCenterReply][게시글 삭제 시 댓글 삭제] **/
+<![CDATA[
+	delete from REPLY
+	where SERNO = #{serNum}
+]]>
+</delete>
+
 </mapper>
+
+
+
+
+
+
+
+
+

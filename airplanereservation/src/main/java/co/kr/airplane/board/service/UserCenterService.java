@@ -27,6 +27,9 @@ public interface UserCenterService {
 	//고객센터 수정
 	public void updateUserCenter(UserCenterVO usercentvo) throws Exception;
 	
+	//고객센터 삭제
+	public void deleteUserCenter(UserCenterVO usercentvo) throws Exception;
+	
 	//고객센터 게시글 상세 조회
 	public UserCenterVO viewDetail(int seq) throws Exception;
 	

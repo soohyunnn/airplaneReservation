@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -146,6 +147,12 @@ public class UserCenterController {
 	}
 	
 	//수현아나클럽 - 글 삭제
+	@ResponseBody
+	@RequestMapping(value="/soohyunana/deleteCenter", method=RequestMethod.POST)
+	public void deleteCenter(@ModelAttribute UserCenterVO usercentvo) throws Exception{
+		//게시글이 삭제되면 해당 댓글도 삭제되어야 함(그래서 두개의 vo 모두 넘겨줌)
+		usercenterservice.deleteUserCenter(usercentvo);
+	}
 	
 	//수현아나클럽-고객센터(댓글 등록)
 	@RequestMapping(value="/soohyunana/UserCenter/insertReply")

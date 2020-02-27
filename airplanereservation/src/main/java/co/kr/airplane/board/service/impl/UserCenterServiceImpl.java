@@ -120,6 +120,14 @@ public class UserCenterServiceImpl implements UserCenterService{
 		
 		usercenterdao.updateUserCenter(usercentvo);
 	}
+	
+	
+	//고객센터 게시글 삭제
+	@Override
+	public void deleteUserCenter(UserCenterVO usercentvo) throws Exception {
+		usercenterdao.deleteUserCenter(usercentvo);			//게시글 삭제
+		usercenterdao.deleteUserCenterReply(usercentvo);		//게시글 삭제 시 해당 게시글 번호 댓글 모두삭제
+	}
 
 
 	
