@@ -40,7 +40,7 @@ public class UserManiController {
 		//사용자 관리 -> 회원정보 검색
 		@ResponseBody
 		@RequestMapping(value="/userinformation", method=RequestMethod.POST)
-		public Map<String, Object> userinformation(HttpServletRequest request, @ModelAttribute UserVO uservo) {
+		public Map<String, Object> userinformation(HttpServletRequest request, @ModelAttribute UserVO uservo) throws Exception{
 			Map<String, Object> map = new HashMap<String, Object>();
 			System.out.println("userinformation()");
 			
@@ -52,5 +52,30 @@ public class UserManiController {
 
 		}
 		
+		//사용자 관리 -> 회원등록
+		@ResponseBody
+		@RequestMapping(value="/admin/usermani/insertUserInfo", method=RequestMethod.POST)
+		public void insertUserInfo(@ModelAttribute UserVO uservo) throws Exception{
+			System.out.println("insertUserInfo()");
+			ModelAndView mv = new ModelAndView();
+			usermaniservice.insertUserInfo(uservo);
+			
+			mv.setViewName("admin/usermani/adminUserInfo.admin");
+			
+		}
+		
+		//사용자 관리 -> 회원수정
+		@ResponseBody
+		@RequestMapping(value="/admin/usermani/updateUserInfo", method=RequestMethod.POST)
+		public void updateUserInfo(@ModelAttribute UserVO uservo) throws Exception{
+			System.out.println("updateUserInfo()");
+			System.out.println("UserName : "+uservo.getUserName());
+			System.out.println("UserId : "+uservo.getUserId());
+			System.out.println("UserPw : "+uservo.getUserPw());
+			System.out.println("UserPhone : "+uservo.getUserPhone());
+			System.out.println("UserEmail : "+uservo.getUserEmail());
+			
+			usermaniservice.updateUserInfo(uservo);
+		}
 	
 }

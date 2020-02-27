@@ -88,7 +88,7 @@ input[type="text"]{
 <script>
 
 	$("#btnSave").click(function(){
-		alert('1');
+		//alert('1');
 		$.ajax({
 			url : '/soohyunana/insertUserCenter',
 			type : 'POST',
