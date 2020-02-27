@@ -77,5 +77,14 @@ public class UserManiController {
 			
 			usermaniservice.updateUserInfo(uservo);
 		}
+		
+		//사용자 관리 -> 회원삭제
+		@ResponseBody
+		@RequestMapping(value="/admin/usermani/deleteUserInfo", method=RequestMethod.POST)
+		public void deleteUserInfo(@ModelAttribute UserVO uservo) throws Exception{
+			System.out.println("deleteUserInfo()");
+			usermaniservice.deleteUserInfo(uservo);
+		}
+		
 	
 }

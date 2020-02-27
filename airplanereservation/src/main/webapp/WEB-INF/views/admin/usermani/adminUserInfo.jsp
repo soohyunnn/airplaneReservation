@@ -89,7 +89,7 @@
 					<!-- submit 버튼은 JSP 프로그램 진행시 필수 요소 -->
 					<!-- 폼 태그 범위 안에 위치해야 한다. -->
 					<button type="button" class="btn btn-sm btn-warning" style="" id="btnUpdateAdminUserInfo">수정</button>
-					<a href="" class="btn btn-sm btn-danger" >삭제</a>					
+					<button type="button" class="btn btn-sm btn-danger" style="" id="btnDeleteAdminUserInfo">삭제</button>					
 				</form>
 				<!-- 회원수정 form End -->	
 			</div>
@@ -329,6 +329,29 @@ function show(pageNo){
 					},
 					error : function() {
 						alert("수정을 실패하였습니다.");
+					}
+				});
+			}
+		});
+	
+	
+	//admin - 회원삭제
+	$("#btnDeleteAdminUserInfo").click(function(){
+		//alert('1');
+		var deleteCon = confirm("회원정보를 삭제하시겠습니까?");
+
+		if (deleteCon == true) {
+			$.ajax({
+				url : '/admin/usermani/deleteUserInfo',
+				type : 'POST',
+				data : $('#adminUserchangeForm').serialize(),
+					success : function(data) {
+						console.log('successs');
+						alert('삭제를 완료하였습니다.');
+						location.href = 'http://localhost:8080/admin/usermani/adminUserInfo.admin';
+					},
+					error : function() {
+						alert("삭제를 실패하였습니다.");
 					}
 				});
 			}

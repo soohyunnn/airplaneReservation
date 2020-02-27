@@ -93,21 +93,13 @@
 <!-- DELETE SECTION -->
 <!-- **************** -->
 
-<!-- WPAY_USER_JNOFFC_INFO Delete -->
-<!-- <delete id="deleteUserJnoffcInfo" parameterType="String">
-	<![CDATA[
-		delete from WPAY_USER_JNOFFC_INFO
-		where WPAY_USERID = #{wpay_userid}
-		and JNOFFC_TYPE_CD = #{jnoffc_type_cd}
-	]]>
-	<choose>
-		<when test="jnoffc_type_cd == 'P'.toString()"> 
-			and JNOFFC_ID = #{jnoffc_site_id}
-		</when>
-		<when test="jnoffc_type_cd == 'S'.toString()"> 
-			and SITE_ID = #{jnoffc_site_id}
-		</when>
-	</choose>
-</delete> -->
+<delete id="deleteUserInfo" parameterType="co.kr.airplane.user.vo.UserVO">
+/** [adminMapper.xml][co.kr.airplane.service.impl.adminMapper.deleteUserInfo][admin-회원삭제] **/
+<![CDATA[
+	delete from userinfo
+	where NO_SEQ = #{No}
+]]>
+</delete>
+
 	
 </mapper>

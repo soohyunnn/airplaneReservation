@@ -23,5 +23,8 @@ public interface UserManiDao {
 	
 	//회원정보 수정
 	public int updateUserInfo(UserVO uservo);
+	
+	//회원정보 삭제
+	public int deleteUserInfo(UserVO uservo);
 
 }

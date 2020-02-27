@@ -21,4 +21,7 @@ public interface UserManiService {
 	//회원정보 수정
 	public void updateUserInfo(UserVO uservo) throws Exception;
 	
+	//회원정보 삭제
+	public void deleteUserInfo(UserVO uservo) throws Exception;
+	
 }
