@@ -34,7 +34,8 @@ input[type="text"]{
     /* transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
 }
 </style>
-	
+<script src="/resources/ckeditor/ckeditor.js"></script>	
+<script src="/resources/ckeditor/config.js"></script>
 <div style="">
 		<div style="margin: 80px; margin-bottom: 20px;">
 			<div>
@@ -45,7 +46,7 @@ input[type="text"]{
 			<div class="container" role="main" style="height: 700px;">
 
 			<h2>수현아나 문의하기-자세히보기</h2>
-
+			
 			<form name="form" id="form" role="form" method="post" action="">
 				<div class="mb-3">
 					<label for="title">제목</label>
@@ -55,10 +56,16 @@ input[type="text"]{
 					<label for="reg_id">작성자</label>
 					<input type="text" class="form-control" name="serId" id="serId" value="${list.serId }" readonly>
 				</div>
+				
 				<div class="mb-3">
 					<label for="content">내용</label>
-					<textarea class="form-control" rows="5" name="serContent" id="serContent" style="height: 400px;" readonly>${list.serContent }</textarea>
+					
+					<!-- <textarea class="form-control" rows="5" name="serContent" id="serContent" style="height: 400px;" readonly></textarea> -->
+					
+					<label>${list.serContent }</label>
+
 				</div>
+				
 				<div class="mb-3">
 					<label for="tag">연락처</label>
 					<input type="text" class="form-control" name="serPhone" id="serPhone" value="${list.serPhone }" readonly>
@@ -72,7 +79,7 @@ input[type="text"]{
 					<input type="text" class="form-control" name="serDay" id="serDay" value="${list.serDay }" readonly>
 				</div>
 			</form>
-
+			
 			<div style="float:right; margin-bottom: 51px;">
 				<a href="/soohyunana/userCenter" onclick="" class="btn btn-sm btn-primary" >목록</a>
 				<a href="#" class="btn btn-sm btn-warning" id="btnupdate" style = "cursor:pointer;" onClick = " location.href='http://localhost:8080/soohyunana/centerUpdateBtn?seq=${list.serNum }' ">수정</a>

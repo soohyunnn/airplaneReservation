@@ -60,20 +60,20 @@ input[type="text"]{
 					<textarea class="form-control" rows="30" cols="80" name="serContent" id="serContent"></textarea>
 					
 					<script>
-
+					
 					 CKEDITOR.replace("serContent",{height: 500, customConfig : '/resources/ckeditor/config.js'});
 					 
 					 
-	/* 				 	var serContent = CKEDITOR.instances.serContent.getData();
-					 	console.log(serContent);
+					 	CKEDITOR.instances.serContent.setData('<p><span style="font-size:18px"><strong>asdfsafdsf</strong></span></p>');
 						if(CKEDITOR.instances.serContent.getData().length < 1){
 							alert("내용을 입력해 주세요.");
 							
 						}else{
-							alert(serContent);
-						} */
+							CKEDITOR.instances.serContent.getData()
+						} 
 						
-					 
+						CKEDITOR.config.allowedContent = true;
+
 					</script>
 					
 				</div>
@@ -110,15 +110,15 @@ input[type="text"]{
 
 	$("#btnSave").click(function(){
 		
-		if(CKEDITOR.instances.serContent.getData().length < 1){
+/* 		if(CKEDITOR.instances.serContent.getData().length < 1){
 			alert("내용을 입력해 주세요.");
 			
 		}else{
 			CKEDITOR.instances.serContent.getData()
-		} 
+		}  */
 		
 		console.log(CKEDITOR.instances.serContent.getData());
-		insertform.serContent.value = CKEDITOR.instances.serContent.getData();
+		insertform.serContent.value = CKEDITOR.instances.serContent.getData().replace(/(<([^>]+)>)/ig,"");
 		
 		//alert('1');
 		$.ajax({
