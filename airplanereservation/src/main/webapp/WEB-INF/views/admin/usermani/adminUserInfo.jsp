@@ -45,7 +45,7 @@
 					
 					<!-- submit 버튼은 JSP 프로그램 진행시 필수 요소 -->
 					<!-- 폼 태그 범위 안에 위치해야 한다. -->
-					<button type="button" class="btn btn-default" style="background: black;" id="btnInsertAdminUserInfo">등록</button>					
+					<button type="button" class="btn btn-sm btn-primary" style="" id="btnInsertAdminUserInfo">등록</button>					
 				</form>
 				<!-- 회원등록 form End -->
 			</div>
@@ -88,7 +88,8 @@
 					
 					<!-- submit 버튼은 JSP 프로그램 진행시 필수 요소 -->
 					<!-- 폼 태그 범위 안에 위치해야 한다. -->
-					<button type="button" class="btn btn-default" style="background: black;" id="btnUpdateAdminUserInfo">수정</button>					
+					<button type="button" class="btn btn-sm btn-warning" style="" id="btnUpdateAdminUserInfo">수정</button>
+					<a href="" class="btn btn-sm btn-danger" >삭제</a>					
 				</form>
 				<!-- 회원수정 form End -->	
 			</div>
