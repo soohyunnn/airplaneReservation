@@ -47,7 +47,7 @@ input[type="text"]{
 			<form name="form" id="form" role="form" method="post" action="/soohyunana/centerUpdate?seq=${list.serNum }">
 				<div class="mb-3">
 					<label for="title">글 번호</label>
-					<input type="text" class="form-control" name="serNum" id="serNum" value="${list.serNum }" readonly>
+					<input type="text" class="form-control" name="serNum" id="serNum" value="${list.serNum }" required readonly >
 				</div>
 				<div class="mb-3">
 					<label for="title">제목</label>
@@ -55,7 +55,7 @@ input[type="text"]{
 				</div>
 				<div class="mb-3">
 					<label for="reg_id">작성자</label>
-					<input type="text" class="form-control" name="serId" id="serId" value="${list.serId }" readonly>
+					<input type="text" class="form-control" name="serId" id="serId" value="${list.serId }" required readonly>
 				</div>
 				<div class="mb-3">
 					<label for="content">내용</label>
