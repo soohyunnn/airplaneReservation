@@ -47,7 +47,7 @@ input[type="text"]{
 			<form name="form" id="form" role="form" method="post" action="/soohyunana/centerUpdate?seq=${list.serNum }">
 				<div class="mb-3">
 					<label for="title">글 번호</label>
-					<input type="text" class="form-control" name="serNum" id="serNum" value="${list.serNum }" readonly>
+					<input type="text" class="form-control" name="serNum" id="serNum" value="${list.serNum }" required readonly >
 				</div>
 				<div class="mb-3">
 					<label for="title">제목</label>
@@ -55,7 +55,7 @@ input[type="text"]{
 				</div>
 				<div class="mb-3">
 					<label for="reg_id">작성자</label>
-					<input type="text" class="form-control" name="serId" id="serId" value="${list.serId }" readonly>
+					<input type="text" class="form-control" name="serId" id="serId" value="${list.serId }" required readonly>
 				</div>
 				<div class="mb-3">
 					<label for="content">내용</label>
@@ -74,37 +74,14 @@ input[type="text"]{
 			<div style="float:right; margin-bottom: 51px;">
 				<a href="/soohyunana/userCenter" onclick="" class="btn btn-sm btn-primary" >목록</a>
 				<button type="submit" class="btn btn-sm btn-warning" id="btnList">수정</button>
-				<button type="button" class="btn btn-sm btn-danger" id="btnSave">삭제</button>
 			</div>
 
 		</form>
 		
-
-			<!-- Reply Form {s} -->
-
-			<div class="my-3 p-3 bg-white rounded shadow-sm" style="padding-top: 10px">
-
-				<form name="form" id="form" role="form" modelAttribute="replyVO" method="post">
-
-				<hidden path="bid" id="bid"/>
-
-				<div>
-					<div style="padding-top: 41px;">
-						<input type="text" class="form-control" name="tag" id="tag" placeholder="댓글 작성자">
-						<textarea id="content" class="form-control" rows="3" placeholder="댓글을 입력해 주세요"></textarea>
-					
-					<div>						
-						<button type="button" class="btn btn-sm btn-primary" id="btnReplySave" style="float: right; margin-top: 10px;"> 저 장 </button>
-					</div>
-					</div>
-				</div>
-
-				</form>
-
-			</div>
-
-			<!-- Reply Form {e} -->
 			
 		</div>
 </div>
 
+<script>
+
+</script>

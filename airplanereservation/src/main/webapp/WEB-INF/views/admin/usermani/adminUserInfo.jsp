@@ -18,7 +18,7 @@
 			    
 			    <!-- action="확장자 방식의 서블릿요청주소 -->
 			    <!-- 회원등록 form Start -->
-				<form action="/registerProcess" method="post">
+				<form id="adminUserInsertForm" name="adminUserInsertForm" action="" method="post">
 					<div class="form-group">
 						<!-- name="" 속성은 JSP 프로그램 진행시 필수 속성 -->
 						<!-- 식별자는 자료형 클래스의 멤버명으로 작성할 것 -->
@@ -45,7 +45,7 @@
 					
 					<!-- submit 버튼은 JSP 프로그램 진행시 필수 요소 -->
 					<!-- 폼 태그 범위 안에 위치해야 한다. -->
-					<button type="submit" class="btn btn-default" style="background: black;">등록</button>					
+					<button type="button" class="btn btn-sm btn-primary" style="" id="btnInsertAdminUserInfo">등록</button>					
 				</form>
 				<!-- 회원등록 form End -->
 			</div>
@@ -57,7 +57,11 @@
 			<div class="panel-heading" style="padding: 10px; background: #e0e0e0; border-top-left-radius: 17px; border-top-right-radius: 17px; border: 1px solid;">회원 정보 수정</div>
 			<div class="panel-body" style="padding: 20px; background: white; border-bottom-left-radius: 17px; border-bottom-right-radius: 17px; border: 1px solid;">
 				<!-- 회원수정 form Start -->
-				<form action="" method="post">
+				<form id="adminUserchangeForm" name="adminUserchangeForm" action="" method="post">
+					<div class="form-group">
+						<label for="phone">회원번호:</label> 
+						<input type="text" class="form-control No" id="No" name="No" required readonly>
+					</div>				
 					<div class="form-group">
 						<!-- name="" 속성은 JSP 프로그램 진행시 필수 속성 -->
 						<!-- 식별자는 자료형 클래스의 멤버명으로 작성할 것 -->
@@ -67,7 +71,7 @@
 					</div>
 					<div class="form-group">
 						<label for="phone">ID:</label> 
-						<input type="text" class="form-control userId" id="userId" name="userId" required>
+						<input type="text" class="form-control userId" id="userId" name="userId" required readonly>
 					</div>
 					<div class="form-group">
 						<label for="phone">PW:</label> 
@@ -84,7 +88,8 @@
 					
 					<!-- submit 버튼은 JSP 프로그램 진행시 필수 요소 -->
 					<!-- 폼 태그 범위 안에 위치해야 한다. -->
-					<button type="submit" class="btn btn-default" style="background: black;">수정</button>					
+					<button type="button" class="btn btn-sm btn-warning" style="" id="btnUpdateAdminUserInfo">수정</button>
+					<button type="button" class="btn btn-sm btn-danger" style="" id="btnDeleteAdminUserInfo">삭제</button>					
 				</form>
 				<!-- 회원수정 form End -->	
 			</div>
@@ -182,7 +187,7 @@
 </div>
 <br><br><br>
 <!-- /.container-fluid -->
-
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
 function show(pageNo){
 
@@ -269,18 +274,88 @@ function show(pageNo){
 	   var tr = $(target)
 	   var td = tr.children();
 	
+	   var No = td.eq(0).text();
 	   var userName = td.eq(1).text();
 	   var userId = td.eq(2).text();
 	   var userPw = td.eq(3).text();
 	   var userPhone = td.eq(4).text();
 	   var userEmail = td.eq(5).text();
-	
+			
+	   		 $('.No').val(No);
 	         $('.userName').val(userName);
 	         $('.userId').val(userId);
 	         $('.userPw').val(userPw);
 	         $('.userPhone').val(userPhone);
 	         $('.userEmail').val(userEmail);     
 	   }
+
+	//admin - 회원등록
+	$("#btnInsertAdminUserInfo").click(function(){
+		//alert('1');
+		var insertCon = confirm("회원정보를 등록하시겠습니까?");
+
+		if (insertCon == true) {
+			$.ajax({
+				url : '/admin/usermani/insertUserInfo',
+				type : 'POST',
+				data : $('#adminUserInsertForm').serialize(),
+					success : function(data) {
+						console.log('successs');
+						alert('등록을 완료하였습니다.');
+						location.href = 'http://localhost:8080/admin/usermani/adminUserInfo.admin';
+					},
+					error : function() {
+						alert("등록을 실패하였습니다.");
+					}
+				});
+			}
+		});
+	
+	
+	//admin - 회원수정
+	$("#btnUpdateAdminUserInfo").click(function(){
+		//alert('1');
+		var updateCon = confirm("회원정보를 수정하시겠습니까?");
+
+		if (updateCon == true) {
+			$.ajax({
+				url : '/admin/usermani/updateUserInfo',
+				type : 'POST',
+				data : $('#adminUserchangeForm').serialize(),
+					success : function(data) {
+						console.log('successs');
+						alert('수정을 완료하였습니다.');
+						location.href = 'http://localhost:8080/admin/usermani/adminUserInfo.admin';
+					},
+					error : function() {
+						alert("수정을 실패하였습니다.");
+					}
+				});
+			}
+		});
+	
+	
+	//admin - 회원삭제
+	$("#btnDeleteAdminUserInfo").click(function(){
+		//alert('1');
+		var deleteCon = confirm("회원정보를 삭제하시겠습니까?");
+
+		if (deleteCon == true) {
+			$.ajax({
+				url : '/admin/usermani/deleteUserInfo',
+				type : 'POST',
+				data : $('#adminUserchangeForm').serialize(),
+					success : function(data) {
+						console.log('successs');
+						alert('삭제를 완료하였습니다.');
+						location.href = 'http://localhost:8080/admin/usermani/adminUserInfo.admin';
+					},
+					error : function() {
+						alert("삭제를 실패하였습니다.");
+					}
+				});
+			}
+		});
 </script>
 
 
