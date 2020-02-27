@@ -75,6 +75,7 @@ public class UserCenterController {
 	@RequestMapping(value="/soohyunana/insertUserCenter")
 	public void insertUserCenter(@ModelAttribute UserCenterVO usercentervo) throws Exception {
 		System.out.println("insertUserCenter()");
+		System.out.println("SerContent : "+usercentervo.getSerContent());
 		
 		usercenterservice.insertUserCenter(usercentervo);
 	}

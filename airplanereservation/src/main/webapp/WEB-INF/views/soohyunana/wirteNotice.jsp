@@ -32,7 +32,8 @@ input[type="text"]{
     /* transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
 }
 </style>
-	
+<!-- <script src="//cdn.ckeditor.com/4.13.1/full/ckeditor.js"></script> -->
+<script src="/resources/ckeditor/ckeditor.js"></script>	
 <div style="">
 		<div style="margin: 80px; margin-bottom: 20px;">
 			<div>
@@ -55,7 +56,20 @@ input[type="text"]{
 				</div>
 				<div class="mb-3">
 					<label for="content">내용</label>
-					<textarea class="form-control" rows="5" name="serContent" id="serContent" style="height: 400px;" placeholder="내용을 입력해 주세요" ></textarea>
+					<textarea class="form-control" rows="30" cols="80" name="serContent" id="serContent"></textarea>
+					
+					<script>
+
+					 CKEDITOR.replace("serContent",{height: 500},{ customConfig : '/resources/ckeditor/config.js'});
+					 
+					 if(CKEDITOR.instances.serContent.getData().length < 1){
+							alert('내용을 입력해 주세요.');
+							return;
+						}else{
+							CKEDITOR.instances.serContent.getData()
+						}
+					</script>
+					
 				</div>
 				<div class="mb-3">
 					<label for="tag">연락처</label>
@@ -85,6 +99,7 @@ input[type="text"]{
 		</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
 <script>
 
 	$("#btnSave").click(function(){
