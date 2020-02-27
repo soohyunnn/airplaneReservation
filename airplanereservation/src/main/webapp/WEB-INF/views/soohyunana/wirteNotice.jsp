@@ -33,7 +33,8 @@ input[type="text"]{
 }
 </style>
 <!-- <script src="//cdn.ckeditor.com/4.13.1/full/ckeditor.js"></script> -->
-<script src="/resources/ckeditor/ckeditor.js"></script>	
+<script src="/resources/ckeditor/ckeditor.js"></script>
+<!-- <script src="/resources/ckeditor/config.js"></script>	 -->	
 <div style="">
 		<div style="margin: 80px; margin-bottom: 20px;">
 			<div>
@@ -60,8 +61,18 @@ input[type="text"]{
 					
 					<script>
 
-					 CKEDITOR.replace("serContent",{height: 500},{ customConfig : '/ckeditor/config.js'});
+					 CKEDITOR.replace("serContent",{height: 500, customConfig : '/resources/ckeditor/config.js'});
 					 
+					 
+	/* 				 	var serContent = CKEDITOR.instances.serContent.getData();
+					 	console.log(serContent);
+						if(CKEDITOR.instances.serContent.getData().length < 1){
+							alert("내용을 입력해 주세요.");
+							
+						}else{
+							alert(serContent);
+						} */
+						
 					 
 					</script>
 					
@@ -104,7 +115,10 @@ input[type="text"]{
 			
 		}else{
 			CKEDITOR.instances.serContent.getData()
-		}
+		} 
+		
+		console.log(CKEDITOR.instances.serContent.getData());
+		insertform.serContent.value = CKEDITOR.instances.serContent.getData();
 		
 		//alert('1');
 		$.ajax({
