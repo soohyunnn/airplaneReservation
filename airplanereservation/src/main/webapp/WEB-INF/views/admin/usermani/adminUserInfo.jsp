@@ -10,7 +10,7 @@
 	</div>
 		<p style="color:black;">Total: <span id="count"></span></p>
 	
-	<div style="width: 91%; margin: 0 auto; ">
+	<div style="width: 91%; margin: 0 auto; padding-top: 20px;">
 		<!-- 회원 정보 등록 -->
 		<div class="panel panel-default" id="insertDiv" style="margin: 0 auto; background: #e0e0e0; border-radius: 19px; border: 1px solid;">
 			<div class="panel-heading" style="padding: 10px; background: #e0e0e0; border-top-left-radius: 17px; border-top-right-radius: 17px; border: 1px solid;">회원 정보 입력</div>
