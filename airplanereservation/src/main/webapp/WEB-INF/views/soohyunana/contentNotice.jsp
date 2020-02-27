@@ -44,34 +44,39 @@ input[type="text"]{
 		
 			<div class="container" role="main" style="height: 700px;">
 
-			<h2>수현아나 문의하기</h2>
+			<h2>수현아나 문의하기-자세히보기</h2>
 
 			<form name="form" id="form" role="form" method="post" action="">
 				<div class="mb-3">
 					<label for="title">제목</label>
-					<input type="text" class="form-control" name="title" id="title" placeholder="제목을 입력해 주세요">
+					<input type="text" class="form-control" name="serTitle" id="serTitle" value="${list.serTitle }" readonly>
 				</div>
 				<div class="mb-3">
 					<label for="reg_id">작성자</label>
-					<input type="text" class="form-control" name="reg_id" id="reg_id" placeholder="이름을 입력해 주세요">
+					<input type="text" class="form-control" name="serId" id="serId" value="${list.serId }" readonly>
 				</div>
 				<div class="mb-3">
 					<label for="content">내용</label>
-					<textarea class="form-control" rows="5" name="content" id="content" style="height: 400px;" placeholder="내용을 입력해 주세요" ></textarea>
+					<textarea class="form-control" rows="5" name="serContent" id="serContent" style="height: 400px;" readonly>${list.serContent }</textarea>
 				</div>
 				<div class="mb-3">
 					<label for="tag">연락처</label>
-					<input type="text" class="form-control" name="tag" id="tag" placeholder="연락처를 입력해 주세요">
+					<input type="text" class="form-control" name="serPhone" id="serPhone" value="${list.serPhone }" readonly>
 				</div>
 				<div class="mb-3">
 					<label for="tag">이메일</label>
-					<input type="text" class="form-control" name="tag" id="tag" placeholder="이메일을 입력해 주세요">
+					<input type="text" class="form-control" name="serEmail" id="serEmail" value="${list.serEmail }" readonly>
+				</div>
+				<div class="mb-3">
+					<label for="tag">등록날짜</label>
+					<input type="text" class="form-control" name="serDay" id="serDay" value="${list.serDay }" readonly>
 				</div>
 			</form>
 
 			<div style="float:right; margin-bottom: 51px;">
-				<button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
-				<button type="button" class="btn btn-sm btn-success" id="btnSave">저장</button>
+				<a href="/soohyunana/userCenter" onclick="" class="btn btn-sm btn-primary" >목록</a>
+				<a href="#" class="btn btn-sm btn-warning" id="btnupdate" style = "cursor:pointer;" onClick = " location.href='http://localhost:8080/soohyunana/centerUpdateBtn?seq=${list.serNum }' ">수정</a>
+				<button type="button" class="btn btn-sm btn-danger" id="btnSave">삭제</button>
 			</div>
 
 		
@@ -80,7 +85,7 @@ input[type="text"]{
 			<!-- Reply Form {s} -->
 			<div class="my-3 p-3 bg-white rounded shadow-sm" style="padding-top: 10px">
 				<form name="form" id="form" role="form" method="post" action="/soohyunana/UserCenter/insertReply">
-					<input type="hidden" name="serNum" id="" value="serNum" value="${list.serNum }">
+					<input type="hidden" name="serNum" id="serNum" value="${list.serNum }" >
 				<div>
 					<div style="padding-top: 41px;">
 						<input type="text" class="form-control" name="replyId" id="replyId" placeholder="댓글 작성자">

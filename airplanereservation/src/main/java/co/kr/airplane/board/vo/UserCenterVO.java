@@ -2,10 +2,12 @@ package co.kr.airplane.board.vo;
 
 /*고객센터*/
 public class UserCenterVO {
-	private String serNum;		//게시글 번호
-	private String serName;		//작성자
+	private int serNum;		//게시글 번호
+	private String serId;		//작성자
 	private String serTitle;	//제목
 	private String serContent;	//내용
+	private String serPhone;	//연락처
+	private String serEmail;	//이메일
 	private String serDay;		//작성날짜
 	private int serViews;	//조회수
 	
@@ -15,17 +17,17 @@ public class UserCenterVO {
 	private String searchInput;
 	private String search;
 	
-	public String getSerNum() {
+	public int getSerNum() {
 		return serNum;
 	}
-	public void setSerNum(String serNum) {
+	public void setSerNum(int serNum) {
 		this.serNum = serNum;
 	}
-	public String getSerName() {
-		return serName;
+	public String getSerId() {
+		return serId;
 	}
-	public void setSerName(String serName) {
-		this.serName = serName;
+	public void setSerId(String serId) {
+		this.serId = serId;
 	}
 	public String getSerTitle() {
 		return serTitle;
@@ -38,6 +40,18 @@ public class UserCenterVO {
 	}
 	public void setSerContent(String serContent) {
 		this.serContent = serContent;
+	}
+	public String getSerPhone() {
+		return serPhone;
+	}
+	public void setSerPhone(String serPhone) {
+		this.serPhone = serPhone;
+	}
+	public String getSerEmail() {
+		return serEmail;
+	}
+	public void setSerEmail(String serEmail) {
+		this.serEmail = serEmail;
 	}
 	public String getSerDay() {
 		return serDay;

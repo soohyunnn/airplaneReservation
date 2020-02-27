@@ -3,7 +3,107 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<div style="height: 738px; overflow-x: auto;">
+<style>
+.pagination {
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+}
+.pagination {
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+
+.page-link:hover {
+  z-index: 2;
+  color: #0056b3;
+  text-decoration: none;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+.page-link:focus {
+  z-index: 2;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.page-item:first-child .page-link {
+  margin-left: 0;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.page-item:last-child .page-link {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.page-item.disabled .page-link {
+  color: #6c757d;
+  pointer-events: none;
+  cursor: auto;
+  background-color: #fff;
+  border-color: #dee2e6;
+}
+
+.pagination-lg .page-link {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.pagination-lg .page-item:first-child .page-link {
+  border-top-left-radius: 0.3rem;
+  border-bottom-left-radius: 0.3rem;
+}
+
+.pagination-lg .page-item:last-child .page-link {
+  border-top-right-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+}
+
+.pagination-sm .page-link {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.pagination-sm .page-item:first-child .page-link {
+  border-top-left-radius: 0.2rem;
+  border-bottom-left-radius: 0.2rem;
+}
+
+.pagination-sm .page-item:last-child .page-link {
+  border-top-right-radius: 0.2rem;
+  border-bottom-right-radius: 0.2rem;
+}
+</style>
+
+<div style="">
 		<div style="margin: 80px;">
 			<div>
 				<h1 class="page-header">고객센터</h1>
@@ -11,14 +111,17 @@
 			</div>	
 		</div>
 
+		
+		<!-- search{s} -->
 		<div style="width: 91%; margin: 0 auto;">
 				<form  id="searchForm" name="searchForm" method="post">
 				
-					<input type="hidden" id="pageNo" name="pageNo" value="${pageNo }">					
+<%-- 					<input type="hidden" id="pageNo" name="pageNo" value="${pageNo }">	
+					<input type="hidden" id="searchCount" name="searchCount" value="10"> --%>				
 					
 					<div style="float:left">
 					
-						<select class="form-control form-control-sm" name="search" id="search">
+						<select class="form-control form-control-sm" name="searchType" id="searchType">
 							<option value="Everything">전체</option>
 							<option value="ID">작성자</option>
 							<option value="TITLE">제목</option>
@@ -26,24 +129,24 @@
 						</select>
 					</div>
 					<div style="float:left; padding-left:5px;"  >
-					<select class="form-control form-control-sm" name="searchCount" id="searchCount">
+					<!-- <select class="form-control form-control-sm" name="searchCount" id="searchCount">
 							<option value="5">5 개씩</option>
 							<option value="10">10 개씩</option>
 							<option value="15">15 개씩</option>
-						</select>
+						</select> -->
 					</div>
 					<div style="padding-right: 10px; padding-left: 5px; float: left;">
-						<input type="text" class="form-control form-control-sm" name="searchInput" id="searchInput" style="height: 21px">
+						<input type="text" class="form-control form-control-sm" name="keyword" id="keyword" style="height: 21px">
 					</div>
 					<!--  button은 form태그 안에 넣으면 이벤트를 한번 더 타서 클릭을 두번한것처럼 실행된다. 그래서 보통은 a태그를 사용하며 button을 사용할 경우 type="button"을 주면 된다-->
-					<button class="btn btn-primary" type="button" style="background-color: black; color: white; margin-right: 0px;" id="" onclick="javascript:selectListAction('/soohyunana/userCenter');">검색</button>		
+					<button class="btn btn-primary" style="background-color: black; color: white; margin-right: 0px;" name="btnSearch" id="btnSearch" >검색</button>		
 				</form>
 			</div>
-			
+			<!-- search{e} -->
 		
 			
 			
-		<table class="table" id="usertable" style="margin: 0 auto; margin-bottom: 100px; width: 91%; background: #929090; color:#000000;">
+		<table class="table" id="usertable" style="margin: 0 auto; margin-bottom: 30px; width: 91%; background: #929090; color:#000000;">
 			<thead>
 				<tr>
 					<th scope="col">NO</th>
@@ -60,8 +163,8 @@
 					 	<c:forEach var="list" items="${userCenterList}">
 							<tr>
 								<td>${list.serNum}</td>
-								<td>${list.serName}</td>
-								<td>${list.serTitle}</td>
+								<td>${list.serId}</td>
+								<td style = "cursor:pointer;" onClick = " location.href='http://localhost:8080/soohyunana/detail?seq=${list.serNum }' ">${list.serTitle}</td>
 								<td>${list.serContent}</td>
 								<td>${list.serDay}</td>
 								<td>${list.serViews}</td>
@@ -78,106 +181,97 @@
 				</c:choose>
 			</tbody>
 		</table>
+		
+		<a href="/soohyunana/wirteNotice" style="float:right; margin-right:94px;" class="btn btn-sm btn-primary"  >글쓰기</a>
 </div>
 
-<!-- 페이징_start -->
-		<div class="com_table_board-no" style="text-align: center;">
-			<span class="com_table_board-no-btn">
-				<a href="javascript:void(0);" style="color:white;" onclick="javascript:goToPage(1);" title="처음">
-					<<
-				</a>
-				
-					<c:if test="${startPage != 1}">
-						<a href="javascript:void(0);" onclick="javascript:goToPage(${startPage}-1);" style="color:white;" title="이전">
-							<
-						</a>
+
+<!-- pagination{s} -->
+			<div id="paginationBox" style="padding-left: 140px">
+				<ul class="pagination">
+					<c:if test="${pagination.prev}">
+						<li class="page-item"><a class="page-link"
+							style="background: " href="#"
+							onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a>
+						</li>
 					</c:if>
+					<c:forEach begin="${pagination.startPage}"
+						end="${pagination.endPage}" var="idx">
+						<li
+							class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> ">
+							<a class="page-link" style="background: " href="#"
+							onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
+								${idx} </a>
+						</li>
+					</c:forEach>
+					<c:if test="${pagination.next}">
+						<li class="page-item"><a class="page-link" href="#"
+							style="background: "
+							onClick="fn_next('${pagination.range}', 
+						'${pagination.range}', '${pagination.rangeSize}')">Next</a></li>
+					</c:if>
+				</ul>
+			</div>
+<!--pagination{e}  -->
 
-			</span>
-			<span class="com_table_board-no-sum">
-			<c:if test="${countSearch == searchCount}">
-				<c:forEach var="i" begin="${startPage}" end="${endPage}" step="1">
-					<c:choose>
-						<c:when test="${i == pageNo}">
-							<a href="javascript:void(0);" class="board-em" style="color:white;" onclick="javascript:goToPage('${i}');">${i}</a>
-						</c:when>
-						<c:otherwise>
-							<a href="javascript:void(0);" style="color:white;" onclick="javascript:goToPage('${i}');" >${i}</a>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-			</c:if>
-				<!-- href에 #을 쓰면 페이지 최상단으로 이동, void(0)을 하게 되면 undifined가 리턴되어 무효화 처리가 된다. -->
-			</span>
-			<span class="com_table_board-no-btn">
-			<c:if test="${endPage != totalPage}">
-					<c:if test="${totalPage > countPage}">
-						<c:if test="${pageNo < totalPage}">
-							<a href="javascript:void(0);"  style="color:white;" onclick="javascript:goToPage(${endPage}+1);" title="다음">
-								>
-							</a>
-						</c:if>
-					</c:if>					
-			</c:if>
-				<a href="javascript:void(0);" style="color:white;" onclick="javascript:goToPage(${totalPage});" title="마지막">
-					>>
-				</a>
-			</span>
-		</div>
-		<!-- 페이징_end -->
-
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
-function goToPage(pageNo) {
-	selectBannerListAction(pageNo);
+//이전 버튼 이벤트
+
+function fn_prev(page, range, rangeSize) {	//현재 목록의 페이지 번호,각 페이지의 시작 번호,페이지당 게시글 갯수 =10으로 초기화
+	var page = ((range - 2) * rangeSize) + 1;
+	var range = range - 1;
+	var url = "${pageContext.request.contextPath}/soohyunana/userCenter";
+
+	url = url + "?page=" + page;
+	url = url + "&range=" + range;
+
+	location.href = url;
+}
+//페이지 번호 클릭
+
+function fn_pagination(page, range, rangeSize, searchType, keyword) { 	//현재 목록의 페이지 번호,각 페이지의 시작 번호,페이지당 게시글 갯수 =10으로 초기화,게시글 검색 시 검색 타입 목록,검색 단어
+	var url = "${pageContext.request.contextPath}/soohyunana/userCenter";
+	url = url + "?page=" + page;
+	url = url + "&range=" + range;
+	location.href = url;	
 }
 
-function selectBannerListAction(pageNo) {
-	
-/* 	  var f = $("#searchForm");	  
-	  console.log("f : " + $("#searchForm").serialize());
-	  f.action = page;
-	  $("#searchForm").attr("action",page);
-	  console.log( $("#searchForm").attr("action"));
-	  //debugger;
-	  f.submit(); */
-	
- 	var page		= "/soohyunana/userCenter";
-	var searchForm = document.getElementById('searchForm');
-	searchForm.pageNo.value=pageNo
-	var f = $("#searchForm");
-	  
-	$(".loading").show();
-	
-	//$('#pageNo').val(pageNo);
-	//alert(f);
-	f.action = page;
-	$('#searchForm').attr("action", page);
+//다음 버튼 이벤트
+function fn_next(page, range, rangeSize) {	//현재 목록의 페이지 번호,각 페이지의 시작 번호,페이지당 게시글 갯수 =10으로 초기화
+	var page = parseInt((range * rangeSize)) + 1;
+	var range = parseInt(range) + 1;
+	var url = "${pageContext.request.contextPath}/soohyunana/userCenter";
 
-	//console.log( $("#searchForm").attr("action"));
-	f.submit();
-	//$('#searchForm').submit(); 
+	url = url + "?page=" + page;
+	url = url + "&range=" + range;
+	
+	location.href = url;
 }
 
-function selectListAction(page) {
-	
-	  var f = $("#searchForm");	  
-	  console.log("f : " + $("#searchForm").serialize());
+$(document).on('click', '#btnSearch', function(e){
+
+	e.preventDefault();
+
+	var url = "${pageContext.request.contextPath}/soohyunana/userCenter";
+	url = url + "?searchType=" + $('#searchType').val();
+	url = url + "&keyword=" + $('#keyword').val();
+	location.href = url;
+	console.log(url);
+
+});
+
+//페이지 이동(아직 사용안함)
+function moveToPage(page){
+	  //alert('1');
+	  var f = $("#listvlaue");
+	  console.log("f : " + $("#listvlaue").serialize());
 	  f.action = page;
-	  $("#searchForm").attr("action",page);
-	  console.log( $("#searchForm").attr("action"));
+	  $("#listvlaue").attr("action",page);
+	  console.log( $("#listvlaue").attr("action"));
 	  //debugger;
 	  f.submit();
-	
-/* 	var url		= "/soohyunana/userCenter";
-	
-	$(".loading").show();
-	
-	$('#pageNo').val(pageNo);
-	alert('a');
-	$('#searchForm').attr("action", url);
-	$('#searchForm').action = url;
-	console.log( $("#searchForm").attr("action"));
-	
-	$('#searchForm').submit(); */
-}
+	}
+
+
 </script>

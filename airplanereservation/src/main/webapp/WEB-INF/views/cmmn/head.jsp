@@ -123,7 +123,7 @@
 		bottom: 0;
 	    position: fixed; 
 	    width: 100%;
-	    height: 200px;
+	    /* height: 200px; */
 	}
 	.inputst input{
 		height:35px;

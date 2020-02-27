@@ -14,11 +14,13 @@
 	<![CDATA[		
 		select NO_SEQ as No, USERNAME as userName, USERID as userId, USERPW as userPw, USERPHONE as userPhone, USEREMAIL as userEmail
 		from userinfo
+		order by NO_SEQ DESC
 	]]>
 </select>
 
 
 <select id="selectUserInfo1" parameterType="co.kr.airplane.user.vo.UserVO"  resultType="co.kr.airplane.user.vo.UserVO">
+/** [adminMapper.xml][co.kr.airplane.service.impl.airplaneMapper.selectUserInfo1][회원정보 조회(검색)] **/
 		SELECT NO_SEQ as No, USERNAME as userName, USERID as userId, USERPW as userPw, USERPHONE as userPhone, USEREMAIL as userEmail
 		FROM ( SELECT A.*, ROW_NUMBER() OVER(ORDER BY USERID ASC) AS NUM
 		FROM userinfo A
@@ -38,6 +40,7 @@
 		</if>
 		)
 		WHERE NUM BETWEEN ((#{pageNo}-1)*#{searchCount})+1 AND  (#{pageNo})*#{searchCount}
+		order by NO_SEQ DESC
 	</select>
 
 <!-- 전체 페이지의 수 -->
