@@ -77,6 +77,26 @@ public class UserManiServiceImpl implements UserManiService{
 		return map;
 
 	}
+
+	//회원정보 등록
+	@Override
+	public void insertUserInfo(UserVO uservo) throws Exception {
+		usermanidao.insertUserInfo(uservo);		
+	}
+
+	//회원정보 수정
+	@Override
+	public void updateUserInfo(UserVO uservo) throws Exception {
+		usermanidao.updateUserInfo(uservo);		
+	}
+
+	//회원정보 삭제
+	@Override
+	public void deleteUserInfo(UserVO uservo) throws Exception {
+		usermanidao.deleteUserInfo(uservo);		
+	}
+	
+	
 	
 //	@Override
 //	public Map<String, Object> selectUserInfo(UserVO uservo) throws Exception {

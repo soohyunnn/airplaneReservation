@@ -17,5 +17,14 @@ public interface UserManiDao {
 	
 	//회원정보 목록 조회
 	public List<UserVO> selectUserInfo1(UserVO uservo);
+	
+	//회원정보 등록
+	public int insertUserInfo(UserVO uservo);
+	
+	//회원정보 수정
+	public int updateUserInfo(UserVO uservo);
+	
+	//회원정보 삭제
+	public int deleteUserInfo(UserVO uservo);
 
 }

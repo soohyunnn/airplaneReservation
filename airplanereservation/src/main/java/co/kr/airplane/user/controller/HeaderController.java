@@ -25,10 +25,12 @@ public class HeaderController {
 	}
 	
 	//예약-항공권 예약
-	@RequestMapping(value="/reservation/airReser")
-	public String airReser() {
-		return "reservation/airReser.tiles";
-	}
+	
+	 @RequestMapping(value="/reservation/airReser") 
+	 public String airReser() {
+		 return "reservation/airReser.tiles"; 
+	 }
+	 
 	
 	//예약-예약내역
 	@RequestMapping(value="/reservation/reserHistory")

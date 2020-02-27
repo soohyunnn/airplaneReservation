@@ -2,23 +2,23 @@ package co.kr.airplane.board.vo;
 
 /*공지사항*/
 public class NoticeVO {
-	private String notiNum;			//게시글 번호
-	private String notiName;		//작성자
+	private int notiNo;			//게시글 번호
+	private String notiId;		//작성자
 	private String notiTitle;		//제목
 	private String notiContent;		//내용
 	private String notiDay;			//작성날짜
 	private String notiViews;		//조회수
-	public String getNotiNum() {
-		return notiNum;
+	public int getNotiNo() {
+		return notiNo;
 	}
-	public void setNotiNum(String notiNum) {
-		this.notiNum = notiNum;
+	public void setNotiNum(int notiNo) {
+		this.notiNo = notiNo;
+	}	
+	public String getNotiId() {
+		return notiId;
 	}
-	public String getNotiName() {
-		return notiName;
-	}
-	public void setNotiName(String notiName) {
-		this.notiName = notiName;
+	public void setNotiId(String notiId) {
+		this.notiId = notiId;
 	}
 	public String getNotiTitle() {
 		return notiTitle;
