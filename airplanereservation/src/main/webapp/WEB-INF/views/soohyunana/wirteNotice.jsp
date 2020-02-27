@@ -60,14 +60,9 @@ input[type="text"]{
 					
 					<script>
 
-					 CKEDITOR.replace("serContent",{height: 500},{ customConfig : '/resources/ckeditor/config.js'});
+					 CKEDITOR.replace("serContent",{height: 500},{ customConfig : '/ckeditor/config.js'});
 					 
-					 if(CKEDITOR.instances.serContent.getData().length < 1){
-							alert('내용을 입력해 주세요.');
-							return;
-						}else{
-							CKEDITOR.instances.serContent.getData()
-						}
+					 
 					</script>
 					
 				</div>
@@ -103,6 +98,14 @@ input[type="text"]{
 <script>
 
 	$("#btnSave").click(function(){
+		
+		if(CKEDITOR.instances.serContent.getData().length < 1){
+			alert("내용을 입력해 주세요.");
+			
+		}else{
+			CKEDITOR.instances.serContent.getData()
+		}
+		
 		//alert('1');
 		$.ajax({
 			url : '/soohyunana/insertUserCenter',
