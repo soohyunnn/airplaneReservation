@@ -119,8 +119,8 @@
         <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">travel:</h6>
-            <a class="collapse-item" href="/admin/soohyunanaclub/notice">공지사항</a>
-            <a class="collapse-item" href="/admin/soohyunanaclub/userCenter">고객센터</a>
+            <a class="collapse-item" href="/admin/soohyunanaclub/adminNotice">공지사항</a>
+            <a class="collapse-item" href="/admin/soohyunanaclub/adminUserCenter">고객센터</a>
           </div>
         </div>
       </li>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.kr.airplane.admin.dao.AdminUserCenterDao">
+
+<!-- **************** -->
+<!-- SELECT SECTION -->
+<!-- **************** -->
+
+
+<select id="selectUserCenter" parameterType="co.kr.airplane.board.vo.UserCenterVO"  resultType="co.kr.airplane.board.vo.UserCenterVO">
+/** [adminUserCenterMapper.xml][co.kr.airplane.service.impl.adminUserCenterMapper.selectUserCenter][고객센터 조회(검색)] **/
+		SELECT BNO as serNum, BNONAME as serId, BNOTITLE as serTitle, BNOCONTENT as serContent, BNOPHONE as serPhone, BNOEMAIL as serEmail, BNODAY as serDay, BNOVIEWS as serViews
+		FROM ( SELECT A.*, ROW_NUMBER() OVER(ORDER BY BNO ASC) AS NUM
+		FROM usercenter A
+		<if test="search != null and search != '' ">
+			<if test="search == 'Everything'">
+
+			</if>
+			<if test="search == 'ID'">
+				where BNONAME = #{searchInput}
+			</if>
+			<if test="search == 'TITLE'">
+				where BNOTITLE = #{searchInput}
+			</if>
+			<if test="search == 'CONTENT'">
+				where BNOCONTENT = #{searchInput}
+			</if>
+		</if>
+		)
+		WHERE NUM BETWEEN ((#{pageNo}-1)*#{searchCount})+1 AND  (#{pageNo})*#{searchCount}
+		order by BNO DESC
+	</select>
+
+<!-- 전체 페이지의 수 -->
+ 	<select id="centerCount" resultType="int">
+ 	/** [adminUserCenterMapper.xml][co.kr.airplane.service.impl.adminUserCenterMapper.centerCount][고객센터 목록 수] **/
+ 	<![CDATA[	
+		select count(*) as total
+		from usercenter
+	]]>
+	</select> 
+
+	
+<!-- **************** -->
+<!-- INSERT SECTION -->
+<!-- **************** -->
+
+<!-- <insert id="insertUserInfo" parameterType="co.kr.airplane.user.vo.UserVO">
+/** [adminMapper.xml][co.kr.airplane.service.impl.adminMapper.insertUserInfo][admin-회원등록] **/
+<![CDATA[
+	insert into userinfo(NO_SEQ,USERNAME, USERID, USERPW, USERPHONE, USEREMAIL)
+	values(seq.NEXTVAL, #{userName}, #{userId}, #{userPw}, #{userPhone}, #{userEmail})
+]]>
+</insert> -->
+
+
+
+	
+
+	
+	
+	
+<!-- **************** -->
+<!-- UPDATE SECTION -->
+<!-- **************** -->
+<!-- 
+<update id="updateUserInfo" parameterType="co.kr.airplane.user.vo.UserVO">
+/** [adminMapper.xml][co.kr.airplane.service.impl.adminMapper.updateUserInfo][admin-회원수정] **/
+<![CDATA[
+	update userinfo
+	set USERNAME =#{userName}, USERID = #{userId}, USERPW = #{userPw}, USERPHONE =#{userPhone}, USEREMAIL = #{userEmail}
+	where NO_SEQ = #{No}
+]]>
+</update> -->
+
+
+	
+	
+	
+<!-- **************** -->
+<!-- DELETE SECTION -->
+<!-- **************** -->
+
+<!-- <delete id="deleteUserInfo" parameterType="co.kr.airplane.user.vo.UserVO">
+/** [adminMapper.xml][co.kr.airplane.service.impl.adminMapper.deleteUserInfo][admin-회원삭제] **/
+<![CDATA[
+	delete from userinfo
+	where NO_SEQ = #{No}
+]]>
+</delete> -->
+
+	
+</mapper>

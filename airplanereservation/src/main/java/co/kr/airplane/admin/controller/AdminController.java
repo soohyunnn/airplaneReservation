@@ -78,15 +78,15 @@ public class AdminController {
 	}
 		
 	//수현아나클럽 - 공지사항
-		@RequestMapping(value="/admin/soohyunanaclub/notice")
+		@RequestMapping(value="/admin/soohyunanaclub/adminNotice")
 		public String notice() {
-			return "admin/soohyunanaclub/notice.admin";
+			return "admin/soohyunanaclub/adminNotice.admin";
 		}
 		
 	//수현아나클럽 - 고객센터
-		@RequestMapping(value="/admin/soohyunanaclub/userCenter")
+		@RequestMapping(value="/admin/soohyunanaclub/adminUserCenter")
 		public String userCenter() {
-			return "admin/soohyunanaclub/userCenter.admin";
+			return "admin/soohyunanaclub/adminUserCenter.admin";
 		}
 }
 
