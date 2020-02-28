@@ -11,9 +11,9 @@
 	</div>
 		<p style="color:black;">Total: <span id="count"></span></p>
 	
-	<!-- <div style="width: 91%; margin: 0 auto; padding-top: 20px;">
-		회원 정보 등록
-		<div class="panel panel-default" id="insertDiv" style="margin: 0 auto; background: #e0e0e0; border-radius: 19px; border: 1px solid;">
+	<div style="width: 91%; margin: 0 auto; padding-top: 20px;">
+		<!-- 회원 정보 등록 -->
+<!-- 		<div class="panel panel-default" id="insertDiv" style="margin: 0 auto; background: #e0e0e0; border-radius: 19px; border: 1px solid;">
 			<div class="panel-heading" style="padding: 10px; background: #e0e0e0; border-top-left-radius: 17px; border-top-right-radius: 17px; border: 1px solid;">회원 정보 입력</div>
 			<div class="panel-body" style="padding: 20px; background: white; border-bottom-left-radius: 17px; border-bottom-right-radius: 17px; border: 1px solid;">
 			    
@@ -50,51 +50,62 @@
 				</form>
 				회원등록 form End
 			</div>
-		</div>
+		</div> -->
 				
 				
-		회원 정보 수정					
-		<div class="panel panel-default" id="changeDiv" style="margin: 0 auto; background: #e0e0e0; border-radius: 19px; border: 1px solid; display: none">
-			<div class="panel-heading" style="padding: 10px; background: #e0e0e0; border-top-left-radius: 17px; border-top-right-radius: 17px; border: 1px solid;">회원 정보 수정</div>
+		<!-- 고객센터 게시글 수정 -->					
+		<div class="panel panel-default" id="centerChangeDiv" style="margin: 0 auto; background: #e0e0e0; border-radius: 19px; border: 1px solid; display: none">
+			<div class="panel-heading" style="padding: 10px; background: #e0e0e0; border-top-left-radius: 17px; border-top-right-radius: 17px; border: 1px solid;">고객센터 게시글 수정</div>
 			<div class="panel-body" style="padding: 20px; background: white; border-bottom-left-radius: 17px; border-bottom-right-radius: 17px; border: 1px solid;">
-				회원수정 form Start
-				<form id="adminUserchangeForm" name="adminUserchangeForm" action="" method="post">
+				<!-- 고객센터 게시글 수정 form Start -->
+				<form id="adminCenterchangeForm" name="adminCenterchangeForm" action="" method="post">
 					<div class="form-group">
-						<label for="phone">회원번호:</label> 
-						<input type="text" class="form-control No" id="No" name="No" required readonly>
+						<label for="phone">게시글 번호:</label> 
+						<input type="text" class="form-control No" id="serNum" name="serNum" required readonly>
 					</div>				
 					<div class="form-group">
-						name="" 속성은 JSP 프로그램 진행시 필수 속성
-						식별자는 자료형 클래스의 멤버명으로 작성할 것
-						동일 자료 동일 식별자 원칙	
-						<label for="name">이름:</label> 
-						<input type="text" class="form-control userName" id="userName" name="userName" required>
+						<!-- name="" 속성은 JSP 프로그램 진행시 필수 속성 -->
+						<!-- 식별자는 자료형 클래스의 멤버명으로 작성할 것 -->
+						<!-- 동일 자료 동일 식별자 원칙 -->	
+						<label for="name">작성자:</label> 
+						<input type="text" class="form-control" id="serId" name="serId" required>
 					</div>
 					<div class="form-group">
-						<label for="phone">ID:</label> 
-						<input type="text" class="form-control userId" id="userId" name="userId" required readonly>
+						<label for="phone">제목:</label> 
+						<input type="text" class="form-control" id="serTitle" name="serTitle" required >
 					</div>
 					<div class="form-group">
-						<label for="phone">PW:</label> 
-						<input type="text" class="form-control userPw" id="userPw" name="userPw" required>
+						<label for="phone">내용:</label> 
+						<input type="text" class="form-control" id="serContent" name="serContent" required>
 					</div>
 					<div class="form-group">
 						<label for="phone">전화번호:</label> 
-						<input type="text" class="form-control userPhone" id="userPhone" name="userPhone" required>
+						<input type="text" class="form-control" id="serPhone" name="serPhone" required>
 					</div>
 					<div class="form-group">
 						<label for="email">이메일:</label>
-						<input type="text" class="form-control userEmail" id="userEmail" name="userEmail" required>
+						<input type="text" class="form-control" id="serEmail" name="serEmail" required>
+					</div>
+					<div class="form-group">
+						<label for="email">작성날짜:</label>
+						<input type="text" class="form-control" id="serDay" name="serDay" required>
+					</div>
+					<div class="form-group">
+						<label for="email">조회수:</label>
+						<input type="text" class="form-control" id="serViews" name="serViews" required>
 					</div>
 					
-					submit 버튼은 JSP 프로그램 진행시 필수 요소
-					폼 태그 범위 안에 위치해야 한다.
-					<button type="button" class="btn btn-sm btn-warning" style="" id="btnUpdateAdminUserInfo">수정</button>
-					<button type="button" class="btn btn-sm btn-danger" style="" id="btnDeleteAdminUserInfo">삭제</button>					
+					<!-- submit 버튼은 JSP 프로그램 진행시 필수 요소 -->
+					<!-- 폼 태그 범위 안에 위치해야 한다. -->
+					<button type="button" class="btn btn-sm btn-warning" style="" id="btnUpdateAdminCenterInfo">수정</button>
+					<button type="button" class="btn btn-sm btn-danger" style="" id="btnDeleteAdminCenterInfo">삭제</button>					
 				</form>
-				회원수정 form End	
+				<!-- 고객센터 게시글 수정 form End -->	
 			</div>
-		</div>			 -->
+		</div>	
+				
+				
+		
 							
 			
 		
@@ -147,14 +158,7 @@
 			</thead>
 			<tbody id="userList" style="background: #ffffff;">
 			 	<c:forEach var="list" items="${userlist}">
-					<%-- <tr>
-						<td>${list.no}</td>
-						<td>${list.userName}</td>
-						<td>${list.userId}</td>
-						<td>${list.userPw}</td>
-						<td>${list.userPhone}</td>
-						<td>${list.userEmail}</td>
-					</tr>			 --%>	
+
 				</c:forEach>
 			</tbody>
 		</table>
@@ -196,10 +200,11 @@ function show(pageNo){
                            
           for(var i=0; i<data.list.length; i++){
 
-             tab += '<tr onclick="modalBtn(this)" id="selectBox" data-target="#modal" data-toggle="modal" >';
+             tab += '<tr onclick="modalBtn1(this)" id="selectBox" data-target="#modal" data-toggle="modal" >';
              tab += '<td>'+data.list[i].serNum+'</td>';
              tab += '<td >'+data.list[i].serId+'</td>';
              tab += '<td>'+data.list[i].serTitle+'</td>';
+             tab += '<td style="display:none;">'+data.list[i].serContent+'</td>';
              tab += '<td>'+data.list[i].serPhone+'</td>';
              tab += '<td>'+data.list[i].serEmail+'</td>';
              tab += '<td>'+data.list[i].serDay+'</td>';
@@ -247,26 +252,31 @@ function show(pageNo){
  }
 
 	//tr줄을 선택하면 모달이 뜨고, 모달안에 정보들이 뜸
-	function modalBtn(target) {
-		$('#insertDiv').hide();
-		$('#changeDiv').show();
+	function modalBtn1(target) {
+		//$('#insertDiv').hide();
+		$('#centerChangeDiv').show();
 	   
 	   var tr = $(target)
 	   var td = tr.children();
 	
-	   var No = td.eq(0).text();
-	   var userName = td.eq(1).text();
-	   var userId = td.eq(2).text();
-	   var userPw = td.eq(3).text();
-	   var userPhone = td.eq(4).text();
-	   var userEmail = td.eq(5).text();
+	   var serNum = td.eq(0).text();
+	   var serId = td.eq(1).text();
+	   var serTitle = td.eq(2).text();
+	   var serContent = td.eq(3).text();
+	   var serPhone = td.eq(4).text();
+	   var serEmail = td.eq(5).text();
+	   var serDay = td.eq(6).text();
+	   var serViews = td.eq(7).text();
 			
-	   		 $('.No').val(No);
-	         $('.userName').val(userName);
-	         $('.userId').val(userId);
-	         $('.userPw').val(userPw);
-	         $('.userPhone').val(userPhone);
-	         $('.userEmail').val(userEmail);     
+	   		 $('#serNum').val(serNum);
+	         $('#serId').val(serId);
+	         $('#serTitle').val(serTitle);
+	         $('#serContent').val(serContent);
+	         $('#serPhone').val(serPhone);
+	         $('#serEmail').val(serEmail);
+	         $('#serDay').val(serDay);
+	         $('#serViews').val(serViews);
+
 	   }
 
 	//admin - 회원등록
