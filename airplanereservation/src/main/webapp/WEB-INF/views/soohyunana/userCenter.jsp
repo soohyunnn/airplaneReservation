@@ -152,7 +152,7 @@
 					<th scope="col">NO</th>
 					<th scope="col">작성자</th>
 					<th scope="col">제목</th>
-					<th scope="col">내용</th>
+					<!-- <th scope="col">내용</th> -->
 					<th scope="col">작성날짜</th>
 					<th scope="col">조회수</th>
 				</tr>
@@ -165,7 +165,7 @@
 								<td>${list.serNum}</td>
 								<td>${list.serId}</td>
 								<td style = "cursor:pointer;" onClick = " location.href='http://localhost:8080/soohyunana/detail?seq=${list.serNum }' ">${list.serTitle}</td>
-								<td>${list.serContent}</td>
+								<%-- <td>${list.serContent}</td> --%>
 								<td>${list.serDay}</td>
 								<td>${list.serViews}</td>
 							</tr>

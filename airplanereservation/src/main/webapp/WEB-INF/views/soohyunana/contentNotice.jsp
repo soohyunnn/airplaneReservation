@@ -62,7 +62,7 @@ input[type="text"]{
 					
 					<!-- <textarea class="form-control" rows="5" name="serContent" id="serContent" style="height: 400px;" readonly></textarea> -->
 					
-					<label>${list.serContent }</label>
+					<label style="border: 1px solid; border-radius: 8px; height: 500px; width: 101%; margin-bottom: 10px;">${list.serContent }</label>
 
 				</div>
 				

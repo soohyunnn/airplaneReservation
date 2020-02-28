@@ -72,7 +72,7 @@ input[type="text"]{
 							CKEDITOR.instances.serContent.getData()
 						} 
 						
-						CKEDITOR.config.allowedContent = true;
+						//CKEDITOR.config.allowedContent = true;
 
 					</script>
 					
@@ -118,7 +118,7 @@ input[type="text"]{
 		}  */
 		
 		console.log(CKEDITOR.instances.serContent.getData());
-		insertform.serContent.value = CKEDITOR.instances.serContent.getData().replace(/(<([^>]+)>)/ig,"");
+		insertform.serContent.value = CKEDITOR.instances.serContent.getData();
 		
 		//alert('1');
 		$.ajax({
