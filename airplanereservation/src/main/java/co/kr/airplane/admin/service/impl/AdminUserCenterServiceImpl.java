@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import co.kr.airplane.admin.dao.AdminUserCenterDao;
 import co.kr.airplane.admin.service.AdminUserCenterService;
 import co.kr.airplane.board.vo.UserCenterVO;
-import co.kr.airplane.user.vo.UserVO;
 
 @Service
 public class AdminUserCenterServiceImpl implements AdminUserCenterService{
@@ -69,6 +68,13 @@ public class AdminUserCenterServiceImpl implements AdminUserCenterService{
 
 
 		return map;
+	}
+
+	
+	//고객센터 게시글 삭제
+	@Override
+	public void deleteCenter(UserCenterVO usercentervo) throws Exception {
+		adminusercenterdao.deleteCenter(usercentervo);
 	}
 
 }

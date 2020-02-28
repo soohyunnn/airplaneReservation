@@ -83,13 +83,13 @@
 <!-- DELETE SECTION -->
 <!-- **************** -->
 
-<!-- <delete id="deleteUserInfo" parameterType="co.kr.airplane.user.vo.UserVO">
-/** [adminMapper.xml][co.kr.airplane.service.impl.adminMapper.deleteUserInfo][admin-회원삭제] **/
+<delete id="deleteCenter" parameterType="co.kr.airplane.board.vo.UserCenterVO">
+/** [adminUserCenterMapper.xml][co.kr.airplane.service.impl.adminUserCenterMapper.deleteCenter][admin-수현아나클럽 게시글 삭제] **/
 <![CDATA[
-	delete from userinfo
-	where NO_SEQ = #{No}
+	delete from usercenter
+	where BNO = #{serNum}
 ]]>
-</delete> -->
+</delete>
 
 	
 </mapper>

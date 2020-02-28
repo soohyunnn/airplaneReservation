@@ -35,5 +35,13 @@ public class AdminUserServiceController {
 		return adminusercenterservice.usercenterinfo(request, usercentervo);
 		
 	}
+	
+	//수현아나클럽 - 고객센터 게시글 삭제
+	@ResponseBody
+	@RequestMapping(value="/deleteCenter", method=RequestMethod.POST)
+	public void deleteCenter(@ModelAttribute UserCenterVO usercentervo) throws Exception{
+		System.out.println("deleteCenter()");
+		adminusercenterservice.deleteCenter(usercentervo);
+	}
 
 }

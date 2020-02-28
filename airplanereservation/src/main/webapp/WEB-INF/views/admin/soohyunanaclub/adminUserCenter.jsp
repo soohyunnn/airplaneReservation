@@ -12,53 +12,13 @@
 		<p style="color:black;">Total: <span id="count"></span></p>
 	
 	<div style="width: 91%; margin: 0 auto; padding-top: 20px;">
-		<!-- 회원 정보 등록 -->
-<!-- 		<div class="panel panel-default" id="insertDiv" style="margin: 0 auto; background: #e0e0e0; border-radius: 19px; border: 1px solid;">
-			<div class="panel-heading" style="padding: 10px; background: #e0e0e0; border-top-left-radius: 17px; border-top-right-radius: 17px; border: 1px solid;">회원 정보 입력</div>
-			<div class="panel-body" style="padding: 20px; background: white; border-bottom-left-radius: 17px; border-bottom-right-radius: 17px; border: 1px solid;">
-			    
-			    action="확장자 방식의 서블릿요청주소
-			    회원등록 form Start
-				<form id="adminUserInsertForm" name="adminUserInsertForm" action="" method="post">
-					<div class="form-group">
-						name="" 속성은 JSP 프로그램 진행시 필수 속성
-						식별자는 자료형 클래스의 멤버명으로 작성할 것
-						동일 자료 동일 식별자 원칙	
-						<label for="name">이름:</label>
-						<input type="text" class="form-control" id="userName" name="userName" required>
-					</div>
-					<div class="form-group">
-						<label for="phone">ID:</label>
-						<input type="text" class="form-control" id="userId" name="userId" required>
-					</div>
-					<div class="form-group">
-						<label for="phone">PW:</label> 
-						<input type="text" class="form-control" id="userPw" name="userPw" required>
-					</div>
-					<div class="form-group">
-						<label for="phone">전화번호:</label> 
-						<input type="text" class="form-control" id="userPhone" name="userPhone" required>
-					</div>
-					<div class="form-group">
-						<label for="email">이메일:</label> 
-						<input type="text" class="form-control" id="userEmail" name="userEmail" required>
-					</div>
-					
-					submit 버튼은 JSP 프로그램 진행시 필수 요소
-					폼 태그 범위 안에 위치해야 한다.
-					<button type="button" class="btn btn-sm btn-primary" style="" id="btnInsertAdminUserInfo">등록</button>					
-				</form>
-				회원등록 form End
-			</div>
-		</div> -->
-				
-				
+			
 		<!-- 고객센터 게시글 수정 -->					
 		<div class="panel panel-default" id="centerChangeDiv" style="margin: 0 auto; background: #e0e0e0; border-radius: 19px; border: 1px solid; display: none">
 			<div class="panel-heading" style="padding: 10px; background: #e0e0e0; border-top-left-radius: 17px; border-top-right-radius: 17px; border: 1px solid;">고객센터 게시글 수정</div>
 			<div class="panel-body" style="padding: 20px; background: white; border-bottom-left-radius: 17px; border-bottom-right-radius: 17px; border: 1px solid;">
 				<!-- 고객센터 게시글 수정 form Start -->
-				<form id="adminCenterchangeForm" name="adminCenterchangeForm" action="" method="post">
+				<form id="adminCenterchangeForm" name="adminCenterchangeForm" method="post">
 					<div class="form-group">
 						<label for="phone">게시글 번호:</label> 
 						<input type="text" class="form-control No" id="serNum" name="serNum" required readonly>
@@ -97,18 +57,13 @@
 					
 					<!-- submit 버튼은 JSP 프로그램 진행시 필수 요소 -->
 					<!-- 폼 태그 범위 안에 위치해야 한다. -->
-					<button type="button" class="btn btn-sm btn-warning" style="" id="btnUpdateAdminCenterInfo">수정</button>
-					<button type="button" class="btn btn-sm btn-danger" style="" id="btnDeleteAdminCenterInfo">삭제</button>					
+					<!-- <button type="button" class="btn btn-sm btn-warning" id="">수정</button> -->
+					<button type="button" class="btn btn-sm btn-danger" id="btnDeleteAdminCenterInfo">삭제</button>					
 				</form>
 				<!-- 고객센터 게시글 수정 form End -->	
 			</div>
 		</div>	
-				
-				
-		
-							
-			
-		
+						
 	</div>
 		<br><br><br>
 	<!-- Content Row -->
@@ -277,71 +232,27 @@ function show(pageNo){
 	         $('#serDay').val(serDay);
 	         $('#serViews').val(serViews);
 
-	   }
+	   }	
+	
 
-	//admin - 회원등록
-	$("#btnInsertAdminUserInfo").click(function(){
+	
+	//admin - 고객센터 게시글 삭제
+	$("#btnDeleteAdminCenterInfo").click(function(){
 		//alert('1');
-		var insertCon = confirm("회원정보를 등록하시겠습니까?");
-
-		if (insertCon == true) {
-			$.ajax({
-				url : '/admin/usermani/insertUserInfo',
-				type : 'POST',
-				data : $('#adminUserInsertForm').serialize(),
-					success : function(data) {
-						console.log('successs');
-						alert('등록을 완료하였습니다.');
-						location.href = 'http://localhost:8080/admin/usermani/adminUserInfo.admin';
-					},
-					error : function() {
-						alert("등록을 실패하였습니다.");
-					}
-				});
-			}
-		});
-	
-	
-	//admin - 회원수정
-	$("#btnUpdateAdminUserInfo").click(function(){
-		//alert('1');
-		var updateCon = confirm("회원정보를 수정하시겠습니까?");
-
-		if (updateCon == true) {
-			$.ajax({
-				url : '/admin/usermani/updateUserInfo',
-				type : 'POST',
-				data : $('#adminUserchangeForm').serialize(),
-					success : function(data) {
-						console.log('successs');
-						alert('수정을 완료하였습니다.');
-						location.href = 'http://localhost:8080/admin/usermani/adminUserInfo.admin';
-					},
-					error : function() {
-						alert("수정을 실패하였습니다.");
-					}
-				});
-			}
-		});
-	
-	
-	//admin - 회원삭제
-	$("#btnDeleteAdminUserInfo").click(function(){
-		//alert('1');
-		var deleteCon = confirm("회원정보를 삭제하시겠습니까?");
+		var deleteCon = confirm("게시글을 삭제하시겠습니까?");
 
 		if (deleteCon == true) {
 			$.ajax({
-				url : '/admin/usermani/deleteUserInfo',
+				url : '/deleteCenter',
 				type : 'POST',
-				data : $('#adminUserchangeForm').serialize(),
+				data : $('#adminCenterchangeForm').serialize(),
 					success : function(data) {
 						console.log('successs');
-						alert('삭제를 완료하였습니다.');
-						location.href = 'http://localhost:8080/admin/usermani/adminUserInfo.admin';
+						alert('게시글이 삭제되었습니다.');
+						location.href = 'http://localhost:8080/admin/soohyunanaclub/adminUserCenter.admin';
 					},
 					error : function() {
-						alert("삭제를 실패하였습니다.");
+						alert("게시글 삭제를 실패하였습니다.");
 					}
 				});
 			}
