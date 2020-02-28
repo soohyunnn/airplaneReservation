@@ -60,10 +60,9 @@ input[type="text"]{
 				<div class="mb-3">
 					<label for="content">내용</label>
 					
-					<!-- <textarea class="form-control" rows="5" name="serContent" id="serContent" style="height: 400px;" readonly></textarea> -->
+					<textarea class="" rows="5" name="serContent" id="serContent" style="height: 400px;" readonly>${list.serContent }</textarea>
 					
-					<label style="border: 1px solid; border-radius: 8px; height: 500px; width: 101%; margin-bottom: 10px;">${list.serContent }</label>
-
+				
 				</div>
 				
 				<div class="mb-3">
@@ -158,6 +157,8 @@ input[type="text"]{
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
+CKEDITOR.replace("serContent",{height: 500, customConfig : '/resources/ckeditor/config.js'});
+
 	//댓글 등록결과
 	var replyResult = '${replyResult}';
 	if(replyResult == 1){

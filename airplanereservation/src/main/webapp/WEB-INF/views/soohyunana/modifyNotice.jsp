@@ -32,7 +32,7 @@ input[type="text"]{
     /* transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
 }
 </style>
-<!-- <script src="//cdn.ckeditor.com/4.13.1/full/ckeditor.js"></script> -->
+
 <script src="/resources/ckeditor/ckeditor.js"></script>
 	예약-항공권예약
 <div style="height: 695px; overflow-x: auto;">
@@ -65,7 +65,7 @@ input[type="text"]{
 					
 					<script>
 					
-					 CKEDITOR.replace("serContent",{height: 500, customConfig : '/resources/ckeditor/config.js'});
+/* 					 CKEDITOR.replace("serContent",{height: 500, customConfig : '/resources/ckeditor/config.js'});
 					 	
 					 	
 						if(CKEDITOR.instances.serContent.getData().length < 1){
@@ -73,7 +73,7 @@ input[type="text"]{
 							
 						}else{
 							CKEDITOR.instances.serContent.getData()
-						} 
+						}  */
 						
 
 					</script>
@@ -102,14 +102,25 @@ input[type="text"]{
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
+
+CKEDITOR.replace("serContent",{height: 500, customConfig : '/resources/ckeditor/config.js'});
+	
+	
+/* if(CKEDITOR.instances.serContent.getData().length < 1){
+	alert("내용을 입력해 주세요.");
+	
+}else{
+	CKEDITOR.instances.serContent.getData()
+}  */
+
 $("#btnupdate").click(function(){
 	
-	/* 		if(CKEDITOR.instances.serContent.getData().length < 1){
+			if(CKEDITOR.instances.serContent.getData().length < 1){
 				alert("내용을 입력해 주세요.");
 				
 			}else{
 				CKEDITOR.instances.serContent.getData()
-			}  */
+			}  
 			
 			console.log(CKEDITOR.instances.serContent.getData());
 			updateform.serContent.value = CKEDITOR.instances.serContent.getData();
