@@ -34,9 +34,7 @@ input[type="text"]{
     /* transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
 }
 </style>
-<script src="/resources/ckeditor/ckeditor.js"></script>	
-<script src="/resources/ckeditor/config.js"></script>
-<div style="">
+<div>
 		<div style="margin: 80px; margin-bottom: 20px;">
 			<div>
 				<h1 class="page-header">고객센터</h1>				
@@ -155,7 +153,6 @@ input[type="text"]{
 			<br><br><br><br><br><br><br><br>
 </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
 CKEDITOR.replace("serContent",{height: 500, customConfig : '/resources/ckeditor/config.js'});
 

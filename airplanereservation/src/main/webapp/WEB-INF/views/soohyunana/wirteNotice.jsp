@@ -32,10 +32,10 @@ input[type="text"]{
     /* transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
 }
 </style>
-<!-- <script src="//cdn.ckeditor.com/4.13.1/full/ckeditor.js"></script> -->
-<script src="/resources/ckeditor/ckeditor.js"></script>
-<!-- <script src="/resources/ckeditor/config.js"></script>	 -->	
-<div style="">
+
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="/resources/ckeditor/ckeditor.js"></script>	 -->
+<div>
 		<div style="margin: 80px; margin-bottom: 20px;">
 			<div>
 				<h1 class="page-header">고객센터</h1>				
@@ -57,25 +57,7 @@ input[type="text"]{
 				</div>
 				<div class="mb-3">
 					<label for="content">내용</label>
-					<textarea class="form-control" rows="30" cols="80" name="serContent" id="serContent"></textarea>
-					
-					<script>
-					
-					 CKEDITOR.replace("serContent",{height: 500, customConfig : '/resources/ckeditor/config.js'});
-					 
-					 
-					 	CKEDITOR.instances.serContent.setData('<p><span style="font-size:18px"><strong>asdfsafdsf</strong></span></p>');
-						if(CKEDITOR.instances.serContent.getData().length < 1){
-							alert("내용을 입력해 주세요.");
-							
-						}else{
-							CKEDITOR.instances.serContent.getData()
-						} 
-						
-						//CKEDITOR.config.allowedContent = true;
-
-					</script>
-					
+					<textarea class="" rows="30" cols="80" name="serContent" id="serContent" placeholder="내용을 입력해주세요"></textarea>
 				</div>
 				<div class="mb-3">
 					<label for="tag">연락처</label>
@@ -104,18 +86,18 @@ input[type="text"]{
 			
 		</div>
 </div>
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 <script>
+CKEDITOR.replace("serContent",{height: 500, customConfig : '/resources/ckeditor/config.js'});
 
 	$("#btnSave").click(function(){
 		
-/* 		if(CKEDITOR.instances.serContent.getData().length < 1){
+ 		if(CKEDITOR.instances.serContent.getData().length < 1){
 			alert("내용을 입력해 주세요.");
 			
 		}else{
 			CKEDITOR.instances.serContent.getData()
-		}  */
+		}  
 		
 		console.log(CKEDITOR.instances.serContent.getData());
 		insertform.serContent.value = CKEDITOR.instances.serContent.getData();

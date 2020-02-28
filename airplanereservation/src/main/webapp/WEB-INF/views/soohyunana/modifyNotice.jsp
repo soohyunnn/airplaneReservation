@@ -33,8 +33,6 @@ input[type="text"]{
 }
 </style>
 
-<script src="/resources/ckeditor/ckeditor.js"></script>
-	예약-항공권예약
 <div style="height: 695px; overflow-x: auto;">
 		<div style="margin: 80px; margin-bottom: 20px;">
 			<div>
@@ -61,23 +59,7 @@ input[type="text"]{
 				</div>
 				<div class="mb-3">
 					<label for="content">내용</label>
-					<textarea class="" rows="30" cols="80" name="serContent" id="serContent">${list.serContent }</textarea>
-					
-					<script>
-					
-/* 					 CKEDITOR.replace("serContent",{height: 500, customConfig : '/resources/ckeditor/config.js'});
-					 	
-					 	
-						if(CKEDITOR.instances.serContent.getData().length < 1){
-							alert("내용을 입력해 주세요.");
-							
-						}else{
-							CKEDITOR.instances.serContent.getData()
-						}  */
-						
-
-					</script>
-					
+					<textarea class="" rows="30" cols="80" name="serContent" id="serContent">${list.serContent }</textarea>								
 				</div>
 				<div class="mb-3">
 					<label for="tag">연락처</label>
@@ -100,18 +82,11 @@ input[type="text"]{
 		</div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
 <script>
 
 CKEDITOR.replace("serContent",{height: 500, customConfig : '/resources/ckeditor/config.js'});
 	
-	
-/* if(CKEDITOR.instances.serContent.getData().length < 1){
-	alert("내용을 입력해 주세요.");
-	
-}else{
-	CKEDITOR.instances.serContent.getData()
-}  */
 
 $("#btnupdate").click(function(){
 	

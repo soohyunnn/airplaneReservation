@@ -28,8 +28,9 @@
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/resources/images/apple-touch-icon-72.png">
         <link rel="apple-touch-icon-precomposed" href="/resources/images/ico/apple-touch-icon-57.png">
         <link rel="shortcut icon" href="/resources/images/ico/favicon.ico">
-
     </head>
+		<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+		<script src="/resources/ckeditor/ckeditor.js"></script>	
     <style>
     html body{
     	background: #181A1C;
