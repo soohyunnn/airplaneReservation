@@ -110,6 +110,20 @@
           </div>
         </div>
       </li>
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>수현아나클럽</span>
+        </a>
+        <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">travel:</h6>
+            <a class="collapse-item" href="/admin/soohyunanaclub/notice">공지사항</a>
+            <a class="collapse-item" href="/admin/soohyunanaclub/userCenter">고객센터</a>
+          </div>
+        </div>
+      </li>
 
     </ul>
     <!-- End of Sidebar -->
