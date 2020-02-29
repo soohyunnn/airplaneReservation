@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+	String userSessionId = (String)session.getAttribute("userId");
+%>    
 <script>
 /* function moveToPage(page){
 	  
@@ -56,9 +59,20 @@
 				</div>
 				
 				<div style="display: inline-block; padding:16px; position: relative; float: right;">
-					<a href="/member/login" onclick="" style="color:white; ">로그인</a>
-					<a href="/member/register" onclick="" style="color:white; padding:16px;">회원가입</a>
-					<a href="/admin/index" style="color:white; padding:16px;">admin</a>
+					
+					<% if(userSessionId == null) { %>
+						<a href="/member/login" style="color:white; ">로그인&nbsp;&nbsp;&nbsp;|</a>
+						<a href="/member/register" style="color:white; padding:16px;">회원가입</a>
+					<% } else { %>
+						<label style="float: left; padding-top: 1px; padding-right: 5px; font-size: 16px;"><%=userSessionId %> 님 &nbsp;&nbsp;&nbsp;|</label>
+						<% if(userSessionId.equals("admin")){%>					
+							<a href="/admin/index" style="color:white; padding:16px;">admin&nbsp;&nbsp;&nbsp;|</a>
+							<a href="/logoutProcess" style="color:white; padding:16px; padding-left: 1px;">로그아웃</a>
+						<%}else { %>
+							<a href="" style="color:white; padding:16px;">정보수정&nbsp;&nbsp;&nbsp;|</a>
+							<a href="/logoutProcess" style="color:white; padding:16px; ">로그아웃</a>
+						<%} %>
+					<% } %>
 				</div>
 			
     	</header>

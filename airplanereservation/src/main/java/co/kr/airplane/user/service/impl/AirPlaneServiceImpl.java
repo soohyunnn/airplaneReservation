@@ -1,5 +1,9 @@
 package co.kr.airplane.user.service.impl;
 
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,13 +28,17 @@ public class AirPlaneServiceImpl implements AirPlaneService{
 
 	//로그인
 	@Override
-	public ModelAndView userLogin(UserVO uservo) throws Exception{
-		System.out.println("userLogin()");
+	public ModelAndView loginCheck(UserVO uservo, HttpServletRequest request) throws Exception{
+		System.out.println("loginCheck()");
 		ModelAndView mv = new ModelAndView();
 
 		UserVO loginUservo = airplanedao.userLogin(uservo);
 		System.out.println(loginUservo.getUserId());
 		System.out.println(loginUservo.getUserPw());
+		
+		request.getSession().setAttribute("login", loginUservo);
+		request.getSession().setAttribute("userId", loginUservo.getUserId());
+		mv.addObject("loginCheck", loginUservo);	//loginUservo에서 받아온 회원정보 객체를 loginCheck에 저장
 		
 		if(uservo.getUserId().equals(loginUservo.getUserId())) {
 			if(uservo.getUserPw().equals(loginUservo.getUserPw())) {

@@ -1,10 +1,14 @@
 package co.kr.airplane.user.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import co.kr.airplane.user.service.AirPlaneService;
@@ -18,10 +22,10 @@ public class AirPlaneController {
 	
 	//회원가입
 	@RequestMapping(value="/registerProcess" , method=RequestMethod.POST)
-	public ModelAndView registerProcess(@ModelAttribute UserVO uservo) throws Exception{
+	public ModelAndView registerProcess(@ModelAttribute UserVO uservo,HttpSession session) throws Exception{
 		System.out.println("registerProcess()");
 		ModelAndView mv = new ModelAndView();
-		
+		session.invalidate();
 		airplaneservice.userRegis(uservo);
 		mv.setViewName("index.main");
 		
@@ -29,11 +33,21 @@ public class AirPlaneController {
 	}
 	
 	//로그인
-	@RequestMapping(value="/loginProcess")
-	public ModelAndView loginProcess(@ModelAttribute UserVO uservo) throws Exception{
+	@ResponseBody
+	@RequestMapping(value="/loginProcess" ,method=RequestMethod.POST)
+	public void loginProcess(@ModelAttribute UserVO uservo, HttpServletRequest request) throws Exception{
 		System.out.println("loginProcess()");
 		ModelAndView mv = new ModelAndView();
-		mv = airplaneservice.userLogin(uservo);
-		return mv;
+		//airplaneservice.loginCheck(uservo,request);
+		mv.addObject("loginCheck", airplaneservice.loginCheck(uservo,request));		
+	}
+	
+	//로그아웃
+	@RequestMapping(value="/logoutProcess")
+	public String logoutProcess(HttpSession session) throws Exception{
+		System.out.println("logoutProcess()");
+		session.invalidate();
+		return "index.main";
+		
 	}
 }

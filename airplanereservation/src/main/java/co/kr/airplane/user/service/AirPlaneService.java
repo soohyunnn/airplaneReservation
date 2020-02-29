@@ -1,5 +1,9 @@
 package co.kr.airplane.user.service;
 
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.web.servlet.ModelAndView;
 
 import co.kr.airplane.user.vo.UserVO;
@@ -10,5 +14,5 @@ public interface AirPlaneService {
 	public void userRegis(UserVO uservo) throws Exception;
 	
 	//로그인
-	public ModelAndView userLogin(UserVO uservo) throws Exception;
+	public ModelAndView loginCheck(UserVO uservo, HttpServletRequest request) throws Exception;
 }
