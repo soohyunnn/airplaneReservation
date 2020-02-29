@@ -15,4 +15,7 @@ public interface AirPlaneService {
 	
 	//로그인
 	public ModelAndView loginCheck(UserVO uservo, HttpServletRequest request) throws Exception;
+	
+	//중복 ID 체크
+	public HashMap<String, Object> duplicateIdCheck(UserVO uservo) throws Exception;
 }

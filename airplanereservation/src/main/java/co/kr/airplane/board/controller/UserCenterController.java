@@ -2,6 +2,7 @@ package co.kr.airplane.board.controller;
 
 
 
+import java.io.PrintWriter;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,7 @@ import co.kr.airplane.board.utils.Pagination;
 import co.kr.airplane.board.utils.Search;
 import co.kr.airplane.board.vo.ReplyVO;
 import co.kr.airplane.board.vo.UserCenterVO;
+import co.kr.airplane.user.vo.UserVO;
 
 @Controller
 public class UserCenterController {
@@ -37,7 +39,9 @@ public class UserCenterController {
 			, @RequestParam(required = false, defaultValue = "") String keyword
 			) throws Exception{
 		
-		System.out.println("userCenter()");
+		System.out.println("userCenter()");		
+		
+
 		
 		ModelAndView mv = new ModelAndView();
 		//Search 객체 생성
@@ -65,8 +69,17 @@ public class UserCenterController {
 	
 	//수현아나클럽-고객센터(글쓰기 페이지 이동)
 	@RequestMapping(value="/soohyunana/wirteUserCenter")
-	public String wirteUserCenter(@ModelAttribute Search search) throws Exception{
+	public String wirteUserCenter(@ModelAttribute Search search, HttpSession session, HttpServletResponse response) throws Exception{
 		System.out.println("wirteUserCenter()");
+		
+		UserVO uservo = (UserVO)session.getAttribute("login");
+		if(uservo == null) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('로그인 정보를 확인해주세요.'); location.href='//localhost:8080/member/login';</script>");		
+			out.flush();
+		}
+		
 		return "soohyunana/wirteUserCenter.tiles";
 	}
 	
@@ -157,8 +170,15 @@ public class UserCenterController {
 	
 	//수현아나클럽-고객센터(댓글 등록)
 	@RequestMapping(value="/soohyunana/UserCenter/insertReply")
-	public ModelAndView insertReply(@ModelAttribute ReplyVO replyvo) throws Exception{
+	public ModelAndView insertReply(@ModelAttribute ReplyVO replyvo, HttpSession session, HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		UserVO uservo = (UserVO)session.getAttribute("login");
+		if(uservo == null) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('로그인 정보를 확인해주세요.'); location.href='//localhost:8080/member/login';</script>");		
+			out.flush();
+		}
 		mv = usercenterservice.insertReply(replyvo);
 		
 		return mv;

@@ -60,6 +60,28 @@ public class AirPlaneServiceImpl implements AirPlaneService{
 		
 		return mv;
 	}
+
+	
+	//중복 ID 체크
+	@Override
+	public HashMap<String, Object> duplicateIdCheck(UserVO uservo) throws Exception {
+		HashMap<String,Object> resultMap = new HashMap<String,Object>();
+
+		try{
+			int check = airplanedao.duplicateIdCheck(uservo);
+			System.out.println(check);
+			if(check > 0) {
+				resultMap.put("result", 1);
+			} else {
+				resultMap.put("result", 2);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+
+		return resultMap;
+		
+	}
 	
 	
 

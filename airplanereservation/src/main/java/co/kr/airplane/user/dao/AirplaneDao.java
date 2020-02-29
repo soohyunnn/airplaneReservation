@@ -18,4 +18,7 @@ public interface AirplaneDao {
 	//로그인
 	public UserVO userLogin(UserVO uservo);
 	
+	//중복 ID 체크
+	public int duplicateIdCheck(UserVO uservo);
+	
 }

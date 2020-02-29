@@ -1,5 +1,7 @@
 package co.kr.airplane.user.controller;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -47,7 +49,38 @@ public class AirPlaneController {
 	public String logoutProcess(HttpSession session) throws Exception{
 		System.out.println("logoutProcess()");
 		session.invalidate();
-		return "index.main";
+		return "index.main";		
+	}
+	
+	//중복ID체크 처리
+	@ResponseBody
+	@RequestMapping(value="/duplicateIdCheck", method=RequestMethod.POST)
+	public HashMap<String, Object> duplicateIdCheck(@ModelAttribute UserVO uservo) throws Exception{
+		System.out.println(uservo.getUserId());
+		System.out.println("duplicateIdCheck()");
 		
+/*		HashMap<String,Object> resultMap = new HashMap<String,Object>();
+
+		resultMap = airplaneservice.duplicateIdCheck(uservo);
+
+		model.addAttribute("resultMap", resultMap);*/
+		
+		//System.out.println("resultMap : "+airplaneservice.duplicateIdCheck(uservo).get("duplicateYn"));
+		
+		return airplaneservice.duplicateIdCheck(uservo);
+
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

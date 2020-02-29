@@ -8,7 +8,7 @@
 <!-- SELECT SECTION -->
 <!-- **************** -->
 
-<select id="selectToday"  resultType="String">
+<!-- <select id="selectToday"  resultType="String">
 	select to_char(sysdate,'yyyymmdd') from dual
 </select>
 
@@ -16,7 +16,7 @@
 	select name 
 	from users
 	where id = #{id}
-</select>
+</select> -->
 
 <select id="userLogin" parameterType="co.kr.airplane.user.vo.UserVO" resultType="co.kr.airplane.user.vo.UserVO">
 /** [airplaneMapper.xml][co.kr.airplane.service.impl.airplaneMapper.userLogin][로그인] **/
@@ -27,6 +27,12 @@
 	]]>
 </select>
 
+<select id="duplicateIdCheck" parameterType="co.kr.airplane.user.vo.UserVO" resultType="int">
+/** [airplaneMapper.xml][com.example.springpjt.member.service.impl.airplaneMapper.duplicateIdCheck][회원  중복 ID 조회] **/
+	SELECT COUNT(USERID)
+	FROM userinfo
+	WHERE USERID=#{userId}
+</select>
 
 
 
