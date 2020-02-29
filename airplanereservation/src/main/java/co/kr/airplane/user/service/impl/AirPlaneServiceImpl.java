@@ -54,8 +54,7 @@ public class AirPlaneServiceImpl implements AirPlaneService{
 					loginresultMap.put("result", "nopassword");
 				}
 				
-			}
-		
+			}		
 		}catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("아이디가 틀림");
