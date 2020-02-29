@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.kr.airplane.admin.dao.AdminNoticeDao">
+
+<!-- **************** -->
+<!-- SELECT SECTION -->
+<!-- **************** -->
+
+
+<select id="noticeinfo" parameterType="co.kr.airplane.admin.vo.AdminNoticeVO"  resultType="co.kr.airplane.admin.vo.AdminNoticeVO">
+/** [adminNoticeMapper.xml][co.kr.airplane.service.impl.adminNoticeMapper.noticeinfo][공지사항 조회(검색)] **/
+		SELECT NOTINO  as notiNo, NOTINAME  as notiName, NOTITITLE  as notiTitle, NOTICONTENT  as notiContent, NOTIDAY  as notiDay, NOTIVIEWS  as notiViews
+		FROM ( SELECT A.*, ROW_NUMBER() OVER(ORDER BY NOTINO ASC) AS NUM
+		FROM notice A
+		<if test="search != null and search != '' ">
+			<if test="search == 'Everything'">
+
+			</if>
+			<if test="search == 'TITLE'">
+				where NOTITITLE = #{searchInput}
+			</if>
+			<if test="search == 'CONTENT'">
+				where NOTICONTENT = #{searchInput}
+			</if>
+			<if test="search == 'DAY'">
+				where NOTIDAY = #{searchInput}
+			</if>
+		</if>
+		)
+		WHERE NUM BETWEEN ((#{pageNo}-1)*#{searchCount})+1 AND  (#{pageNo})*#{searchCount}
+		order by NOTINO DESC
+	</select>
+
+<!-- 전체 페이지의 수 -->
+ 	<select id="noticeCount" resultType="int">
+ 	/** [adminNoticeMapper.xml][co.kr.airplane.service.impl.adminNoticeMapper.noticeCount][공지사항 목록 수] **/
+ 	<![CDATA[	
+		select count(*) as total
+		from notice
+	]]>
+	</select> 
+
+	
+<!-- **************** -->
+<!-- INSERT SECTION -->
+<!-- **************** -->
+
+<insert id="insertNotice" parameterType="co.kr.airplane.admin.vo.AdminNoticeVO">
+/** [adminNoticeMapper.xml][co.kr.airplane.service.impl.adminNoticeMapper.insertNotice][admin-수현아나클럽-공지사항등록] **/
+<![CDATA[
+	insert into notice(NOTINO,NOTINAME, NOTITITLE, NOTICONTENT, NOTIDAY)
+	values(noti_seq.NEXTVAL, '운영자', #{notiTitle},#{notiContent},to_char(sysdate,'yyyy.mm.dd PM HH:MI:SS'))
+]]>
+</insert>
+
+
+
+	
+
+	
+	
+	
+<!-- **************** -->
+<!-- UPDATE SECTION -->
+<!-- **************** -->
+
+<update id="updateNotice" parameterType="co.kr.airplane.admin.vo.AdminNoticeVO">
+/** [adminNoticeMapper.xml][co.kr.airplane.service.impl.adminNoticeMapper.updateNotice][admin-수현아나클럽-공지사항수정] **/
+<![CDATA[
+	update notice
+	set NOTITITLE =#{notiTitle}, NOTICONTENT = #{notiContent}
+	where NOTINO = #{notiNo}
+]]>
+</update>
+
+
+	
+	
+	
+<!-- **************** -->
+<!-- DELETE SECTION -->
+<!-- **************** -->
+
+<delete id="deleteNotice" parameterType="co.kr.airplane.admin.vo.AdminNoticeVO">
+/** [adminNoticeMapper.xml][co.kr.airplane.service.impl.adminNoticeMapper.deleteNotice][admin-수현아나클럽-공지사항삭제] **/
+<![CDATA[
+	delete from notice
+	where NOTINO = #{notiNo}
+]]>
+</delete>
+
+	
+</mapper>

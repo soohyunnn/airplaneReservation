@@ -64,10 +64,10 @@ public class UserCenterController {
 	}
 	
 	//수현아나클럽-고객센터(글쓰기 페이지 이동)
-	@RequestMapping(value="/soohyunana/wirteNotice")
+	@RequestMapping(value="/soohyunana/wirteUserCenter")
 	public String wirteUserCenter(@ModelAttribute Search search) throws Exception{
 		System.out.println("wirteUserCenter()");
-		return "soohyunana/wirteNotice.tiles";
+		return "soohyunana/wirteUserCenter.tiles";
 	}
 	
 	//수현아나클럽-고객센터(글등록)
@@ -89,7 +89,7 @@ public class UserCenterController {
 		
 		System.out.println(replyvo.getSerNum());
 		
-		mv.setViewName("soohyunana/contentNotice.tiles");
+		mv.setViewName("soohyunana/contentUserCenter.tiles");
 		mv.addObject("list", usercenterservice.viewDetail(seq));
 		
 		Map<String, Object> replyList = usercenterservice.selectReply(replyvo);
@@ -110,7 +110,7 @@ public class UserCenterController {
 		
 		usercentvo.setSerNum(seq);
 		
-		mv.setViewName("soohyunana/modifyNotice.tiles");
+		mv.setViewName("soohyunana/modifyUserCenter.tiles");
 		mv.addObject("list", usercenterservice.viewDetail(seq));
 		
 		return mv;

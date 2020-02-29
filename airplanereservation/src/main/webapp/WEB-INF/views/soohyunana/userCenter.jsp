@@ -83,7 +83,7 @@
 			</tbody>
 		</table>
 		
-		<a href="/soohyunana/wirteNotice" style="float:right; margin-right:94px;" class="btn btn-sm btn-primary"  >글쓰기</a>
+		<a href="/soohyunana/wirteUserCenter" style="float:right; margin-right:94px;" class="btn btn-sm btn-primary"  >글쓰기</a>
 </div>
 
 
