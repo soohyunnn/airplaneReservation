@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<script src="/resources/ckeditor/ckeditor.js"></script>	 -->    
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -33,7 +35,8 @@
 					</div>
 					<div class="form-group">
 						<label for="phone">내용:</label> 
-						<input type="text" class="form-control" id="notiContent" name="notiContent" required>
+						<!-- <input type="text" class="form-control" id="notiContent" name="notiContent" required> -->
+						<textarea class="" rows="30" cols="80" name="notiContent" id="notiContent" placeholder="내용을 입력해주세요"></textarea>
 					</div>
 
 					
@@ -69,7 +72,8 @@
 					</div>
 					<div class="form-group">
 						<label for="phone">내용:</label> 
-						<input type="text" class="form-control notiContent" id="notiContent" name="notiContent" required>
+						<!-- <input type="text" class="form-control notiContent" id="notiContent" name="notiContent" required> -->
+						<textarea class="notiContent1" rows="30" cols="80" name="notiContent1" id="notiContent1" placeholder="내용을 입력해주세요"></textarea>
 					</div>
 					<div class="form-group">
 						<label for="phone">날짜:</label> 
@@ -147,6 +151,7 @@
 <!-- /.container-fluid -->
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
+CKEDITOR.replace("notiContent",{height: 500, customConfig : '/resources/ckeditor/config.js'});
 function show(pageNo){
 
     var noticeTableForm = document.getElementById('noticeTableForm');
@@ -226,6 +231,7 @@ function show(pageNo){
 
 	//tr줄을 선택하면 모달이 뜨고, 모달안에 정보들이 뜸
 	function modalBtn2(target) {
+		CKEDITOR.replace("notiContent1",{height: 500, customConfig : '/resources/ckeditor/config.js'});
 		$('#noticeInsertDiv').hide();
 		$('#noticeChangeDiv').show();
 	   
@@ -242,14 +248,23 @@ function show(pageNo){
 	   		 $('.notiNo').val(notiNo);
 	         $('.notiName').val(notiName);
 	         $('.notiTitle').val(notiTitle);
-	         $('.notiContent').val(notiContent);
+	         $('.notiContent1').val(notiContent);
 	         $('.notiDay').val(notiDay);
 	         //$('.notiViews').val(notiViews);     
 	   }
 
-	//admin - 회원등록
+	//admin - 공지사항 등록
 	$("#btnInsertAdminNoticeInfo").click(function(){
 		//alert('1');
+		
+		if(CKEDITOR.instances.notiContent.getData().length < 1){
+			alert("내용을 입력해 주세요.");
+			
+		}else{
+			CKEDITOR.instances.notiContent.getData()
+		}  
+		adminNoticeInsertForm.notiContent.value = CKEDITOR.instances.notiContent.getData();
+		
 		var insertCon = confirm("공지사항을 등록하시겠습니까?");
 
 		if (insertCon == true) {
@@ -270,9 +285,17 @@ function show(pageNo){
 		});
 	
 	
-	//admin - 회원수정
+	//admin - 공지사항 수정
 	$("#btnUpdateAdminNotice").click(function(){
 		//alert('1');
+		if(CKEDITOR.instances.notiContent1.getData().length < 1){
+			alert("내용을 입력해 주세요.");
+			
+		}else{
+			CKEDITOR.instances.notiContent1.getData()
+		}
+		
+		adminNoticeChangeForm.notiContent.value = CKEDITOR.instances.notiContent1.getData();
 		var updateCon = confirm("공지사항을 수정하시겠습니까?");
 
 		if (updateCon == true) {
@@ -293,7 +316,7 @@ function show(pageNo){
 		});
 	
 	
-	//admin - 회원삭제
+	//admin - 공지사항 삭제
 	$("#btnDeleteAdminNotice").click(function(){
 		//alert('1');
 		var deleteCon = confirm("공지사항을 삭제하시겠습니까?");

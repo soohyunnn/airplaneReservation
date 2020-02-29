@@ -36,7 +36,7 @@
 							<option value="15">15 개씩</option>
 						</select> -->
 					</div>
-					<div style="padding-right: 10px; padding-left: 5px; float: left;">
+					<div style="padding-right: 25px; padding-left: 5px; float: left;">
 						<input type="text" class="form-control form-control-sm" name="keyword" id="keyword" style="height: 21px">
 					</div>
 					<!--  button은 form태그 안에 넣으면 이벤트를 한번 더 타서 클릭을 두번한것처럼 실행된다. 그래서 보통은 a태그를 사용하며 button을 사용할 경우 type="button"을 주면 된다-->
