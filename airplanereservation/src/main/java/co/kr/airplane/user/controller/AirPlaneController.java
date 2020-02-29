@@ -37,11 +37,18 @@ public class AirPlaneController {
 	//로그인
 	@ResponseBody
 	@RequestMapping(value="/loginProcess" ,method=RequestMethod.POST)
-	public void loginProcess(@ModelAttribute UserVO uservo, HttpServletRequest request) throws Exception{
+	public HashMap<String, Object> loginProcess(@ModelAttribute UserVO uservo, HttpServletRequest request) throws Exception{
 		System.out.println("loginProcess()");
-		ModelAndView mv = new ModelAndView();
-		//airplaneservice.loginCheck(uservo,request);
-		mv.addObject("loginCheck", airplaneservice.loginCheck(uservo,request));		
+		System.out.println("UserId : "+uservo.getUserId());
+		
+		/*ModelAndView mv = new ModelAndView();
+		HashMap<String,Object> loginresultMap = new HashMap<String,Object>();
+		loginresultMap = airplaneservice.loginCheck(uservo, request);*/
+		
+		/*mv.addObject("loginCheck", loginresultMap);
+		mv.addObject("result", loginresultMap.get("result"));*/
+		//System.out.println("result : "+loginresultMap.get("result"));
+		return airplaneservice.loginCheck(uservo, request);
 	}
 	
 	//로그아웃
@@ -69,6 +76,38 @@ public class AirPlaneController {
 		
 		return airplaneservice.duplicateIdCheck(uservo);
 
+	}
+	
+	//정보수정 페이지 이동
+	@RequestMapping(value="/modifyUsePage")
+	public ModelAndView modifyUse(@ModelAttribute UserVO uservo) throws Exception{
+		System.out.println("userId : "+uservo.getUserId());
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("member/modifyUser.tiles");
+		mv.addObject("list", airplaneservice.searchUser(uservo));
+		
+		return mv;
+	}
+	
+	//회원정보 수정
+	@ResponseBody
+	@RequestMapping(value="/updateUserProcess", method=RequestMethod.POST)
+	public void updateUserProcess(@ModelAttribute UserVO uservo) throws Exception{
+		System.out.println("updateUserProcess()");
+		
+		ModelAndView mv = new ModelAndView();
+		//mv.setViewName("redirect:member/modifyUser.tiles");
+		airplaneservice.updateUser(uservo);
+		
+	}
+	
+	//회원탈퇴
+	@ResponseBody
+	@RequestMapping(value="/deleteUserProcess", method=RequestMethod.POST)
+	public void deleteUserProcess(@ModelAttribute UserVO uservo,HttpSession session) throws Exception{
+		session.invalidate();
+		airplaneservice.deleteUser(uservo);
 	}
 }
 

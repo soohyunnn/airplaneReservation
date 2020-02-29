@@ -5,7 +5,7 @@
 	String userSessionId = (String)session.getAttribute("userId");
 %>    
 <script>
-/* function moveToPage(page){
+function moveToPage(page){
 	  
 	  var f = $("#pageForm");	  
 	  console.log("f : " + $("#pageForm").serialize());
@@ -14,7 +14,7 @@
 	  console.log( $("#pageForm").attr("action"));
 	  //debugger;
 	  f.submit();
-	} */
+	}
 
 </script>    
 		<header>
@@ -69,15 +69,15 @@
 							<a href="/admin/index" style="color:white; padding:16px;">admin&nbsp;&nbsp;&nbsp;|</a>
 							<a href="/logoutProcess" style="color:white; padding:16px; padding-left: 1px;">로그아웃</a>
 						<%}else { %>
-							<a href="" style="color:white; padding:16px;">정보수정&nbsp;&nbsp;&nbsp;|</a>
+							<a href="#" onclick="moveToPage('/modifyUsePage')" style="color:white; padding:16px;">정보수정&nbsp;&nbsp;&nbsp;|</a>
 							<a href="/logoutProcess" style="color:white; padding:16px; ">로그아웃</a>
 						<%} %>
 					<% } %>
 				</div>
 			
     	</header>
- <!--    	
+    	
     		<form id="pageForm" method="POST">>
-    			<input type="hidden" id="pageNo" name="pageNo" value="1">
-    			<input type="hidden" id="searchCount" name="searchCount" value="0">
-    		</form> -->
+    			<input type="hidden" id="userId" name="userId" value=<%=userSessionId %> >
+ 
+    		</form>

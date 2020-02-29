@@ -21,4 +21,13 @@ public interface AirplaneDao {
 	//중복 ID 체크
 	public int duplicateIdCheck(UserVO uservo);
 	
+	//회원조회
+	public UserVO searchUser(UserVO uservo);
+	
+	//회원정보 수정
+	public int updateUser(UserVO uservo);
+	
+	//회원탈퇴
+	public int deleteUser(UserVO uservo);
+	
 }

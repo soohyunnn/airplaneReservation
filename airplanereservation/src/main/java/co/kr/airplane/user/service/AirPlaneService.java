@@ -14,8 +14,17 @@ public interface AirPlaneService {
 	public void userRegis(UserVO uservo) throws Exception;
 	
 	//로그인
-	public ModelAndView loginCheck(UserVO uservo, HttpServletRequest request) throws Exception;
+	public HashMap<String,Object> loginCheck(UserVO uservo, HttpServletRequest request) throws Exception;
 	
 	//중복 ID 체크
 	public HashMap<String, Object> duplicateIdCheck(UserVO uservo) throws Exception;
+	
+	//회원 조회
+	public UserVO searchUser(UserVO uservo) throws Exception;
+	
+	//회원정보 수정
+	public void updateUser(UserVO uservo) throws Exception;
+	
+	//회원탈퇴
+	public void deleteUser(UserVO uservo) throws Exception;
 }

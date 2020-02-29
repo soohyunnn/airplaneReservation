@@ -75,11 +75,21 @@
             dataType:'JSON',
             data :$('#loginForm').serialize(),           
             success : function(data) {
-            	console.log(data);
-
-            	alert("로그인에 성공하였습니다.");
-    			location.href ="http://localhost:8080/";
-
+/*             	console.log(data.loginCheck);
+            	console.log(data.loginCheck.loginCheck);
+            	console.log(data.loginCheck.result); */
+            	//
+            	if(data.result === "success"){
+            		alert("로그인에 성공하였습니다.");
+        			location.href ="http://localhost:8080/";
+            	}else if(data.result === "nopassword"){
+            		alert("비밀번호가 틀립니다.");
+            		location.href ="http://localhost:8080/member/login";
+            	}else if(data.result === "noid"){
+            		alert("아이디가 틀립니다.");
+            		location.href ="http://localhost:8080/member/login";
+            	}
+            	            	
             },error : function(){ 
               	alert("로그인에 실패하였습니다.");  
             }
