@@ -32,3 +32,4 @@
     </head>
 		<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 		<script src="/resources/ckeditor/ckeditor.js"></script>
+		<script src="/resources/js/jquery.form.js"></script>

@@ -14,10 +14,10 @@
                     <hr class="colorgraph">
                     <p style="color: red;">${msg}</p>
                     <div class="form-group inputst">
-                        <input type="text" name="userId" id="userId" class="form-control input-lg" placeholder="아이디">
+                        <input type="text" name="userId" id="userId" class="form-control input-lg" placeholder="아이디" value="admin">
                     </div>
                     <div class="form-group inputst">
-                        <input type="password" name="userPw" id="userPw" class="form-control input-lg" placeholder="비밀번호">
+                        <input type="password" name="userPw" id="userPw" class="form-control input-lg" placeholder="비밀번호" value="admin">
                     </div>
                     <span class="button-checkbox">
 					<button type="button" class="btn" data-color="info">ID 기억하기</button>

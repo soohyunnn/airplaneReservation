@@ -5,7 +5,7 @@ package co.kr.airplane.board.controller;
 import java.io.PrintWriter;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -92,6 +92,7 @@ public class UserCenterController {
 		
 		usercenterservice.insertUserCenter(usercentervo);
 	}
+	
 	
 	//수현아나클럽 - 글 자세히보기
 	@RequestMapping(value="/soohyunana/detail")

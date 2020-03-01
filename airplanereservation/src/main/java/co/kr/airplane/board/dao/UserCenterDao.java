@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import co.kr.airplane.board.utils.Pagination;
 import co.kr.airplane.board.utils.Search;
+import co.kr.airplane.board.vo.FileVO;
 import co.kr.airplane.board.vo.ReplyVO;
 import co.kr.airplane.board.vo.UserCenterVO;
 
@@ -24,7 +25,7 @@ public interface UserCenterDao {
 	
 	//고객센터 등록
 	public int insertUserCenter(UserCenterVO usercentervo);
-	
+		
 	//고객센터 게시글 수정
 	public int updateUserCenter(UserCenterVO usercentvo);
 	

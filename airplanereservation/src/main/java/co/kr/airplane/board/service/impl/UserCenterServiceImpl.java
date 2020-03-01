@@ -26,6 +26,7 @@ public class UserCenterServiceImpl implements UserCenterService{
 	@Autowired
 	private UserCenterDao usercenterdao;
 	
+	
 	//고객센터 목록
 	@Override
 	public List<UserCenterVO> selectUserCenter(Search search) throws Exception {
@@ -127,24 +128,13 @@ public class UserCenterServiceImpl implements UserCenterService{
 		usercenterdao.deleteUserCenterReply(usercentvo);		//게시글 삭제 시 해당 게시글 번호 댓글 모두삭제
 	}
 
+	
+	
+
 
 	
 
 	
 	
-	//고객센터 목록 수
-/*	@Override
-	public int selectUserCenterListCount(HashMap<String, Object> paramMap) throws Exception {
-		System.out.println("selectUserCenterListCount()");
-		int userCneterListCount = 0;
-		
-		try {
-			userCneterListCount = usercenterdao.selectUserCenterListCount(paramMap);
-		}catch (Exception e) {
-			logger.info("message", e);
-			throw e;
-		}
-		return userCneterListCount;
-	}*/
 
 }

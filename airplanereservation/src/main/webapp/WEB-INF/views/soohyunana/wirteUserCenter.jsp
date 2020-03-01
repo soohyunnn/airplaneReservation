@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<script type='text/javascript'> 
+    //window.parent.CKEDITOR.tools.callFunction('{filename}','{file_path}','파일전송완료');
+    /* window.parent.CKEDITOR.tools.callFunction({"filename" : "{CKEditorFuncNum}", "uploaded" : 1, "url":"{file_path}"}); */
+</script>
+{"filename" : "{filename}", "uploaded" : 1, "url":"{file_path}"}
 <!-- <script src="/resources/ckeditor/config.js"></script> -->
 <div>
 		<div style="margin: 80px; margin-bottom: 20px;">
@@ -71,7 +75,9 @@ switch (dialogName) {
 
 //CKEditor 추가
 CKEDITOR.replace("serContent",{
-	height: 500, 	
+	height: 500,
+	enterMode : CKEDITOR.ENTER_BR , // 엔터키를 <br> 로 적용함. 
+	shiftEnterMode : CKEDITOR.ENTER_P , // 쉬프트 + 엔터를 <p> 로 적용함.
 	toolbarGroups: [	//필요한 툴바만 나타나도록 함
 	  { "name": "basicstyles", "groups": ["basicstyles"]},
 	  { "name": "colors"},
@@ -85,7 +91,8 @@ CKEDITOR.replace("serContent",{
     ],
     // Remove the redundant buttons from toolbar groups defined above.
     removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Specialchar',
-    filebrowserImageUploadUrl: '/community/imageUpload'		//여기 경로로 파일을 전달하여 업로드 시킴
+    //filebrowserImageUploadUrl: '/ckeditorImageUpload'		//여기 경로로 파일을 전달하여 업로드 시킴
+    filebrowserUploadUrl : "/imageUpload"
 	});
 	
 	
