@@ -2,22 +2,22 @@ package co.kr.airplane.board.controller;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
+
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import co.kr.airplane.board.vo.FileVO;
+
 
 @Controller
 public class FileController {
@@ -48,17 +48,15 @@ public class FileController {
         //서버=>클라이언트로 텍스트 전송(자바스크립트 실행)
         PrintWriter printWriter=response.getWriter();
  
-/*        String json = {
-        	    "uploaded": 1, //(성공:1, 실패:0)
-        	    "fileName": fileName,
-        	    "url": "/files/foo.jpg"
-        	}
-
-        printWriter.write(json);*/
+        
         
         String fileUrl=
                     request.getContextPath()+"/images/"+fileName;
- 
+        
+        System.out.println("fileName : "+fileName);
+        System.out.println("callback : "+callback);
+        System.out.println("fileUrl : "+fileUrl);
+        
         printWriter.println(
         			"<script>window.parent.CKEDITOR.tools.callFunction("
         				+callback+",'"+fileUrl+"','이미지가 업로드되었습니다.')"
