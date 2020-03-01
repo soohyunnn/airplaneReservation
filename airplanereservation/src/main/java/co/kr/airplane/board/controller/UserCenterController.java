@@ -183,20 +183,7 @@ public class UserCenterController {
 		
 		return mv;
 	}
-	
-	//수현아나클럽 - 고객센터(댓글 조회)
-/*		@RequestMapping(value="/reservation/airReser")		//수현아나클럽으로 변경해야함
-		public ModelAndView airReser(@ModelAttribute ReplyVO replyvo) throws Exception {   //수현아나클럽으로 변경해야함
-			ModelAndView mv = new ModelAndView();
-			Map<String, Object> replyList = usercenterservice.selectReply(replyvo);
-			System.out.println("map"+replyList);
-			mv.setViewName("reservation/airReser.tiles");			//수현아나클럽으로 변경해야함
-			mv.addObject("replyList",replyList.get("replyList"));
-			mv.addObject("total",replyList.get("total"));
-			return mv;
-	}*/
-	
-		
+			
 	//수현아나클럽 - 고객센터(댓글 삭제)
 	@RequestMapping(value="/soohyunana/UserCenter/deleteReply")
 	public ModelAndView deleteReply(@ModelAttribute ReplyVO replyvo) throws Exception{

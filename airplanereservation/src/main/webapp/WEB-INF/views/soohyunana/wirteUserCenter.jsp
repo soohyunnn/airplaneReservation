@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
-
-<!-- <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script src="/resources/ckeditor/ckeditor.js"></script>	 -->
+<!-- <script src="/resources/ckeditor/config.js"></script> -->
 <div>
 		<div style="margin: 80px; margin-bottom: 20px;">
 			<div>
@@ -27,7 +24,7 @@
 				</div>
 				<div class="mb-3">
 					<label for="content">내용</label>
-					<textarea class="" rows="30" cols="80" name="serContent" id="serContent" placeholder="내용을 입력해주세요"></textarea>
+					<textarea rows="5" cols="60" name="serContent" id="serContent" ></textarea>
 				</div>
 				<div class="mb-3">
 					<label for="tag">연락처</label>
@@ -58,19 +55,53 @@
 </div>
 
 <script>
-CKEDITOR.replace("serContent",{height: 500, customConfig : '/resources/ckeditor/config.js'});
+//이미지 업로드
+CKEDITOR.on('dialogDefinition', function( ev ){
+var dialogName = ev.data.name;
+var dialogDefinition = ev.data.definition;
 
+switch (dialogName) {
+    case 'image': //Image Properties dialog
+        //dialogDefinition.removeContents('info');
+        dialogDefinition.removeContents('Link');
+        dialogDefinition.removeContents('advanced');
+        break;
+}
+}); 
+
+//CKEditor 추가
+CKEDITOR.replace("serContent",{
+	height: 500, 	
+	toolbarGroups: [	//필요한 툴바만 나타나도록 함
+	  { "name": "basicstyles", "groups": ["basicstyles"]},
+	  { "name": "colors"},
+      { "name": "links", "groups": ["links"]},
+      { "name": "paragraph", "groups": ["list", "blocks"]},
+      { "name": "document", "groups": ["mode"]},
+      { "name": "insert", "groups": ["insert"]},
+      { "name": "styles", "groups": ["styles"]},
+      { "name": "about", "groups": ["about"]},
+      { "name": "about", "groups": ["about"]}     
+    ],
+    // Remove the redundant buttons from toolbar groups defined above.
+    removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Specialchar',
+    filebrowserImageUploadUrl: '/community/imageUpload'		//여기 경로로 파일을 전달하여 업로드 시킴
+	});
+	
+	
+	
 	$("#btnSave").click(function(){
 		
- 		if(CKEDITOR.instances.serContent.getData().length < 1){
+ 		if(CKEDITOR.instances.serContent.getData().length < 1){				//CKEditor 입력창에 아무것도 입력하지 않고 저장 버튼 눌렀을 경우
 			alert("내용을 입력해 주세요.");
 			
 		}else{
-			CKEDITOR.instances.serContent.getData()
+			CKEDITOR.instances.serContent.getData()							//CKEditor 입력창에 입력을 한 경우 그 값을 가져옴
 		}  
 		
 		console.log(CKEDITOR.instances.serContent.getData());
-		insertform.serContent.value = CKEDITOR.instances.serContent.getData();
+		insertform.serContent.value = CKEDITOR.instances.serContent.getData();		//CKEditor에서 받아온 값을 insertform에 저장시킴 
+		
 		
 		//alert('1');
 		$.ajax({

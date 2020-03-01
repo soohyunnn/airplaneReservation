@@ -31,4 +31,4 @@
         <link rel="shortcut icon" href="/resources/images/ico/favicon.ico">
     </head>
 		<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-		<script src="/resources/ckeditor/ckeditor.js"></script>	
+		<script src="/resources/ckeditor/ckeditor.js"></script>
