@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <script type='text/javascript'> 
-    //window.parent.CKEDITOR.tools.callFunction('{filename}','{file_path}','파일전송완료');
+	//{"filename" : "{filename}", "uploaded" : 1, "url":"{file_path}"}
+    window.parent.CKEDITOR.tools.callFunction('{filename}','{file_path}','파일전송완료');
     /* window.parent.CKEDITOR.tools.callFunction({"filename" : "{CKEditorFuncNum}", "uploaded" : 1, "url":"{file_path}"}); */
 </script>
-{"filename" : "{filename}", "uploaded" : 1, "url":"{file_path}"}
-<!-- <script src="/resources/ckeditor/config.js"></script> -->
+
+<script src="/resources/ckeditor/config.js"></script>
 <div>
 		<div style="margin: 80px; margin-bottom: 20px;">
 			<div>
