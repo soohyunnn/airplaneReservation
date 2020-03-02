@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script type='text/javascript'> 
-	//{"filename" : "{filename}", "uploaded" : 1, "url":"{file_path}"}
-    window.parent.CKEDITOR.tools.callFunction('{filename}','{file_path}','파일전송완료');
-    /* window.parent.CKEDITOR.tools.callFunction({"filename" : "{CKEditorFuncNum}", "uploaded" : 1, "url":"{file_path}"}); */
-</script>
+"<script type='text/javascript'>
+   window.parent.CKEDITOR.tools.callFunction(" + 
+      callback + 
+      ",'" + fileUrl + "','이미지를 업로드 하였습니다.'" + ")
+</script>"
+
 
 <script src="/resources/ckeditor/config.js"></script>
 <div>
@@ -93,7 +94,7 @@ CKEDITOR.replace("serContent",{
     // Remove the redundant buttons from toolbar groups defined above.
     removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Specialchar',
     //filebrowserImageUploadUrl: '/ckeditorImageUpload'		//여기 경로로 파일을 전달하여 업로드 시킴
-    filebrowserUploadUrl : "/imageUpload"
+    filebrowserUploadUrl : "/fileupload"
 	});
 	
 	
