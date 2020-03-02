@@ -133,6 +133,7 @@
 	]]>
 </select>
 	
+
 	
 <!-- **************** -->
 <!-- INSERT SECTION -->
@@ -142,7 +143,7 @@
 /** [userCenterMapper.xml][com.adminproject.banner.service.impl.userCenterMapper.insertUserCenter][고객센터 등록] **/
 <![CDATA[
 	insert into usercenter (BNO, BNONAME, BNOTITLE, BNOCONTENT, BNOPHONE, BNOEMAIL, BNODAY)
-	values(bno_seq.NEXTVAL, #{serId}, #{serTitle}, #{serContent}, #{serPhone}, #{serEmail}, to_char(sysdate,'yyyy.mm.dd'))
+	values(bno_seq.NEXTVAL, #{serId}, #{serTitle}, #{serContent}, #{serPhone}, #{serEmail}, to_char(sysdate,'yyyy.mm.dd PM HH:MI:SS'))
 ]]>
 </insert>
 

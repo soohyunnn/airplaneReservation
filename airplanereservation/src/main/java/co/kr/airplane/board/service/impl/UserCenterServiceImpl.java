@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import co.kr.airplane.board.dao.UserCenterDao;
 import co.kr.airplane.board.service.UserCenterService;
-import co.kr.airplane.board.utils.Pagination;
 import co.kr.airplane.board.utils.Search;
 import co.kr.airplane.board.vo.ReplyVO;
 import co.kr.airplane.board.vo.UserCenterVO;
@@ -27,6 +25,7 @@ public class UserCenterServiceImpl implements UserCenterService{
 	
 	@Autowired
 	private UserCenterDao usercenterdao;
+	
 	
 	//고객센터 목록
 	@Override
@@ -129,24 +128,13 @@ public class UserCenterServiceImpl implements UserCenterService{
 		usercenterdao.deleteUserCenterReply(usercentvo);		//게시글 삭제 시 해당 게시글 번호 댓글 모두삭제
 	}
 
+	
+	
+
 
 	
 
 	
 	
-	//고객센터 목록 수
-/*	@Override
-	public int selectUserCenterListCount(HashMap<String, Object> paramMap) throws Exception {
-		System.out.println("selectUserCenterListCount()");
-		int userCneterListCount = 0;
-		
-		try {
-			userCneterListCount = usercenterdao.selectUserCenterListCount(paramMap);
-		}catch (Exception e) {
-			logger.info("message", e);
-			throw e;
-		}
-		return userCneterListCount;
-	}*/
 
 }

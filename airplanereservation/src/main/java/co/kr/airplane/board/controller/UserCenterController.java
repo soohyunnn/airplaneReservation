@@ -2,9 +2,10 @@ package co.kr.airplane.board.controller;
 
 
 
+import java.io.PrintWriter;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -22,6 +23,7 @@ import co.kr.airplane.board.utils.Pagination;
 import co.kr.airplane.board.utils.Search;
 import co.kr.airplane.board.vo.ReplyVO;
 import co.kr.airplane.board.vo.UserCenterVO;
+import co.kr.airplane.user.vo.UserVO;
 
 @Controller
 public class UserCenterController {
@@ -37,7 +39,9 @@ public class UserCenterController {
 			, @RequestParam(required = false, defaultValue = "") String keyword
 			) throws Exception{
 		
-		System.out.println("userCenter()");
+		System.out.println("userCenter()");		
+		
+
 		
 		ModelAndView mv = new ModelAndView();
 		//Search 객체 생성
@@ -64,10 +68,19 @@ public class UserCenterController {
 	}
 	
 	//수현아나클럽-고객센터(글쓰기 페이지 이동)
-	@RequestMapping(value="/soohyunana/wirteNotice")
-	public String wirteUserCenter(@ModelAttribute Search search) throws Exception{
+	@RequestMapping(value="/soohyunana/wirteUserCenter")
+	public String wirteUserCenter(@ModelAttribute Search search, HttpSession session, HttpServletResponse response) throws Exception{
 		System.out.println("wirteUserCenter()");
-		return "soohyunana/wirteNotice.tiles";
+		
+		UserVO uservo = (UserVO)session.getAttribute("login");
+		if(uservo == null) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('로그인 정보를 확인해주세요.'); location.href='//localhost:8080/member/login';</script>");		
+			out.flush();
+		}
+		
+		return "soohyunana/wirteUserCenter.tiles";
 	}
 	
 	//수현아나클럽-고객센터(글등록)
@@ -75,9 +88,11 @@ public class UserCenterController {
 	@RequestMapping(value="/soohyunana/insertUserCenter")
 	public void insertUserCenter(@ModelAttribute UserCenterVO usercentervo) throws Exception {
 		System.out.println("insertUserCenter()");
+		System.out.println("SerContent : "+usercentervo.getSerContent());
 		
 		usercenterservice.insertUserCenter(usercentervo);
 	}
+	
 	
 	//수현아나클럽 - 글 자세히보기
 	@RequestMapping(value="/soohyunana/detail")
@@ -88,7 +103,7 @@ public class UserCenterController {
 		
 		System.out.println(replyvo.getSerNum());
 		
-		mv.setViewName("soohyunana/contentNotice.tiles");
+		mv.setViewName("soohyunana/contentUserCenter.tiles");
 		mv.addObject("list", usercenterservice.viewDetail(seq));
 		
 		Map<String, Object> replyList = usercenterservice.selectReply(replyvo);
@@ -109,7 +124,7 @@ public class UserCenterController {
 		
 		usercentvo.setSerNum(seq);
 		
-		mv.setViewName("soohyunana/modifyNotice.tiles");
+		mv.setViewName("soohyunana/modifyUserCenter.tiles");
 		mv.addObject("list", usercenterservice.viewDetail(seq));
 		
 		return mv;
@@ -156,26 +171,20 @@ public class UserCenterController {
 	
 	//수현아나클럽-고객센터(댓글 등록)
 	@RequestMapping(value="/soohyunana/UserCenter/insertReply")
-	public ModelAndView insertReply(@ModelAttribute ReplyVO replyvo) throws Exception{
+	public ModelAndView insertReply(@ModelAttribute ReplyVO replyvo, HttpSession session, HttpServletResponse response) throws Exception{
 		ModelAndView mv = new ModelAndView();
+		UserVO uservo = (UserVO)session.getAttribute("login");
+		if(uservo == null) {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('로그인 정보를 확인해주세요.'); location.href='//localhost:8080/member/login';</script>");		
+			out.flush();
+		}
 		mv = usercenterservice.insertReply(replyvo);
 		
 		return mv;
 	}
-	
-	//수현아나클럽 - 고객센터(댓글 조회)
-/*		@RequestMapping(value="/reservation/airReser")		//수현아나클럽으로 변경해야함
-		public ModelAndView airReser(@ModelAttribute ReplyVO replyvo) throws Exception {   //수현아나클럽으로 변경해야함
-			ModelAndView mv = new ModelAndView();
-			Map<String, Object> replyList = usercenterservice.selectReply(replyvo);
-			System.out.println("map"+replyList);
-			mv.setViewName("reservation/airReser.tiles");			//수현아나클럽으로 변경해야함
-			mv.addObject("replyList",replyList.get("replyList"));
-			mv.addObject("total",replyList.get("total"));
-			return mv;
-	}*/
-	
-		
+			
 	//수현아나클럽 - 고객센터(댓글 삭제)
 	@RequestMapping(value="/soohyunana/UserCenter/deleteReply")
 	public ModelAndView deleteReply(@ModelAttribute ReplyVO replyvo) throws Exception{

@@ -3,107 +3,8 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<style>
-.pagination {
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 0;
-  list-style: none;
-  border-radius: 0.25rem;
-}
-.pagination {
-  display: -ms-flexbox;
-  display: flex;
-  padding-left: 0;
-  list-style: none;
-  border-radius: 0.25rem;
-}
 
-.page-link {
-  position: relative;
-  display: block;
-  padding: 0.5rem 0.75rem;
-  margin-left: -1px;
-  line-height: 1.25;
-  color: #007bff;
-  background-color: #fff;
-  border: 1px solid #dee2e6;
-}
-
-.page-link:hover {
-  z-index: 2;
-  color: #0056b3;
-  text-decoration: none;
-  background-color: #e9ecef;
-  border-color: #dee2e6;
-}
-
-.page-link:focus {
-  z-index: 2;
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-.page-item:first-child .page-link {
-  margin-left: 0;
-  border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
-}
-
-.page-item:last-child .page-link {
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
-}
-
-.page-item.active .page-link {
-  z-index: 1;
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-.page-item.disabled .page-link {
-  color: #6c757d;
-  pointer-events: none;
-  cursor: auto;
-  background-color: #fff;
-  border-color: #dee2e6;
-}
-
-.pagination-lg .page-link {
-  padding: 0.75rem 1.5rem;
-  font-size: 1.25rem;
-  line-height: 1.5;
-}
-
-.pagination-lg .page-item:first-child .page-link {
-  border-top-left-radius: 0.3rem;
-  border-bottom-left-radius: 0.3rem;
-}
-
-.pagination-lg .page-item:last-child .page-link {
-  border-top-right-radius: 0.3rem;
-  border-bottom-right-radius: 0.3rem;
-}
-
-.pagination-sm .page-link {
-  padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.5;
-}
-
-.pagination-sm .page-item:first-child .page-link {
-  border-top-left-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
-}
-
-.pagination-sm .page-item:last-child .page-link {
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-}
-</style>
-
-<div style="">
+<div>
 		<div style="margin: 80px;">
 			<div>
 				<h1 class="page-header">고객센터</h1>
@@ -135,7 +36,7 @@
 							<option value="15">15 개씩</option>
 						</select> -->
 					</div>
-					<div style="padding-right: 10px; padding-left: 5px; float: left;">
+					<div style="padding-right: 25px; padding-left: 5px; float: left;">
 						<input type="text" class="form-control form-control-sm" name="keyword" id="keyword" style="height: 21px">
 					</div>
 					<!--  button은 form태그 안에 넣으면 이벤트를 한번 더 타서 클릭을 두번한것처럼 실행된다. 그래서 보통은 a태그를 사용하며 button을 사용할 경우 type="button"을 주면 된다-->
@@ -152,7 +53,7 @@
 					<th scope="col">NO</th>
 					<th scope="col">작성자</th>
 					<th scope="col">제목</th>
-					<th scope="col">내용</th>
+					<!-- <th scope="col">내용</th> -->
 					<th scope="col">작성날짜</th>
 					<th scope="col">조회수</th>
 				</tr>
@@ -165,7 +66,7 @@
 								<td>${list.serNum}</td>
 								<td>${list.serId}</td>
 								<td style = "cursor:pointer;" onClick = " location.href='http://localhost:8080/soohyunana/detail?seq=${list.serNum }' ">${list.serTitle}</td>
-								<td>${list.serContent}</td>
+								<%-- <td>${list.serContent}</td> --%>
 								<td>${list.serDay}</td>
 								<td>${list.serViews}</td>
 							</tr>
@@ -182,7 +83,7 @@
 			</tbody>
 		</table>
 		
-		<a href="/soohyunana/wirteNotice" style="float:right; margin-right:94px;" class="btn btn-sm btn-primary"  >글쓰기</a>
+		<a href="/soohyunana/wirteUserCenter" style="float:right; margin-right:94px;" class="btn btn-sm btn-primary"  >글쓰기</a>
 </div>
 
 

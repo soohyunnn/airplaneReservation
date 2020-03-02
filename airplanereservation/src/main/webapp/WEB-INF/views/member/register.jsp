@@ -16,7 +16,7 @@
 <div class="container" style="height: 937px;">
     <div class="row">
         <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" style="width: 500px; margin: 100px auto 0 auto;">
-            <form action="/registerProcess" Method="POST" role="form" style="width: 500px;">
+            <form id="registerForm" name="registerForm" action="/registerProcess" Method="POST" role="form" style="width: 500px;">
                 <fieldset style="background: white;padding:10px;">
                     <h2 style="color:black;">회원가입</h2>
                     <h3><small>회원으로 가입하시면 예약,발권,탑승,마일리지 조회 등 다양한 서비스와 함께 정기 이벤트 뉴스와 할인항공권 소식을 이메일로 받아보실 수도 있습니다.</small></h3>
@@ -26,6 +26,7 @@
                     </div>
                     <div class="form-group inputst">
                         <input type="text" name="userId" id="userId" class="form-control input-lg" placeholder="아이디">
+                        <button type="button" id="btnIdCheck" class="btn btn-sm btn-warning" style="margin-bottom: 10px;">ID 중복 체크</button>
                     </div>
                     <div class="form-group inputst">
                         <input type="password" name="userPw" id="userPw" class="form-control input-lg" placeholder="비밀번호">
@@ -51,57 +52,33 @@
 </div>
 
 
-<!-- <div class="container" style="height: 937px;">
+<script>
+$("#btnIdCheck").click(function(){
+	//var userId =$('#userId').val();
+	
+	//alert('1');
+	$.ajax({
+		url : '/duplicateIdCheck',
+		type : 'POST',
+		data : $('#registerForm').serialize() ,
+		dataType:'JSON',
+		success : function(data){
+				console.log('통신성공');
+				console.log(data.result);
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" style="top: 100px;">
-            <form role="form">
-                <h2>회원가입 </h2>
-                <h3><small>회원으로 가입하시면 예약,발권,탑승,마일리지 조회 등 다양한 서비스와 함께 정기 이벤트 뉴스와 할인항공권 소식을 이메일로 받아보실 수도 있습니다.</small></h3>
-                <hr class="colorgraph">
-                <div class="form-group inputst">
-                    <input type="text" name="res_Name" id="res_Name" class="form-control input-lg" placeholder="이름" tabindex="1">
-                </div>
-                <div class="form-group inputst">
-                    <input type="text" name="res_Id" id="res_ID" class="form-control input-lg" placeholder="아이디" tabindex="2">
-                </div>
-                <div class="form-group inputst">
-                    <input type="text" name="res_Pw" id="res_Pw" class="form-control input-lg" placeholder="비밀번호" tabindex="3">
-                </div>
-                <div class="form-group inputst">
-                    <input type="text" name="res_Email" id="res_Email" class="form-control input-lg" placeholder="이메일" tabindex="4">
-                </div>
+				if(data.result == 1){
+					alert('이미 사용중인 ID입니다.');	
+				}else{
+					alert('사용가능한 ID입니다.');
+				}											
+			},
+			error : function() {
+				alert("ID중복 체크 통신 실패");
+				
+			}									
+		});
+	
+});
+</script>
 
-
-                <hr class="colorgraph">
-                <div class="row">
-                    <div class="col-xs-12 col-md-12"><input type="submit" value="회원가입" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
-                </div>
-            </form>
-        </div>
-    </div>
-    Modal
-    <div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title" id="myModalLabel">Terms & Conditions</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, itaque, modi, aliquam nostrum at sapiente consequuntur natus odio reiciendis perferendis rem nisi tempore possimus ipsa porro delectus quidem dolorem ad.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
-                </div>
-            </div>/.modal-content
-        </div>/.modal-dialog
-    </div>/.modal
-</div> -->
 

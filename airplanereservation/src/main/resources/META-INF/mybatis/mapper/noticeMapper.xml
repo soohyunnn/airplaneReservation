@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.kr.airplane.board.dao.NoticeDao">
+
+<!-- **************** -->
+<!-- SELECT SECTION -->
+<!-- **************** -->
+
+
+<select id="selectNotice" resultType="co.kr.airplane.board.vo.NoticeVO" parameterType="co.kr.airplane.board.utils.Search">
+/** [userCenterMapper.xml][com.adminproject.banner.service.impl.userCenterMapper.selectUserCenter][고객센터 조회] **/
+
+<![CDATA[
+		SELECT NOTINO  as notiNo, NOTINAME  as notiId, NOTITITLE  as notiTitle, NOTICONTENT  as notiContent, NOTIDAY  as notiDay, NOTIVIEWS  as notiViews
+		FROM ( select a.*, ROWNUM as rnum from (
+			select * 
+			FROM notice 
+]]>			
+			<choose>
+				<when test="searchType == 'Everything' ">
+					where NOTITITLE like '%'||#{keyword}||'%'
+					or NOTICONTENT like '%'||#{keyword}||'%'
+					or NOTIDAY like '%'||#{keyword}||'%'
+				</when >
+				<when test="searchType == 'TITLE' ">
+					where NOTITITLE like '%'||#{keyword}||'%'
+				</when>
+				<when test="searchType == 'CONTENT' ">
+					where NOTICONTENT like '%'||#{keyword}||'%'
+				</when>
+				<when test="searchType == 'DAY' ">
+					where NOTIDAY like '%'||#{keyword}||'%'
+				</when>
+			</choose>
+
+<![CDATA[
+				order by NOTINO DESC
+			)
+		a) where rnum >#{startList} and rnum <=#{listSize}*#{page}
+]]>
+
+
+</select>
+
+<select id="selectNoticeCount" resultType="int" parameterType="co.kr.airplane.board.utils.Search">
+ 	/** [userCenterMapper.xml][co.kr.airplane.service.impl.userCenterMapper.selectUserCenterListCount][회원정보 수] **/
+ 	<![CDATA[	
+		select count(*)
+		from notice	
+
+	]]>
+				<choose>
+				<when test="searchType == 'Everything' ">
+					where NOTITITLE like '%'||#{keyword}||'%'
+					or NOTICONTENT like '%'||#{keyword}||'%'
+					or NOTIDAY like '%'||#{keyword}||'%'
+				</when >
+				<when test="searchType == 'TITLE' ">
+					where NOTITITLE like '%'||#{keyword}||'%'
+				</when>
+				<when test="searchType == 'CONTENT' ">
+					where NOTICONTENT like '%'||#{keyword}||'%'
+				</when>
+				<when test="searchType == 'DAY' ">
+					where NOTIDAY like '%'||#{keyword}||'%'
+				</when>
+		</choose>
+</select>
+
+<!-- <select id="selectReply" resultType="co.kr.airplane.board.vo.ReplyVO" parameterType="co.kr.airplane.board.vo.ReplyVO">
+ /** [userCenterMapper.xml][co.kr.airplane.service.impl.userCenterMapper.selectReply][댓글 조회] **/
+ <![CDATA[	
+	select SERNO as serNum, REPLYNO as replyNo ,  REPLYID as replyId ,  REPLYCONTENT as replyContent, REPLYDAY as replyDay
+	from  REPLY
+	where  SERNO = #{serNum}
+	order by REPLYNO ASC
+]]>
+</select>
+
+<select id="selectReplyCount" resultType="int">
+/** [userCenterMapper.xml][co.kr.airplane.service.impl.userCenterMapper.selectReplyCount][댓글 수] **/
+ 	<![CDATA[	
+		select count(*)
+		from REPLY		
+	]]>
+</select> -->
+
+<select id="noticeViewDetail" resultType="co.kr.airplane.board.vo.NoticeVO" parameterType="int">
+/** [userCenterMapper.xml][co.kr.airplane.service.impl.userCenterMapper.viewDetail][게시글 상세조회] **/
+ 	<![CDATA[	
+		SELECT NOTINO  as notiNo, NOTINAME  as notiId, NOTITITLE  as notiTitle, NOTICONTENT  as notiContent, NOTIDAY  as notiDay, NOTIVIEWS  as notiViews
+		from notice
+		where NOTINO = #{seq}	
+	]]>
+</select>
+	
+	
+<!-- **************** -->
+<!-- INSERT SECTION -->
+<!-- **************** -->
+
+<!-- <insert id="insertUserCenter" parameterType="co.kr.airplane.board.vo.UserCenterVO" >
+/** [userCenterMapper.xml][com.adminproject.banner.service.impl.userCenterMapper.insertUserCenter][고객센터 등록] **/
+<![CDATA[
+	insert into usercenter (BNO, BNONAME, BNOTITLE, BNOCONTENT, BNOPHONE, BNOEMAIL, BNODAY)
+	values(bno_seq.NEXTVAL, #{serId}, #{serTitle}, #{serContent}, #{serPhone}, #{serEmail}, to_char(sysdate,'yyyy.mm.dd'))
+]]>
+</insert>
+
+<insert id="insertReply" parameterType="co.kr.airplane.board.vo.ReplyVO">
+ /** [userCenterMapper.xml][co.kr.airplane.service.impl.userCenterMapper.insertReply][댓글 등록] **/
+<![CDATA[
+	insert into REPLY (SERNO, REPLYNO, REPLYID, REPLYCONTENT, REPLYDAY)
+	values(#{serNum},reply_seq.NEXTVAL, #{replyId}, #{replyContent}, to_char(sysdate,'YYYY.MM.DD PM HH:MI:SS'))
+]]>
+</insert> -->
+
+
+	
+	
+	
+<!-- **************** -->
+<!-- UPDATE SECTION -->
+<!-- **************** -->
+
+
+<!-- <update id="updateUserCenter" parameterType="co.kr.airplane.board.vo.UserCenterVO">
+/** [userCenterMapper.xml][co.kr.airplane.service.impl.userCenterMapper.updateUserCenter][고객센터 수정] **/
+
+	update usercenter
+	set BNOTITLE = #{serTitle}, BNOCONTENT =#{serContent}, BNOPHONE = #{serPhone}, BNOEMAIL = #{serEmail}
+	where BNO = #{serNum}
+
+</update> -->
+
+
+	
+	
+	
+	
+<!-- **************** -->
+<!-- DELETE SECTION -->
+<!-- **************** -->
+
+<!-- <delete id="deleteReply" parameterType="co.kr.airplane.board.vo.ReplyVO">
+/** [userCenterMapper.xml][co.kr.airplane.service.impl.userCenterMapper.insertReply][댓글 삭제] **/
+<![CDATA[
+	delete from REPLY
+	where REPLYNO = #{replyNo}
+]]>
+</delete>
+
+
+<delete id="deleteUserCenter" parameterType="co.kr.airplane.board.vo.UserCenterVO">
+/** [userCenterMapper.xml][co.kr.airplane.service.impl.userCenterMapper.deleteUserCenter][게시글 삭제] **/
+<![CDATA[
+	delete from usercenter
+	where BNO = #{serNum}
+]]>
+</delete>
+
+
+<delete id="deleteUserCenterReply" parameterType="co.kr.airplane.board.vo.UserCenterVO">
+/** [userCenterMapper.xml][co.kr.airplane.service.impl.userCenterMapper.deleteUserCenterReply][게시글 삭제 시 댓글 삭제] **/
+<![CDATA[
+	delete from REPLY
+	where SERNO = #{serNum}
+]]>
+</delete> -->
+
+</mapper>
+
+
+
+
+
+
+
+
+

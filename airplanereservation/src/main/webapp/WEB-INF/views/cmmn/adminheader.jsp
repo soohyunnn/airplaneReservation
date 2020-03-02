@@ -16,7 +16,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="/">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>SH Airplane</span></a>
       </li>
@@ -107,6 +107,20 @@
             <a class="collapse-item" href="/admin/travel/adminAtTheAirport">공항에서</a>
             <a class="collapse-item" href="/admin/travel/adminInTheAirplane">기내에서</a>
             <a class="collapse-item" href="/admin/travel/adminPaidAddService">유료 부가서비스</a>
+          </div>
+        </div>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>수현아나클럽</span>
+        </a>
+        <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">travel:</h6>
+            <a class="collapse-item" href="/admin/soohyunanaclub/adminNotice">공지사항</a>
+            <a class="collapse-item" href="/admin/soohyunanaclub/adminUserCenter">고객센터</a>
           </div>
         </div>
       </li>

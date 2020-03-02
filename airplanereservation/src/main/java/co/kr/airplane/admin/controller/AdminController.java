@@ -76,5 +76,31 @@ public class AdminController {
 		public String adminPaidAddService() {
 		return "admin/travel/adminPaidAddService.admin";
 	}
-	
+		
+	//수현아나클럽 - 공지사항
+		@RequestMapping(value="/admin/soohyunanaclub/adminNotice")
+		public String notice() {
+			return "admin/soohyunanaclub/adminNotice.admin";
+		}
+		
+	//수현아나클럽 - 고객센터
+		@RequestMapping(value="/admin/soohyunanaclub/adminUserCenter")
+		public String userCenter() {
+			return "admin/soohyunanaclub/adminUserCenter.admin";
+		}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

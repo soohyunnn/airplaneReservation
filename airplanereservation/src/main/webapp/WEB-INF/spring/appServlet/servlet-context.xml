@@ -15,6 +15,16 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
+	<!-- 파일 업로드 -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	  <beans:property name="maxUploadSize"   value="10485760" />
+	</beans:bean>
+	
+	<!-- 서버의 파일 저장 경로 설정 -->
+<!-- 	<beans:bean id="uploadPath" class="java.lang.String">
+	 <beans:constructor-arg  value="D:\dev\spring_simple_blog\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\upload"  />
+	</beans:bean> -->
+
 	<!-- 타일즈 viewResolver -->
 	<beans:bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"></beans:property>
