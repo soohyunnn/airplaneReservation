@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-"<script type='text/javascript'>
+
+<!-- "<script type='text/javascript'>
    window.parent.CKEDITOR.tools.callFunction(" + 
       callback + 
       ",'" + fileUrl + "','이미지를 업로드 하였습니다.'" + ")
 </script>"
+ -->
 
-
-<script src="/resources/ckeditor/config.js"></script>
+<!-- <script src="/resources/ckeditor/config.js"></script> -->
 <div>
 		<div style="margin: 80px; margin-bottom: 20px;">
 			<div>
@@ -95,6 +96,8 @@ CKEDITOR.replace("serContent",{
     removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Specialchar',
     //filebrowserImageUploadUrl: '/ckeditorImageUpload'		//여기 경로로 파일을 전달하여 업로드 시킴
     filebrowserUploadUrl : "/fileupload"
+    
+   
 	});
 	
 	
